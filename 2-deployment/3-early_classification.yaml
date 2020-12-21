@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f early_classification/docker-compose.yml
+    kompose.version: 1.19.0 (f63a96gc)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: early
+  name: early
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: early
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f early_classification/docker-compose.yml
+        kompose.version: 1.19.0 (f63a96gc)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: early
+        app: early
+    spec:
+      containers:
+      - env:
+        - name: ES_HOST
+          valueFrom:
+            secretKeyRef:
+              name: elasticsearch
+              key: host
+        - name: LOGSTASH_USER
+          valueFrom:
+            secretKeyRef:
+              name: elasticsearch
+              key: logstash-user
+        - name: LOGSTASH_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: elasticsearch
+              key: logstash-password
+        - name: DB_ENGINE
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: engine
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: host
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: password
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: port
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: name
+        - name: CONSUMER_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: consumer-server
+        - name: TOPIC_STRATEGY_FORMAT
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: topic-strategy-format
+        - name: CONSUMER_GROUP_ID
+          value: early_consumer
+        - name: PRODUCER_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: producer-server
+        - name: PRODUCER_TOPIC
+          value: late_classification
+        - name: STEP_VERSION
+          value: late_classification_0.0.1
+        - name: METRICS_HOST
+          valueFrom:
+            secretKeyRef:
+              name: metrics
+              key: host
+        - name: METRICS_TOPIC
+          valueFrom:
+            secretKeyRef:
+              name: metrics
+              key: topic
+        image: ghcr.io/alercebroker/early_classification_step:latest
+        name: early
+        resources:
+          limits:
+            cpu: "1" #thousandth of a core
+          requests:
+            cpu: "1"
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: test
+   #  nodeSelector:
+   #    disktype: early_classification
+status: {}

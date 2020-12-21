@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: metrics
+stringData:
+  host: ""
+  topic: ""

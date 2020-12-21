@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: elasticsearch
+stringData:
+  host: ""
+  logstash-user: ""
+  logstash-password: ""
+  filebeat-user: ""
+  filebeat-password: ""
