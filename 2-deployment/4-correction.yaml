@@ -102,7 +102,7 @@ spec:
         - name: CONSUME_TIMEOUT
           value: "5"
         - name: CONSUME_MESSAGES
-          value: "300"
+          value: "100"
         image: ghcr.io/alercebroker/preprocess_step:latest
         name: correction
         resources:

@@ -111,7 +111,7 @@ spec:
         - name: CONSUME_TIMEOUT
           value: "5"
         - name: CONSUME_MESSAGES
-          value: "300"
+          value: "1000"
         image: ghcr.io/alercebroker/xmatch_step:latest
         name: xmatch
         resources:
