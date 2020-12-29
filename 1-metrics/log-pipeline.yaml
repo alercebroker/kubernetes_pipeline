@@ -74,7 +74,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: elasticsearch
-              key: filebeat-user
+              key: filebeat-password
         - name: CONSUMER_SERVER
           valueFrom:
             secretKeyRef:
