@@ -3,8 +3,11 @@ kind: Secret
 metadata:
   name: elasticsearch
 stringData:
+  # Elasticsearch IP/dns
   host: ""
+  #Logstash user (write in pipeline-metrics index)
   logstash-user: ""
   logstash-password: ""
+  #Filebeat user (write in Filebeat-<version> index)
   filebeat-user: ""
   filebeat-password: ""

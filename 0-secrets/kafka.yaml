@@ -3,6 +3,9 @@ kind: Secret
 metadata:
   name: kafka
 stringData:
+  # Comma separated kafka brokers to consume (example: kafka1:9092, kafka2:9092, kafka3:9092)
   consumer-server: ""
+  # Topic strategy used in daily topic change (example: ztf_%s_programid1)
   topic-strategy-format: ""
+  # Comma separated kafka brokers to produce (example: kafka1:9092, kafka2:9092, kafka3:9092)
   producer-server: ""

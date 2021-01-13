@@ -3,5 +3,7 @@ kind: Secret
 metadata:
   name: metrics
 stringData:
+  # Comma separated kafka brokers to produce (example: kafka1:9092, kafka2:9092, kafka3:9092)
   host: ""
+  # Topic to produce operational metrics
   topic: ""
