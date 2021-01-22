@@ -4,7 +4,6 @@ metadata:
   annotations:
     kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.19.0 (f63a961c)
-  creationTimestamp: null
   labels:
     io.kompose.service: s3
   name: s3
@@ -19,7 +18,6 @@ spec:
       annotations:
         kompose.cmd: kompose convert -f docker-compose.yml
         kompose.version: 1.19.0 (f63a961c)
-      creationTimestamp: null
       labels:
         io.kompose.service: s3
         app: s3
@@ -111,11 +109,6 @@ spec:
           value: us-east-1
         image: ghcr.io/alercebroker/s3_step:latest
         name: s3
-        resources:
-          limits:
-            cpu: "1" #thousandth of a core
-          requests:
-            cpu: "1"
       restartPolicy: Always
       imagePullSecrets:
       - name: test

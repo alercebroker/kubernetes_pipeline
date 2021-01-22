@@ -7,7 +7,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: early
-  minReplicas: 1 #28
+  minReplicas: 2 #28
   maxReplicas: 2 #28
   metrics:
   - type: Resource
@@ -15,4 +15,4 @@ spec:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 70
+        averageUtilization: 10

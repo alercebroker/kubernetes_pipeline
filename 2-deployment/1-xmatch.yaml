@@ -4,7 +4,6 @@ metadata:
   annotations:
     kompose.cmd: kompose convert -f xmatch_step/docker-compose.yml
     kompose.version: 1.19.0 (f63a961c)
-  creationTimestamp: null
   labels:
     io.kompose.service: xmatch
   name: xmatch
@@ -19,7 +18,6 @@ spec:
       annotations:
         kompose.cmd: kompose convert -f xmatch_step/docker-compose.yml
         kompose.version: 1.19.0 (f63a961c)
-      creationTimestamp: null
       labels:
         io.kompose.service: xmatch
         app: xmatch
@@ -114,11 +112,6 @@ spec:
           value: "1000"
         image: ghcr.io/alercebroker/xmatch_step:latest
         name: xmatch
-        resources:
-          limits:
-            cpu: "0.2" #thousandth of a core
-          requests:
-            cpu: "0.2"
       restartPolicy: Always
       imagePullSecrets:
       - name: test

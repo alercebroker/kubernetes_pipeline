@@ -4,7 +4,6 @@ metadata:
   annotations:
     kompose.cmd: kompose convert -f early_classification/docker-compose.yml
     kompose.version: 1.19.0 (f63a96gc)
-  creationTimestamp: null
   labels:
     io.kompose.service: early
   name: early
@@ -19,7 +18,6 @@ spec:
       annotations:
         kompose.cmd: kompose convert -f early_classification/docker-compose.yml
         kompose.version: 1.19.0 (f63a96gc)
-      creationTimestamp: null
       labels:
         io.kompose.service: early
         app: early
@@ -104,11 +102,6 @@ spec:
               key: topic
         image: ghcr.io/alercebroker/early_classification_step:latest
         name: early
-        resources:
-          limits:
-            cpu: "1" #thousandth of a core
-          requests:
-            cpu: "1"
       restartPolicy: Always
       imagePullSecrets:
       - name: test

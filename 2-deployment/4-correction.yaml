@@ -4,7 +4,6 @@ metadata:
   annotations:
     kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.19.0 (f63a961c)
-  creationTimestamp: null
   labels:
     io.kompose.service: correction
   name: correction
@@ -19,7 +18,6 @@ spec:
       annotations:
         kompose.cmd: kompose convert -f docker-compose.yml
         kompose.version: 1.19.0 (f63a961c)
-      creationTimestamp: null
       labels:
         io.kompose.service: correction
         app: correction
@@ -105,11 +103,6 @@ spec:
           value: "100"
         image: ghcr.io/alercebroker/preprocess_step:latest
         name: correction
-        resources:
-          limits:
-            cpu: "0.4" #thousandth of a core
-          requests:
-            cpu: "0.4"
       restartPolicy: Always
       imagePullSecrets:
       - name: test
