@@ -74,13 +74,13 @@ spec:
             secretKeyRef:
               name: kafka
               key: consumer-server
-        - name: TOPIC_STRATEGY_FORMAT
-          valueFrom:
-            secretKeyRef:
-              name: kafka
-              key: topic-strategy-format
-        # - name: CONSUMER_TOPICS
-        #   value: 1M
+        # - name: TOPIC_STRATEGY_FORMAT
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: kafka
+        #       key: topic-strategy-format
+        - name: CONSUMER_TOPICS
+          value: ^ztf_.*_programid1_aux
         - name: CONSUMER_GROUP_ID
           value: xmatch_consumer
         - name: PRODUCER_SERVER

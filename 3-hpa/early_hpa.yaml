@@ -7,8 +7,8 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: early
-  minReplicas: 2 #28
-  maxReplicas: 2 #28
+  minReplicas: 8 #28
+  maxReplicas: 8 #28
   metrics:
   - type: Resource
     resource:

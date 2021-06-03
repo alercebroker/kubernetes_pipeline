@@ -87,6 +87,8 @@ spec:
           value: feature
         - name: STEP_VERSION
           value: feature_0.0.1
+        - name: STEP_ID
+          value: feature_0.0.1
         - name: FEATURE_VERSION
           value: feature_0.0.1
         - name: METRICS_HOST
@@ -102,7 +104,7 @@ spec:
         - name: CONSUME_TIMEOUT
           value: "10"
         - name: CONSUME_MESSAGES
-          value: "300"
+          value: "50"
         image: ghcr.io/alercebroker/feature_step:latest
         name: feature
       restartPolicy: Always

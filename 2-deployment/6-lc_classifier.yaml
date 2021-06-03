@@ -2,25 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert -f lcclassifier/docker-compose.yml
+    kompose.cmd: kompose convert -f lc-classifier/docker-compose.yml
     kompose.version: 1.19.0 (f63ae96fgc)
   labels:
-    io.kompose.service: lcclassifier
-  name: lcclassifier
+    io.kompose.service: lc-classifier
+  name: lc-classifier
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: lcclassifier
+      app: lc-classifier
   strategy: {}
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert -f lcclassifier/docker-compose.yml
+        kompose.cmd: kompose convert -f lc-classifier/docker-compose.yml
         kompose.version: 1.19.0 (f63ae96fgc)
       labels:
-        io.kompose.service: lcclassifier
-        app: lcclassifier
+        io.kompose.service: lc-classifier
+        app: lc-classifier
     spec:
       containers:
       - env:
@@ -86,7 +86,7 @@ spec:
         - name: PRODUCER_TOPIC
           value: lc_classifier
         - name: STEP_VERSION
-          value: lc_classifier_0.0.1
+          value: lc-classifier_0.0.1
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
@@ -99,11 +99,13 @@ spec:
               key: topic
         - name: CONSUME_TIMEOUT
           value: "10"
+        - name: CONSUME_MESSAGES
+          value: "100"
         image: ghcr.io/alercebroker/lc_classifier_step:latest
-        name: lcclassifier
+        name: lc-classifier
       restartPolicy: Always
       imagePullSecrets:
       - name: test
    #  nodeSelector:
-   #    disktype: lcclassifier
+   #    disktype: lc-classifier
 status: {}
