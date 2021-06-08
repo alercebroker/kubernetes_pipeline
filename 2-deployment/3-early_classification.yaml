@@ -80,7 +80,7 @@ spec:
         #       name: kafka
         #       key: topic-strategy-format
         - name: CONSUMER_TOPICS
-          value: ^ztf_.*_programid1_aux
+          value: ^ztf_.*_programid.*
         - name: CONSUMER_GROUP_ID
           value: early_consumer
         - name: PRODUCER_SERVER
