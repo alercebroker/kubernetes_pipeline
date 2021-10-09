@@ -8,7 +8,7 @@ metadata:
     io.kompose.service: lc-classifier
   name: lc-classifier
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: lc-classifier
@@ -79,14 +79,27 @@ spec:
         - name: CONSUMER_GROUP_ID
           value: lc_classifier_consumer
         - name: PRODUCER_SERVER
-          valueFrom:
-            secretKeyRef:
-              name: kafka
-              key: producer-server
-        - name: PRODUCER_TOPIC
-          value: lc_classifier
+          value: 
+        - name: PRODUCER_TOPIC_FORMAT
+          value: 
+        - name: PRODUCER_DATE_FORMAT
+          value: 
+        - name: PRODUCER_CHANGE_HOUR
+          value: 
+        - name: PRODUCER_RETENTION_DAYS
+          value: 
+        - name: PRODUCER_SECURITY_PROTOCOL
+          value: 
+        - name: PRODUCER_SASL_MECHANISM
+          value: 
+        - name: PRODUCER_SASL_USERNAME
+          value: 
+        - name: PRODUCER_SASL_PASSWORD
+          value:
+        - name: STEP_ID
+          value: lc_classification_1.1.10
         - name: STEP_VERSION
-          value: lc-classifier_0.0.1
+          value: lc_classifier_1.1.10
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:

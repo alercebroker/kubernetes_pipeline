@@ -8,7 +8,7 @@ metadata:
     io.kompose.service: feature
   name: feature
 spec:
-  replicas: 1
+  replicas: 9
   selector:
     matchLabels:
       app: feature
@@ -86,11 +86,11 @@ spec:
         - name: PRODUCER_TOPIC
           value: feature
         - name: STEP_VERSION
-          value: feature_0.0.1
+          value: feature_1.2.1
         - name: STEP_ID
-          value: feature_0.0.1
+          value: feature_1.2.1
         - name: FEATURE_VERSION
-          value: feature_0.0.1
+          value: lc_classifier_1.2.1-P
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:

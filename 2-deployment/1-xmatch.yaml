@@ -8,7 +8,7 @@ metadata:
     io.kompose.service: xmatch
   name: xmatch
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: xmatch
@@ -74,13 +74,13 @@ spec:
             secretKeyRef:
               name: kafka
               key: consumer-server
-        # - name: TOPIC_STRATEGY_FORMAT
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: kafka
-        #       key: topic-strategy-format
-        - name: CONSUMER_TOPICS
-          value: ^ztf_.*_programid.*
+        - name: TOPIC_STRATEGY_FORMAT
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: topic-strategy-format
+        # - name: CONSUMER_TOPICS
+        #   value: ^ztf_20210922_programid.*
         - name: CONSUMER_GROUP_ID
           value: xmatch_consumer
         - name: PRODUCER_SERVER
@@ -91,7 +91,7 @@ spec:
         - name: PRODUCER_TOPIC
           value: xmatch
         - name: STEP_VERSION
-          value: xmatch_0.0.1
+          value: xmatch_1.0.4
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
