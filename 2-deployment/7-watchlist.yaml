@@ -52,8 +52,13 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: consumer-server
-            - name: CONSUMER_TOPICS
-              value: correction
+            - name: TOPIC_STRATEGY_FORMAT
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: topic-strategy-format
+                    #- name: CONSUMER_TOPICS
+                    #value: ztf_20211120_programid1
             - name: CONSUME_MESSAGES
               value: "500"
             - name: USERS_DB_HOST
