@@ -79,28 +79,37 @@ spec:
             secretKeyRef:
               name: kafka
               key: topic-strategy-format
-        # - name: CONSUMER_TOPICS
-        #   value: ^ztf_20210922_programid.*
+          #name: CONSUMER_TOPICS
+          #value: ztf_20211120_programid1
         - name: CONSUMER_GROUP_ID
           value: early_consumer
         - name: PRODUCER_SERVER
-          value: ""
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: producer-server
         - name: PRODUCER_TOPIC_FORMAT
           value: stamp_classifier_%s
         - name: PRODUCER_DATE_FORMAT
-          value: 
+          value: "%Y%m%d"
         - name: PRODUCER_CHANGE_HOUR
-          value: 
+          value: "20"
         - name: PRODUCER_RETENTION_DAYS
-          value: 
+          value: "1"
         - name: PRODUCER_SECURITY_PROTOCOL
-          value: 
+          value: SASL_PLAINTEXT
         - name: PRODUCER_SASL_MECHANISM
-          value: 
+          value: "SCRAM-SHA-256"
         - name: PRODUCER_SASL_USERNAME
-          value: 
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: stam_step_username
         - name: PRODUCER_SASL_PASSWORD
-          value: 
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: stam_step_password
         - name: STEP_VERSION
           value: stamp_classifier_1.0.0
         - name : CLASSIFIER_VERSION

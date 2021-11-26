@@ -9,3 +9,6 @@ stringData:
   topic-strategy-format: ""
   # Comma separated kafka brokers to produce (example: kafka1:9092, kafka2:9092, kafka3:9092)
   producer-server: ""
+  # Stamp classifier kafka authentication
+  stamp_step_username: ""
+  stamp_step_password: ""
