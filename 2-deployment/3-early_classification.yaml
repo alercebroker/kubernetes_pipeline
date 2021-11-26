@@ -87,7 +87,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: kafka
-              key: producer-server
+              key: producer-public-server
         - name: PRODUCER_TOPIC_FORMAT
           value: stamp_classifier_%s
         - name: PRODUCER_DATE_FORMAT
