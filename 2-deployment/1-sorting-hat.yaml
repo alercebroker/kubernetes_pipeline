@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sorting-hat-step
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sorting-hat-step
+  template:
+    metadata:
+      labels:
+        app: sorting-hat-step
+    spec:
+      containers:
+        - env:
+            - name: CONSUMER_GROUP_ID
+              value: sorting-hat-step
+            - name: CONSUMER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: consumer-server
+            - name: TOPIC_STRATEGY_FORMAT
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: topic-strategy-format
+            - name: PRODUCER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: producer-server
+            - name: PRODUCER_TOPIC
+              value: sorting-hat
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: database
+                  key: host
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: database
+                  key: name
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: database
+                  key: port
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: database
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database
+                  key: password
+          name: sorting-hat-step
+          image: ghcr.io/alercebroker/sorting_hat_step:0.0.1-rc2
+          resources: {}
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: pull-permissions
+status: {}

@@ -1,13 +1,13 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: xmatch
+  name: ingestion
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: xmatch
-  minReplicas: 2
+    name: ingestion-step
+  minReplicas: 1
   maxReplicas: 2
   metrics:
   - type: Resource
