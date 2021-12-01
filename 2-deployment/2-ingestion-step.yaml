@@ -32,11 +32,8 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: consumer-server
-            - name: TOPIC_STRATEGY_FORMAT
-              valueFrom:
-                secretKeyRef:
-                  name: kafka
-                  key: topic-strategy-format
+            - name: CONSUMER_TOPICS
+              value: sorting-hat
             - name: PRODUCER_SERVER
               valueFrom:
                 secretKeyRef:
@@ -69,7 +66,7 @@ spec:
                 secretKeyRef:
                   name: database
                   key: password
-          image: ghcr.io/alercebroker/ingestion_step:0.0.8
+          image: ghcr.io/alercebroker/ingestion_step:latest
           name: ingestion-step
           resources: {}
       restartPolicy: Always
