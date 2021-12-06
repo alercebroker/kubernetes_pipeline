@@ -59,7 +59,7 @@ spec:
                   name: database
                   key: password
           name: sorting-hat-step
-          image: ghcr.io/alercebroker/sorting_hat_step:0.0.1-rc2
+          image: ghcr.io/alercebroker/sorting_hat_step:rc
           resources: {}
       restartPolicy: Always
       imagePullSecrets:
