@@ -21,16 +21,18 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: consumer-server
-            - name: TOPIC_STRATEGY_FORMAT
-              valueFrom:
-                secretKeyRef:
-                  name: kafka
-                  key: topic-strategy-format
+            # - name: TOPIC_STRATEGY_FORMAT
+            #   valueFrom:
+            #     secretKeyRef:
+            #       name: kafka
+            #       key: topic-strategy-format
             - name: PRODUCER_SERVER
               valueFrom:
                 secretKeyRef:
                   name: kafka
                   key: producer-server
+            - name: CONSUMER_TOPICS
+              value: "^ztf*,^ATLAS*"
             - name: PRODUCER_TOPIC
               value: sorting-hat
             - name: DB_HOST
@@ -59,7 +61,7 @@ spec:
                   name: database
                   key: password
           name: sorting-hat-step
-          image: ghcr.io/alercebroker/sorting_hat_step:0.0.1-rc2
+          image: ghcr.io/alercebroker/sorting_hat_step:rc
           resources: {}
       restartPolicy: Always
       imagePullSecrets:
