@@ -7,8 +7,8 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: s3
-  minReplicas: 0 #28
-  maxReplicas: 0 #28
+  minReplicas: 1 #28
+  maxReplicas: 5 #28
   metrics:
   - type: Resource
     resource:

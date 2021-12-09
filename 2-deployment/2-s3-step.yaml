@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: s3-step
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: s3-step
+  template:
+    metadata:
+      labels:
+        app: s3-step
+    spec:
+      containers:
+        - env:
+          - name: DB_ENGINE
+            valueFrom:
+              secretKeyRef:
+                name: database
+                key: engine
+          - name: DB_HOST
+            valueFrom:
+              secretKeyRef:
+                name: database
+                key: host
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: database
+                key: user
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: database
+                key: password
+          - name: DB_PORT
+            valueFrom:
+              secretKeyRef:
+                name: database
+                key: port
+          - name: DB_NAME
+            valueFrom:
+              secretKeyRef:
+                name: database
+                key: name
+          - name: CONSUMER_SERVER
+            valueFrom:
+              secretKeyRef:
+                name: kafka
+                key: consumer-server
+          - name: TOPIC_STRATEGY_FORMAT
+            valueFrom:
+              secretKeyRef:
+                name: kafka
+                key: topic-strategy-format
+          - name: CONSUMER_GROUP_ID
+            value: s3_step
+          - name: METRICS_HOST
+            valueFrom:
+              secretKeyRef:
+                name: metrics
+                key: host
+          - name: METRICS_TOPIC
+            valueFrom:
+              secretKeyRef:
+                name: metrics
+                key: topic
+          - name: STEP_VERSION
+            value: s3_step_1.1.1
+          - name: STEP_ID
+            value: s3_step
+          - name: STEP_NAME
+            value: s3_step
+          - name: BUCKET_NAME
+            value: ztf-stream
+          - name: REGION_NAME
+            value: us-east-1
+          - name: AWS_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: aws
+                key: access-key
+          - name: AWS_SECRET_ACCESS_KEY
+            valueFrom:
+              secretKeyRef:
+                name: aws
+                key: secret-access-key
+          name: s3-step
+          image: ghcr.io/alercebroker/s3_step:latest
+          resources: {}
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: test
+status: {}
