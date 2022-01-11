@@ -2,12 +2,10 @@ apiVersion: v1
 kind: Secret
 #Postgresql Database information
 metadata:
-  name: database
+  name: users-database
 stringData:
   #Engine currently is only postgresql
-  engine: ""
-  host: ""
+  user-db-host: ""
   user: ""
   password: ""
-  port: ""
   name: ""
