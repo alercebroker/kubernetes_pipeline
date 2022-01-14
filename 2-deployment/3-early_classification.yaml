@@ -8,7 +8,7 @@ metadata:
     io.kompose.service: early
   name: early
 spec:
-  replicas: 8
+  replicas: 2
   selector:
     matchLabels:
       app: early
@@ -42,45 +42,45 @@ spec:
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: engine
         - name: DB_HOST
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: host
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: user
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: password
         - name: DB_PORT
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: port
         - name: DB_NAME
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: name
         - name: CONSUMER_SERVER
           valueFrom:
             secretKeyRef:
               name: kafka
               key: consumer-server
-        - name: TOPIC_STRATEGY_FORMAT
-          valueFrom:
-            secretKeyRef:
-              name: kafka
-              key: topic-strategy-format
-          #name: CONSUMER_TOPICS
-          #value: ztf_20211120_programid1
+        # - name: TOPIC_STRATEGY_FORMAT
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: kafka
+        #       key: topic-strategy-format
+        - name: CONSUMER_TOPICS
+          value: ztf_stream
         - name: CONSUMER_GROUP_ID
           value: early_consumer
         - name: PRODUCER_SERVER
@@ -104,12 +104,12 @@ spec:
           valueFrom:
             secretKeyRef:
               name: kafka
-              key: stam_step_username
+              key: stamp_step_username
         - name: PRODUCER_SASL_PASSWORD
           valueFrom:
             secretKeyRef:
               name: kafka
-              key: stam_step_password
+              key: stamp_step_password
         - name: STEP_VERSION
           value: stamp_classifier_1.0.0
         - name : CLASSIFIER_VERSION
@@ -128,7 +128,7 @@ spec:
         name: early
       restartPolicy: Always
       imagePullSecrets:
-      - name: test
+      - name: image-pull-access
    #  nodeSelector:
    #    disktype: early_classification
 status: {}

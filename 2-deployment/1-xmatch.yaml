@@ -42,45 +42,45 @@ spec:
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: engine
         - name: DB_HOST
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: host
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: user
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: password
         - name: DB_PORT
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: port
         - name: DB_NAME
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: name
         - name: CONSUMER_SERVER
           valueFrom:
             secretKeyRef:
               name: kafka
               key: consumer-server
-        - name: TOPIC_STRATEGY_FORMAT
-          valueFrom:
-            secretKeyRef:
-              name: kafka
-              key: topic-strategy-format
-        # - name: CONSUMER_TOPICS
-        #   value: ^ztf_20210922_programid.*
+        # - name: TOPIC_STRATEGY_FORMAT
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: kafka
+        #       key: topic-strategy-format
+        - name: CONSUMER_TOPICS
+          value: ztf_stream
         - name: CONSUMER_GROUP_ID
           value: xmatch_consumer
         - name: PRODUCER_SERVER
@@ -114,7 +114,7 @@ spec:
         name: xmatch
       restartPolicy: Always
       imagePullSecrets:
-      - name: test
+      - name: image-pull-access
     # nodeSelector:
     #   disktype: xmatch
 status: {}

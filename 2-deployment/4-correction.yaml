@@ -8,7 +8,7 @@ metadata:
     io.kompose.service: correction
   name: correction
 spec:
-  replicas: 14
+  replicas: 2
   selector:
     matchLabels:
       app: correction
@@ -42,32 +42,32 @@ spec:
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: engine
         - name: DB_HOST
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: host
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: user
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: password
         - name: DB_PORT
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: port
         - name: DB_NAME
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: name
         - name: CONSUMER_SERVER
           valueFrom:
@@ -107,7 +107,7 @@ spec:
         name: correction
       restartPolicy: Always
       imagePullSecrets:
-      - name: test
+      - name: image-pull-access
     # nodeSelector:
     #   disktype: preprocess
 status: {}
