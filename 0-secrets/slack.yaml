@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+# Slack API credentials
+metadata:
+  name: slack
+stringData:
+  token: "xoxb-236672171493-1713292750960-URbRVkMlZISDivUCI87Q9rzI"
+  signature: "8xfjVLkythlfi2k8dEytozch"
+
