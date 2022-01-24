@@ -40,32 +40,27 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: consumer-server
-            - name: DB_ENGINE
-              valueFrom:
-                secretKeyRef:
-                  name: alerts-database
-                  key: engine
-            - name: DB_HOST
+            - name: DB_HOST_PROD
               valueFrom:
                 secretKeyRef:
                   name: alerts-database
                   key: host
-            - name: DB_USER
+            - name: DB_USER_PROD
               valueFrom:
                 secretKeyRef:
                   name: alerts-database
                   key: user
-            - name: DB_PASSWORD
+            - name: DB_PASSWORD_PROD
               valueFrom:
                 secretKeyRef:
                   name: alerts-database
                   key: password
-            - name: DB_PORT
+            - name: DB_PORT_PROD
               valueFrom:
                 secretKeyRef:
                   name: alerts-database
                   key: port
-            - name: DB_NAME
+            - name: DB_DATABASE_PROD
               valueFrom:
                 secretKeyRef:
                   name: alerts-database
@@ -78,8 +73,6 @@ spec:
               value: detections_report_%s
             - name: KAFKA_TOPIC_FORMAT
               value: ztf_%s_programid1
-            - name: KAFKA_SOURCE_DATE_FORMAT
-              value: \"%Y%m%d\"
             - name: KAFKA_SOURCE_TOPIC_FORMAT
               value: ztf_%s_programid1
             - name: KAFKA_GROUP_ID_XMATCH
