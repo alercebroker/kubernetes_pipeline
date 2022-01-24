@@ -29,12 +29,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: slack
-                  key: signature
+                  key: token
             - name: SLACK_SIGNATURE
               valueFrom:
                 secretKeyRef:
                   name: slack
-                  key: token
+                  key: signature
             - name: KAFKA_BOOTSTRAP_SERVERS_PROD
               valueFrom:
                 secretKeyRef:
