@@ -25,12 +25,12 @@ spec:
     spec:
       containers:
         - env:
-            - name: SLACK_TOKEN
+            - name: SLACK_BOT_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: slack
                   key: token
-            - name: SLACK_SIGNATURE
+            - name: SLACK_BOT_SIGNATURE
               valueFrom:
                 secretKeyRef:
                   name: slack
