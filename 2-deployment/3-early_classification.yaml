@@ -8,7 +8,7 @@ metadata:
     io.kompose.service: early
   name: early
 spec:
-  replicas: 2
+  replicas: 8
   selector:
     matchLabels:
       app: early
@@ -74,13 +74,13 @@ spec:
             secretKeyRef:
               name: kafka
               key: consumer-server
-        # - name: TOPIC_STRATEGY_FORMAT
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: kafka
-        #       key: topic-strategy-format
-        - name: CONSUMER_TOPICS
-          value: ztf_stream
+        - name: TOPIC_STRATEGY_FORMAT
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: topic-strategy-format
+        # - name: CONSUMER_TOPICS
+        #   value: ztf_stream
         - name: CONSUMER_GROUP_ID
           value: early_consumer
         - name: PRODUCER_SERVER
