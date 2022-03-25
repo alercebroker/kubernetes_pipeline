@@ -74,13 +74,8 @@ spec:
             secretKeyRef:
               name: kafka
               key: consumer-server
-        # - name: TOPIC_STRATEGY_FORMAT
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: kafka
-        #       key: topic-strategy-format
         - name: CONSUMER_TOPICS
-          value: ztf_stream
+          value: ingestion
         - name: CONSUMER_GROUP_ID
           value: xmatch_consumer
         - name: PRODUCER_SERVER
@@ -110,7 +105,7 @@ spec:
           value: "5"
         - name: CONSUME_MESSAGES
           value: "1000"
-        image: ghcr.io/alercebroker/xmatch_step:latest
+        image: ghcr.io/alercebroker/xmatch_step:rc-4363c6f
         name: xmatch
       restartPolicy: Always
       imagePullSecrets:

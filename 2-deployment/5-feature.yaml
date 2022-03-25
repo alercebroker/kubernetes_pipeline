@@ -8,7 +8,7 @@ metadata:
     io.kompose.service: feature
   name: feature
 spec:
-  replicas: 2
+  replicas: 9
   selector:
     matchLabels:
       app: feature
@@ -105,7 +105,7 @@ spec:
           value: "10"
         - name: CONSUME_MESSAGES
           value: "50"
-        image: ghcr.io/alercebroker/feature_step:1.2.1
+        image: ghcr.io/alercebroker/feature_step:latest
         name: feature
       restartPolicy: Always
       imagePullSecrets:

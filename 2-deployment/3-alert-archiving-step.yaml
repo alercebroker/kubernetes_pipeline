@@ -37,10 +37,10 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: topic-strategy-format
-          image: ghcr.io/alercebroker/alert_archiving_step:latest
+          image: ghcr.io/alercebroker/alert_archiving_step:rc
           name: alert-archiving-step
           resources: {}
       restartPolicy: Always
       imagePullSecrets:
-        - name: image-pull-access
+        - name: pull-permissions
 status: {}
