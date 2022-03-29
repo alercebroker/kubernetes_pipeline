@@ -86,7 +86,7 @@ spec:
         - name: PRODUCER_TOPIC
           value: xmatch
         - name: STEP_VERSION
-          value: xmatch_1.0.4
+          value: xmatch_2.0.0
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:

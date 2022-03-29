@@ -1,27 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: ingestion-step
   name: ingestion-step
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: ingestion-step
-  strategy: {}
+      step: ingestion-step
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.service: ingestion-step
+        step: ingestion-step
     spec:
       containers:
         - env:
@@ -41,35 +30,58 @@ spec:
                   key: producer-server
             - name: PRODUCER_TOPIC
               value: ingestion
-            - name: DB_HOST
+            - name: PSQL_HOST
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: alerts-database
                   key: host
-            - name: DB_NAME
+            - name: PSQL_NAME
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: alerts-database
                   key: name
-            - name: DB_PORT
+            - name: PSQL_PORT
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: alerts-database
                   key: port
-            - name: DB_USER
+            - name: PSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: alerts-database
                   key: user
-            - name: DB_PASSWORD
+            - name: PSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: alerts-database
                   key: password
-          image: ghcr.io/alercebroker/ingestion_step:rc
+            - name: MONGO_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: host
+            - name: MONGO_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: database
+            - name: MONGO_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: port
+            - name: MONGO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: user
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: password
+          image: ghcr.io/alercebroker/ingestion_step:rc-d03f700
           name: ingestion-step
-          resources: {}
       restartPolicy: Always
       imagePullSecrets:
-        - name: pull-permissions
-status: {}
+        - name: image-pull-access
