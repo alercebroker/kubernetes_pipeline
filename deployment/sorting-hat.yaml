@@ -38,32 +38,32 @@ spec:
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: alerts-database-mongo
                   key: host
             - name: DB_NAME
               valueFrom:
                 secretKeyRef:
-                  name: database
-                  key: name
+                  name: alerts-database-mongo
+                  key: database
             - name: DB_PORT
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: alerts-database-mongo
                   key: port
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: alerts-database-mongo
                   key: user
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: database
+                  name: alerts-database-mongo
                   key: password
           name: sorting-hat-step
           image: ghcr.io/alercebroker/sorting_hat_step:rc
           resources: {}
       restartPolicy: Always
       imagePullSecrets:
-        - name: pull-permissions
+        - name: image-pull-access
 status: {}
