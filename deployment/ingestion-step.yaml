@@ -80,6 +80,16 @@ spec:
                 secretKeyRef:
                   name: alerts-database-mongo
                   key: password
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
           image: ghcr.io/alercebroker/ingestion_step:rc-d03f700
           name: ingestion-step
       restartPolicy: Always
