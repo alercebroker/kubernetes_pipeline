@@ -90,7 +90,7 @@ spec:
                 secretKeyRef:
                   name: metrics
                   key: topic
-          image: ghcr.io/alercebroker/ingestion_step:rc-d03f700
+          image: ghcr.io/alercebroker/ingestion_step:rc-969078e
           name: ingestion-step
       restartPolicy: Always
       imagePullSecrets:
