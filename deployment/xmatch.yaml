@@ -1,26 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f xmatch_step/docker-compose.yml
-    kompose.version: 1.19.0 (f63a961c)
-  labels:
-    io.kompose.service: xmatch
-  name: xmatch
+  name: xmatch-step
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: xmatch
-  strategy: {}
+      app: xmatch-step
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f xmatch_step/docker-compose.yml
-        kompose.version: 1.19.0 (f63a961c)
       labels:
-        io.kompose.service: xmatch
-        app: xmatch
+        app: xmatch-step
     spec:
       containers:
       - env:
@@ -77,7 +67,7 @@ spec:
         - name: CONSUMER_TOPICS
           value: ingestion
         - name: CONSUMER_GROUP_ID
-          value: xmatch_consumer
+          value: xmatch-step
         - name: PRODUCER_SERVER
           valueFrom:
             secretKeyRef:
@@ -106,7 +96,7 @@ spec:
         - name: CONSUME_MESSAGES
           value: "1000"
         image: ghcr.io/alercebroker/xmatch_step:rc-4363c6f
-        name: xmatch
+        name: xmatch-step
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
