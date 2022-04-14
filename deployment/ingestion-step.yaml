@@ -93,7 +93,8 @@ spec:
                   name: metrics
                   key: topic
           image: ghcr.io/alercebroker/ingestion_step:rc
+          imagePullPolicy: Always
           name: ingestion-step
-      #restartPolicy: Always
+      restartPolicy: Always
       imagePullSecrets:
         - name: image-pull-access
