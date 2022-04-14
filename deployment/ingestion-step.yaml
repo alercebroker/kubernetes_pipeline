@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: ingestion-step
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       step: ingestion-step
@@ -14,6 +14,8 @@ spec:
     spec:
       containers:
         - env:
+            - name: CONSUME_MESSAGES
+              value: "500"
             - name: CONSUMER_GROUP_ID
               value: ingestion-step
             - name: CONSUMER_SERVER
@@ -90,8 +92,8 @@ spec:
                 secretKeyRef:
                   name: metrics
                   key: topic
-          image: ghcr.io/alercebroker/ingestion_step:rc-969078e
+          image: ghcr.io/alercebroker/ingestion_step:rc
           name: ingestion-step
-      restartPolicy: Always
+      #restartPolicy: Always
       imagePullSecrets:
         - name: image-pull-access
