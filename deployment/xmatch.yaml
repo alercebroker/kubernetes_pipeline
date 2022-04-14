@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: xmatch-step
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: xmatch-step
@@ -95,7 +95,7 @@ spec:
           value: "5"
         - name: CONSUME_MESSAGES
           value: "1000"
-        image: ghcr.io/alercebroker/xmatch_step:rc-4363c6f
+        image: ghcr.io/alercebroker/xmatch_step:rc
         name: xmatch-step
       restartPolicy: Always
       imagePullSecrets:
