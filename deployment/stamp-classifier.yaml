@@ -1,26 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f early_classification/docker-compose.yml
-    kompose.version: 1.19.0 (f63a96gc)
-  labels:
-    io.kompose.service: early
-  name: early
+  name: stamp-classifier
 spec:
-  replicas: 8
+  replicas: 1
   selector:
     matchLabels:
-      app: early
-  strategy: {}
+      app: stamp-classifier
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f early_classification/docker-compose.yml
-        kompose.version: 1.19.0 (f63a96gc)
       labels:
-        io.kompose.service: early
-        app: early
+        app: stamp-classifier
     spec:
       containers:
       - env:
@@ -79,10 +69,8 @@ spec:
             secretKeyRef:
               name: kafka
               key: topic-strategy-format
-        # - name: CONSUMER_TOPICS
-        #   value: ztf_stream
         - name: CONSUMER_GROUP_ID
-          value: early_consumer
+          value: stamp-classifier-consumer
         - name: PRODUCER_SERVER
           valueFrom:
             secretKeyRef:
@@ -125,10 +113,9 @@ spec:
               name: metrics
               key: topic
         image: ghcr.io/alercebroker/early_classification_step:latest
-        name: early
+        imagePullPolicy: Always
+        name: stamp-classifier
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-   #  nodeSelector:
-   #    disktype: early_classification
 status: {}
