@@ -62,6 +62,16 @@ spec:
                 secretKeyRef:
                   name: alerts-database-mongo
                   key: password
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
           name: sorting-hat-step
           image: ghcr.io/alercebroker/sorting_hat_step:rc
           imagePullPolicy: Always
