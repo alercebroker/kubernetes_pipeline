@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: ingestion-step
 spec:
-  replicas: 1
   selector:
     matchLabels:
       step: ingestion-step
@@ -90,8 +89,12 @@ spec:
                 secretKeyRef:
                   name: metrics
                   key: topic
-          image: ghcr.io/alercebroker/ingestion_step:rc-969078e
+          image: ghcr.io/alercebroker/ingestion_step:rc
           name: ingestion-step
+          resources:
+            requests:
+              memory: 128M
+              cpu: 50m
       restartPolicy: Always
       imagePullSecrets:
         - name: image-pull-access

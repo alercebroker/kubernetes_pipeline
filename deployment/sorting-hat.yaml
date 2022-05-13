@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: sorting-hat-step
 spec:
-  replicas: 5
   selector:
     matchLabels:
       app: sorting-hat-step
@@ -23,11 +22,6 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: consumer-server
-            # - name: TOPIC_STRATEGY_FORMAT
-            #   valueFrom:
-            #     secretKeyRef:
-            #       name: kafka
-            #       key: topic-strategy-format
             - name: PRODUCER_SERVER
               valueFrom:
                 secretKeyRef:
@@ -35,6 +29,7 @@ spec:
                   key: producer-server
             - name: CONSUMER_TOPICS
               value: "^ztf*,^ATLAS*"
+              # value: "ATLAS_20220512_01a"
             - name: PRODUCER_TOPIC
               value: sorting-hat
             - name: DB_HOST
@@ -62,9 +57,22 @@ spec:
                 secretKeyRef:
                   name: alerts-database-mongo
                   key: password
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
           name: sorting-hat-step
           image: ghcr.io/alercebroker/sorting_hat_step:rc
-          resources: {}
+          resources:
+            requests:
+              memory: 128M
+              cpu: 50m
       restartPolicy: Always
       imagePullSecrets:
         - name: image-pull-access

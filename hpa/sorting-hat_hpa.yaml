@@ -1,14 +1,14 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: ingestion
+  name: sorting-hat-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: ingestion-step
+    name: sorting-hat-step
   minReplicas: 5
-  maxReplicas: 15
+  maxReplicas: 10
   metrics:
     - type: Resource
       resource:
