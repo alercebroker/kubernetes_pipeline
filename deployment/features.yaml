@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: feature-step
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: feature-step
