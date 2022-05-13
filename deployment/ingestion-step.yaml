@@ -14,7 +14,7 @@ spec:
       containers:
         - env:
             - name: CONSUME_MESSAGES
-              value: "500"
+              value: "100"
             - name: CONSUMER_GROUP_ID
               value: ingestion-step
             - name: CONSUMER_SERVER
@@ -95,8 +95,8 @@ spec:
           name: ingestion-step
           resources:
             requests:
-              memory: 128M
-              cpu: 50m
+              memory: 512M
+              cpu: 250m
       restartPolicy: Always
       imagePullSecrets:
         - name: image-pull-access
