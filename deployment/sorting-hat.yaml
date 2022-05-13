@@ -71,8 +71,8 @@ spec:
           image: ghcr.io/alercebroker/sorting_hat_step:rc
           resources:
             requests:
-              memory: 128M
-              cpu: 50m
+              memory: 300M
+              cpu: 250m
       restartPolicy: Always
       imagePullSecrets:
         - name: image-pull-access
