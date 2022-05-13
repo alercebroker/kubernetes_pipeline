@@ -96,6 +96,10 @@ spec:
           value: "50"
         image: ghcr.io/alercebroker/feature_step:latest
         name: feature
+        resources:
+          requests:
+            memory: 256M
+            cpu: 250m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
