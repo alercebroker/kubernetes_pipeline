@@ -1,26 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f feature/docker-compose.yml
-    kompose.version: 1.19.0 (f63a96fgc)
-  labels:
-    io.kompose.service: feature
-  name: feature
+  name: feature-step
 spec:
-  replicas: 9
   selector:
     matchLabels:
-      app: feature
-  strategy: {}
+      app: feature-step
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f feature/docker-compose.yml
-        kompose.version: 1.19.0 (f63a96fgc)
       labels:
-        io.kompose.service: feature
-        app: feature
+        app: feature-step
     spec:
       containers:
       - env:
@@ -75,7 +64,7 @@ spec:
               name: kafka
               key: consumer-server
         - name: CONSUMER_TOPICS
-          value: correction
+          value: xmatch
         - name: CONSUMER_GROUP_ID
           value: feature_consumer
         - name: PRODUCER_SERVER
@@ -84,13 +73,13 @@ spec:
               name: kafka
               key: producer-server
         - name: PRODUCER_TOPIC
-          value: feature
+          value: features
         - name: STEP_VERSION
-          value: feature_1.2.1
+          value: "1.0.0"
         - name: STEP_ID
-          value: feature_1.2.1
+          value: transitional_features
         - name: FEATURE_VERSION
-          value: lc_classifier_1.2.1-P
+          value: lc_classifier_1.2.1-P-transitional
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
@@ -110,6 +99,4 @@ spec:
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-   #  nodeSelector:
-   #    disktype: feature
 status: {}
