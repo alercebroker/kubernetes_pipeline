@@ -14,7 +14,7 @@ spec:
       containers:
         - env:
             - name: CONSUME_MESSAGES
-              value: "1000"
+              value: "500"
             - name: CONSUMER_GROUP_ID
               value: sorting-hat-step
             - name: CONSUMER_SERVER

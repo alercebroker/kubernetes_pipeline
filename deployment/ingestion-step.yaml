@@ -13,6 +13,8 @@ spec:
     spec:
       containers:
         - env:
+            - name: CONSUME_MESSAGES
+              value: "500"
             - name: CONSUMER_GROUP_ID
               value: ingestion-step
             - name: CONSUMER_SERVER
