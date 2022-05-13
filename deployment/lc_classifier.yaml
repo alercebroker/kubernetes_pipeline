@@ -1,25 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f lc-classifier/docker-compose.yml
-    kompose.version: 1.19.0 (f63ae96fgc)
-  labels:
-    io.kompose.service: lc-classifier
   name: lc-classifier
 spec:
-  replicas: 4
   selector:
     matchLabels:
       app: lc-classifier
-  strategy: {}
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f lc-classifier/docker-compose.yml
-        kompose.version: 1.19.0 (f63ae96fgc)
       labels:
-        io.kompose.service: lc-classifier
         app: lc-classifier
     spec:
       containers:
@@ -75,7 +64,7 @@ spec:
               name: kafka
               key: consumer-server
         - name: CONSUMER_TOPICS
-          value: feature
+          value: features
         - name: CONSUMER_GROUP_ID
           value: lc_classifier_consumer
         - name: PRODUCER_SERVER
@@ -128,6 +117,4 @@ spec:
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-   #  nodeSelector:
-   #    disktype: lc-classifier
 status: {}
