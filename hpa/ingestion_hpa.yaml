@@ -1,21 +1,47 @@
+---
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: ingestion
+  name: ingestion-ztf
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: ingestion-step
-  minReplicas: 5
-  maxReplicas: 15
+    name: ingestion-step-ztf
+  minReplicas: 2
+  maxReplicas: 16
   metrics:
     - type: Resource
       resource:
         name: memory
         target:
           type: Utilization
-          averageUtilization: 75
+          averageUtilization: 50
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
+---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ingestion-atlas
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ingestion-step-atlas
+  minReplicas: 2
+  maxReplicas: 16
+  metrics:
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 50
     - type: Resource
       resource:
         name: cpu

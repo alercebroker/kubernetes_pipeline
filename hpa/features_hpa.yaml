@@ -7,7 +7,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: feature-step
-  minReplicas: 4
+  minReplicas: 2
   maxReplicas: 10
   metrics:
     - type: Resource
@@ -15,7 +15,7 @@ spec:
         name: memory
         target:
           type: Utilization
-          averageUtilization: 75
+          averageUtilization: 80
     - type: Resource
       resource:
         name: cpu
