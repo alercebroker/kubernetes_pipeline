@@ -1,34 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: stamp-classifier
+  name: stamp-classifier-step
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: stamp-classifier
+      app: stamp-classifier-step
   template:
     metadata:
       labels:
-        app: stamp-classifier
+        app: stamp-classifier-step
     spec:
       containers:
       - env:
-        - name: ES_HOST
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: host
-        - name: LOGSTASH_USER
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-user
-        - name: LOGSTASH_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-password
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
@@ -64,13 +48,10 @@ spec:
             secretKeyRef:
               name: kafka
               key: consumer-server
-        - name: TOPIC_STRATEGY_FORMAT
-          valueFrom:
-            secretKeyRef:
-              name: kafka
-              key: topic-strategy-format
+        - name: CONSUMER_TOPICS
+          value: "^ztf*"
         - name: CONSUMER_GROUP_ID
-          value: stamp-classifier-consumer
+          value: stamp_classifier
         - name: PRODUCER_SERVER
           valueFrom:
             secretKeyRef:
@@ -113,9 +94,11 @@ spec:
               name: metrics
               key: topic
         image: ghcr.io/alercebroker/early_classification_step:latest
-        imagePullPolicy: Always
-        name: stamp-classifier
+        name: stamp-classifier-step
+        resources:
+          requests:
+            memory: 400M
+            cpu: 500m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-status: {}

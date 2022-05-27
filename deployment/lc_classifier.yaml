@@ -1,44 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f lc-classifier/docker-compose.yml
-    kompose.version: 1.19.0 (f63ae96fgc)
-  labels:
-    io.kompose.service: lc-classifier
   name: lc-classifier
 spec:
-  replicas: 4
   selector:
     matchLabels:
       app: lc-classifier
-  strategy: {}
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f lc-classifier/docker-compose.yml
-        kompose.version: 1.19.0 (f63ae96fgc)
       labels:
-        io.kompose.service: lc-classifier
         app: lc-classifier
     spec:
       containers:
       - env:
-        - name: ES_HOST
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: host
-        - name: LOGSTASH_USER
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-user
-        - name: LOGSTASH_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-password
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
@@ -75,7 +49,7 @@ spec:
               name: kafka
               key: consumer-server
         - name: CONSUMER_TOPICS
-          value: feature
+          value: features
         - name: CONSUMER_GROUP_ID
           value: lc_classifier_consumer
         - name: PRODUCER_SERVER
@@ -125,9 +99,10 @@ spec:
           value: "100"
         image: ghcr.io/alercebroker/lc_classifier_step:latest
         name: lc-classifier
+        resources:
+          requests:
+            memory: 600M
+            cpu: 500m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-   #  nodeSelector:
-   #    disktype: lc-classifier
-status: {}

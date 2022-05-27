@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: s3-step
 spec:
-  replicas: 5
   selector:
     matchLabels:
       app: s3-step
@@ -49,11 +48,8 @@ spec:
               secretKeyRef:
                 name: kafka
                 key: consumer-server
-          - name: TOPIC_STRATEGY_FORMAT
-            valueFrom:
-              secretKeyRef:
-                name: kafka
-                key: topic-strategy-format
+          - name: CONSUMER_TOPICS
+            value: "^ztf*"
           - name: CONSUMER_GROUP_ID
             value: s3_step
           - name: METRICS_HOST
@@ -73,7 +69,10 @@ spec:
           - name: STEP_NAME
             value: s3_step
           - name: BUCKET_NAME
-            value: ztf-stream
+            valueFrom:
+              secretKeyRef:
+                name: s3
+                key: single-avro
           - name: REGION_NAME
             value: us-east-1
           - name: AWS_ACCESS_KEY
@@ -88,8 +87,10 @@ spec:
                 key: secret-access-key
           name: s3-step
           image: ghcr.io/alercebroker/s3_step:latest
-          resources: {}
+          resources:
+            requests:
+              memory: 200M
+              cpu: 300m
       restartPolicy: Always
       imagePullSecrets:
         - name: image-pull-access
-status: {}
