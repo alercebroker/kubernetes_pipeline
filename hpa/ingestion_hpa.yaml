@@ -9,14 +9,14 @@ spec:
     kind: Deployment
     name: ingestion-step-ztf
   minReplicas: 2
-  maxReplicas: 16
+  maxReplicas: 6
   metrics:
     - type: Resource
       resource:
         name: memory
         target:
           type: Utilization
-          averageUtilization: 50
+          averageUtilization: 80
     - type: Resource
       resource:
         name: cpu
@@ -41,7 +41,7 @@ spec:
         name: memory
         target:
           type: Utilization
-          averageUtilization: 50
+          averageUtilization: 80
     - type: Resource
       resource:
         name: cpu

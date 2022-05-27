@@ -13,21 +13,6 @@ spec:
     spec:
       containers:
       - env:
-        - name: ES_HOST
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: host
-        - name: LOGSTASH_USER
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-user
-        - name: LOGSTASH_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-password
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
@@ -98,8 +83,8 @@ spec:
         name: feature
         resources:
           requests:
-            memory: 256M
-            cpu: 250m
+            memory: 300M
+            cpu: 600m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
