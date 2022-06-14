@@ -29,7 +29,7 @@ spec:
                   name: kafka
                   key: producer-server
             - name: CONSUMER_TOPICS
-              value: "^lsst*"
+              value: "^elasticc*"
             - name: PRODUCER_TOPIC
               value: sorting-hat-lsst
             - name: DB_HOST
@@ -69,6 +69,7 @@ spec:
                   key: topic
           name: sorting-hat-step-lsst
           image: ghcr.io/alercebroker/sorting_hat_step:elasticc
+          imagePullPolicy: Always
           resources:
             requests:
               memory: 256M
