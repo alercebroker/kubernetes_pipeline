@@ -13,43 +13,13 @@ spec:
     spec:
       containers:
       - env:
-        - name: DB_ENGINE
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: engine
-        - name: DB_HOST
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: host
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: user
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: password
-        - name: DB_PORT
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: port
-        - name: DB_NAME
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: name
         - name: CONSUMER_SERVER
           valueFrom:
             secretKeyRef:
               name: kafka
               key: consumer-server
         - name: CONSUMER_TOPICS
-          value: xmatch
+          value: ingestion
         - name: CONSUMER_GROUP_ID
           value: feature_consumer
         - name: PRODUCER_SERVER
@@ -59,12 +29,8 @@ spec:
               key: producer-server
         - name: PRODUCER_TOPIC
           value: features
-        - name: STEP_VERSION
-          value: "1.0.0"
-        - name: STEP_ID
-          value: transitional_features
         - name: FEATURE_VERSION
-          value: lc_classifier_1.2.1-P-transitional
+          value: lc_classifier_elasticc
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
@@ -79,7 +45,8 @@ spec:
           value: "10"
         - name: CONSUME_MESSAGES
           value: "50"
-        image: ghcr.io/alercebroker/feature_step:latest
+        image: ghcr.io/alercebroker/feature_step:elasticc
+        imagePullPolicy: Always
         name: feature
         resources:
           requests:
