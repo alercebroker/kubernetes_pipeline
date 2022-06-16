@@ -44,7 +44,7 @@ spec:
         - name: CONSUME_TIMEOUT
           value: "10"
         - name: CONSUME_MESSAGES
-          value: "50"
+          value: "100"
         image: ghcr.io/alercebroker/feature_step:elasticc
         imagePullPolicy: Always
         name: feature
