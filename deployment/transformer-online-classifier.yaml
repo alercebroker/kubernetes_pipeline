@@ -1,37 +1,42 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: alert-archiving-step
+  name: transformer-online-classifier-step
 spec:
   selector:
     matchLabels:
-      app: alert-archiving-step
+      step: transformer-online-classifier-step
   template:
     metadata:
       labels:
-        app: alert-archiving-step
+        step: transformer-online-classifier-step
     spec:
       containers:
         - env:
+            - name: CONSUME_MESSAGES
+              value: "10"
             - name: CONSUMER_GROUP_ID
-              value: archiving-step
+              value: transformer-online-classifier-step
             - name: CONSUMER_SERVER
               valueFrom:
                 secretKeyRef:
                   name: kafka
                   key: consumer-server
             - name: CONSUMER_TOPICS
-              value: "^ztf*"
-            - name: AWS_ACCESS_KEY_ID
+              value: ingestion
+            - name: PRODUCER_SERVER
               valueFrom:
                 secretKeyRef:
-                  name: aws
-                  key: access-key
-            - name: AWS_SECRET_ACCESS_KEY
+                  name: kafka
+                  key: producer-server
+            - name: PRODUCER_TOPIC
+              value: transformer_lc_classifier
+            - name: MONGO_HOST
               valueFrom:
                 secretKeyRef:
-                  name: aws
-                  key: secret-access-key
+                  name: alerts-database-mongo
+                  key: host
             - name: METRICS_HOST
               valueFrom:
                 secretKeyRef:
@@ -42,17 +47,9 @@ spec:
                 secretKeyRef:
                   name: metrics
                   key: topic
-            - name: S3_ZTF_BUCKET_NAME
-              valueFrom:
-                secretKeyRef:
-                  name: s3
-                  key: grouped-avro
-          image: ghcr.io/alercebroker/alert_archiving_step:1.0.0
-          name: alert-archiving-step
-          resources:
-            requests:
-              memory: 300M
-              cpu: 300m
+          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc
+          imagePullPolicy: Always
+          name: transformer-online-classifier-step
       restartPolicy: Always
       imagePullSecrets:
         - name: image-pull-access
