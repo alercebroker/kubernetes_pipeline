@@ -2,33 +2,14 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: sorting-hat-ztf-hpa
+  name: sorting-hat-lsst-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: sorting-hat-step-ztf
+    name: sorting-hat-step-lsst
   minReplicas: 2
-  maxReplicas: 4
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 80
----
-apiVersion: autoscaling/v2beta2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: sorting-hat-atlas-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: sorting-hat-step-atlas
-  minReplicas: 2
-  maxReplicas: 8
+  maxReplicas: 5
   metrics:
     - type: Resource
       resource:
