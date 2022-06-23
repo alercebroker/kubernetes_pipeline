@@ -17,7 +17,7 @@ spec:
             - name: CONSUME_MESSAGES
               value: "10"
             - name: CONSUMER_GROUP_ID
-              value: transformer-online-classifier-step
+              value: balto-lc-classifier-step
             - name: CONSUMER_SERVER
               valueFrom:
                 secretKeyRef:
@@ -29,9 +29,29 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: kafka
-                  key: producer-server
-            - name: PRODUCER_TOPIC
-              value: transformer_lc_classifier
+                  key: producer-public-server
+            - name: PRODUCER_TOPIC_FORMAT
+              value: balto_lc_classifier_%s
+            - name: PRODUCER_DATE_FORMAT
+              value: "%Y%m%d"
+            - name: PRODUCER_CHANGE_HOUR
+              value: "22"
+            - name: PRODUCER_RETENTION_DAYS
+              value: "1"
+            - name: PRODUCER_SECURITY_PROTOCOL
+              value: SASL_PLAINTEXT
+            - name: PRODUCER_SASL_MECHANISM
+              value: "SCRAM-SHA-256"
+            - name: PRODUCER_SASL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: lc_transformer_username
+            - name: PRODUCER_SASL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: lc_transformer_password
             - name: MONGO_HOST
               valueFrom:
                 secretKeyRef:

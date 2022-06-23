@@ -35,7 +35,7 @@ metadata:
   name: log-pipeline
 spec:
   spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: log-pipeline
