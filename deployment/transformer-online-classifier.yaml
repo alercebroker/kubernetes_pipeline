@@ -31,7 +31,7 @@ spec:
                   name: kafka
                   key: producer-public-server
             - name: PRODUCER_TOPIC_FORMAT
-              value: balto_lc_classifier_%s
+              value: alerce_balto_lc_classifier_%s
             - name: PRODUCER_DATE_FORMAT
               value: "%Y%m%d"
             - name: PRODUCER_CHANGE_HOUR

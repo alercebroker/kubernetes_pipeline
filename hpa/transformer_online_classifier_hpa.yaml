@@ -7,7 +7,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: transformer-online-classifier-step
-  minReplicas: 1
+  minReplicas: 4
   maxReplicas: 15
   metrics:
     - type: Resource
