@@ -1,73 +1,47 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f lc-classifier/docker-compose.yml
-    kompose.version: 1.19.0 (f63ae96fgc)
-  labels:
-    io.kompose.service: lc-classifier
-  name: lc-classifier
+  name: stamp-classifier-step
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: lc-classifier
-  strategy: {}
+      app: stamp-classifier-step
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f lc-classifier/docker-compose.yml
-        kompose.version: 1.19.0 (f63ae96fgc)
       labels:
-        io.kompose.service: lc-classifier
-        app: lc-classifier
+        app: stamp-classifier-step
     spec:
       containers:
       - env:
-        - name: ES_HOST
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: host
-        - name: LOGSTASH_USER
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-user
-        - name: LOGSTASH_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-password
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: engine
         - name: DB_HOST
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: host
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: user
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: password
         - name: DB_PORT
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: port
         - name: DB_NAME
           valueFrom:
             secretKeyRef:
-              name: database
+              name: alerts-database
               key: name
         - name: CONSUMER_SERVER
           valueFrom:
@@ -75,16 +49,16 @@ spec:
               name: kafka
               key: consumer-server
         - name: CONSUMER_TOPICS
-          value: feature
+          value: "^ztf*"
         - name: CONSUMER_GROUP_ID
-          value: lc_classifier_consumer
+          value: stamp_classifier
         - name: PRODUCER_SERVER
           valueFrom:
             secretKeyRef:
               name: kafka
               key: producer-public-server
         - name: PRODUCER_TOPIC_FORMAT
-          value: lc_classifier_%s
+          value: stamp_classifier_%s
         - name: PRODUCER_DATE_FORMAT
           value: "%Y%m%d"
         - name: PRODUCER_CHANGE_HOUR
@@ -99,16 +73,16 @@ spec:
           valueFrom:
             secretKeyRef:
               name: kafka
-              key: lc_step_username
+              key: stamp_step_username
         - name: PRODUCER_SASL_PASSWORD
           valueFrom:
             secretKeyRef:
               name: kafka
-              key: lc_step_password
-        - name: STEP_ID
-          value: lc_classification_1.1.10
+              key: stamp_step_password
         - name: STEP_VERSION
-          value: lc_classifier_1.1.10
+          value: stamp_classifier_1.0.0
+        - name : CLASSIFIER_VERSION
+          value: stamp_classifier_1.0.4
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
@@ -119,15 +93,12 @@ spec:
             secretKeyRef:
               name: metrics
               key: topic
-        - name: CONSUME_TIMEOUT
-          value: "10"
-        - name: CONSUME_MESSAGES
-          value: "100"
-        image: ghcr.io/alercebroker/lc_classifier_step:latest
-        name: lc-classifier
+        image: ghcr.io/alercebroker/early_classification_step:latest
+        name: stamp-classifier-step
+        resources:
+          requests:
+            memory: 400M
+            cpu: 500m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-   #  nodeSelector:
-   #    disktype: lc-classifier
-status: {}
