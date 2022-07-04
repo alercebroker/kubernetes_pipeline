@@ -57,8 +57,8 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: topic-strategy-format
-                    #- name: CONSUMER_TOPICS
-                    #value: ztf_20211120_programid1
+            # - name: CONSUMER_TOPICS
+            #   value: ztf_stream
             - name: CONSUME_MESSAGES
               value: "500"
             - name: USERS_DB_HOST

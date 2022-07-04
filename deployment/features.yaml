@@ -1,44 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f xmatch_step/docker-compose.yml
-    kompose.version: 1.19.0 (f63a961c)
-  labels:
-    io.kompose.service: xmatch
-  name: xmatch
+  name: feature-step
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: xmatch
-  strategy: {}
+      app: feature-step
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f xmatch_step/docker-compose.yml
-        kompose.version: 1.19.0 (f63a961c)
       labels:
-        io.kompose.service: xmatch
-        app: xmatch
+        app: feature-step
     spec:
       containers:
       - env:
-        - name: ES_HOST
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: host
-        - name: LOGSTASH_USER
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-user
-        - name: LOGSTASH_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-password
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
@@ -74,24 +48,23 @@ spec:
             secretKeyRef:
               name: kafka
               key: consumer-server
-        # - name: TOPIC_STRATEGY_FORMAT
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: kafka
-        #       key: topic-strategy-format
         - name: CONSUMER_TOPICS
-          value: ztf_stream
+          value: xmatch
         - name: CONSUMER_GROUP_ID
-          value: xmatch_consumer
+          value: feature_consumer
         - name: PRODUCER_SERVER
           valueFrom:
             secretKeyRef:
               name: kafka
               key: producer-server
         - name: PRODUCER_TOPIC
-          value: xmatch
+          value: features
         - name: STEP_VERSION
-          value: xmatch_1.0.4
+          value: "1.0.0"
+        - name: STEP_ID
+          value: transitional_features
+        - name: FEATURE_VERSION
+          value: lc_classifier_1.2.1-P-transitional
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
@@ -102,19 +75,17 @@ spec:
             secretKeyRef:
               name: metrics
               key: topic
-        - name: RETRIES
-          value: "3"
-        - name: RETRY_INTERVAL
-          value: "1"
         - name: CONSUME_TIMEOUT
-          value: "5"
+          value: "10"
         - name: CONSUME_MESSAGES
-          value: "1000"
-        image: ghcr.io/alercebroker/xmatch_step:latest
-        name: xmatch
+          value: "50"
+        image: ghcr.io/alercebroker/feature_step:latest
+        name: feature
+        resources:
+          requests:
+            memory: 300M
+            cpu: 600m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-    # nodeSelector:
-    #   disktype: xmatch
 status: {}

@@ -1,44 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f feature/docker-compose.yml
-    kompose.version: 1.19.0 (f63a96fgc)
-  labels:
-    io.kompose.service: feature
-  name: feature
+  name: lc-classifier
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: feature
-  strategy: {}
+      app: lc-classifier
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f feature/docker-compose.yml
-        kompose.version: 1.19.0 (f63a96fgc)
       labels:
-        io.kompose.service: feature
-        app: feature
+        app: lc-classifier
     spec:
       containers:
       - env:
-        - name: ES_HOST
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: host
-        - name: LOGSTASH_USER
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-user
-        - name: LOGSTASH_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-password
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
@@ -75,22 +49,40 @@ spec:
               name: kafka
               key: consumer-server
         - name: CONSUMER_TOPICS
-          value: correction
+          value: features
         - name: CONSUMER_GROUP_ID
-          value: feature_consumer
+          value: lc_classifier_consumer
         - name: PRODUCER_SERVER
           valueFrom:
             secretKeyRef:
               name: kafka
-              key: producer-server
-        - name: PRODUCER_TOPIC
-          value: feature
-        - name: STEP_VERSION
-          value: feature_1.2.1
+              key: producer-public-server
+        - name: PRODUCER_TOPIC_FORMAT
+          value: lc_classifier_%s
+        - name: PRODUCER_DATE_FORMAT
+          value: "%Y%m%d"
+        - name: PRODUCER_CHANGE_HOUR
+          value: "20"
+        - name: PRODUCER_RETENTION_DAYS
+          value: "1"
+        - name: PRODUCER_SECURITY_PROTOCOL
+          value: SASL_PLAINTEXT
+        - name: PRODUCER_SASL_MECHANISM
+          value: "SCRAM-SHA-256"
+        - name: PRODUCER_SASL_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: lc_step_username
+        - name: PRODUCER_SASL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: lc_step_password
         - name: STEP_ID
-          value: feature_1.2.1
-        - name: FEATURE_VERSION
-          value: lc_classifier_1.2.1-P
+          value: lc_classification_1.1.10
+        - name: STEP_VERSION
+          value: lc_classifier_1.1.10
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
@@ -104,12 +96,13 @@ spec:
         - name: CONSUME_TIMEOUT
           value: "10"
         - name: CONSUME_MESSAGES
-          value: "50"
-        image: ghcr.io/alercebroker/feature_step:1.2.1
-        name: feature
+          value: "100"
+        image: ghcr.io/alercebroker/lc_classifier_step:latest
+        name: lc-classifier
+        resources:
+          requests:
+            memory: 600M
+            cpu: 500m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-   #  nodeSelector:
-   #    disktype: feature
-status: {}

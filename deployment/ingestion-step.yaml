@@ -1,0 +1,206 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingestion-step-ztf
+spec:
+  selector:
+    matchLabels:
+      step: ingestion-step-ztf
+  template:
+    metadata:
+      labels:
+        step: ingestion-step-ztf
+    spec:
+      containers:
+        - env:
+            - name: CONSUME_MESSAGES
+              value: "500"
+            - name: CONSUMER_GROUP_ID
+              value: ingestion-step-ztf
+            - name: CONSUMER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: consumer-server
+            - name: CONSUMER_TOPICS
+              value: sorting-hat-ztf
+            - name: PRODUCER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: producer-server
+            - name: PRODUCER_TOPIC
+              value: ingestion
+            - name: PSQL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: host
+            - name: PSQL_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: name
+            - name: PSQL_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: port
+            - name: PSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: user
+            - name: PSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: password
+            - name: MONGO_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: host
+            - name: MONGO_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: database
+            - name: MONGO_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: port
+            - name: MONGO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: user
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: password
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
+          image: ghcr.io/alercebroker/ingestion_step:rc
+          name: ingestion-step-ztf
+          resources:
+            requests:
+              memory: 512M
+              cpu: 250m
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: image-pull-access
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingestion-step-atlas
+spec:
+  selector:
+    matchLabels:
+      step: ingestion-step-atlas
+  template:
+    metadata:
+      labels:
+        step: ingestion-step-atlas
+    spec:
+      containers:
+        - env:
+            - name: CONSUME_MESSAGES
+              value: "500"
+            - name: CONSUMER_GROUP_ID
+              value: ingestion-step-atlas
+            - name: CONSUMER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: consumer-server
+            - name: CONSUMER_TOPICS
+              value: sorting-hat-atlas
+            - name: PRODUCER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: producer-server
+            - name: PRODUCER_TOPIC
+              value: ingestion
+            - name: PSQL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: host
+            - name: PSQL_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: name
+            - name: PSQL_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: port
+            - name: PSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: user
+            - name: PSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: password
+            - name: MONGO_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: host
+            - name: MONGO_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: database
+            - name: MONGO_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: port
+            - name: MONGO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: user
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: password
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
+          image: ghcr.io/alercebroker/ingestion_step:rc
+          name: ingestion-step-atlas
+          resources:
+            requests:
+              memory: 256M
+              cpu: 250m
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: image-pull-access
