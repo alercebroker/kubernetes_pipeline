@@ -52,11 +52,6 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: lc_transformer_password
-            - name: MONGO_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: alerts-database-mongo
-                  key: host
             - name: METRICS_HOST
               valueFrom:
                 secretKeyRef:
@@ -67,6 +62,10 @@ spec:
                 secretKeyRef:
                   name: metrics
                   key: topic
+            - name: MODEL_PATH
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/1.0.0/EncoderHeader.pt
+            - name: QUANTILES_PATH
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/1.0.0/HeadNorm1QT/
           image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc
           imagePullPolicy: Always
           name: transformer-online-classifier-step

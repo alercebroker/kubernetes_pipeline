@@ -13,36 +13,6 @@ spec:
     spec:
       containers:
       - env:
-        - name: DB_ENGINE
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: engine
-        - name: DB_HOST
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: host
-        - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: user
-        - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: password
-        - name: DB_PORT
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: port
-        - name: DB_NAME
-          valueFrom:
-            secretKeyRef:
-              name: alerts-database
-              key: name
         - name: CONSUMER_SERVER
           valueFrom:
             secretKeyRef:
@@ -58,11 +28,11 @@ spec:
               name: kafka
               key: producer-public-server
         - name: PRODUCER_TOPIC_FORMAT
-          value: lc_classifier_%s
+          value: alerce_balto_lc_classifier_rf_%s
         - name: PRODUCER_DATE_FORMAT
           value: "%Y%m%d"
         - name: PRODUCER_CHANGE_HOUR
-          value: "20"
+          value: "22"
         - name: PRODUCER_RETENTION_DAYS
           value: "1"
         - name: PRODUCER_SECURITY_PROTOCOL
@@ -73,16 +43,16 @@ spec:
           valueFrom:
             secretKeyRef:
               name: kafka
-              key: lc_step_username
+              key: lc_transformer_username
         - name: PRODUCER_SASL_PASSWORD
           valueFrom:
             secretKeyRef:
               name: kafka
-              key: lc_step_password
+              key: lc_transformer_password
         - name: STEP_ID
-          value: lc_classification_1.1.10
+          value: lc_classification
         - name: STEP_VERSION
-          value: lc_classifier_1.1.10
+          value: lc_classifier
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
@@ -96,8 +66,11 @@ spec:
         - name: CONSUME_TIMEOUT
           value: "10"
         - name: CONSUME_MESSAGES
-          value: "100"
-        image: ghcr.io/alercebroker/lc_classifier_step:latest
+          value: "500"
+        - name: MODEL_PATH
+          value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/random_forest/1.0.0/
+        image: ghcr.io/alercebroker/lc_classifier_step:elasticc
+        imagePullPolicy: Always
         name: lc-classifier
         resources:
           requests:
