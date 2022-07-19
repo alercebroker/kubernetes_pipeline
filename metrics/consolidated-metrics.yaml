@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: consolidated-metrics-step
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: consolidated-metrics-step
@@ -21,7 +22,7 @@ spec:
         - name: CONSUMER_TOPICS
           value: metrics
         - name: CONSUMER_GROUP_ID
-          value: contolidated-metrics-step
+          value: consolidated-metrics-step
         - name: METRICS_TOPIC
           value: consolidated-metrics
         - name: METRICS_HOST
@@ -34,10 +35,8 @@ spec:
             secretKeyRef:
               name: redis
               key: metrics-server
-        - name: CONSUME_TIMEOUT
-          value: "1"
         - name: CONSUME_MESSAGES
-          value: "1"
+          value: "100"
         image: ghcr.io/alercebroker/consolidated_metrics_step:rc
         imagePullPolicy: Always
         name: consolidated-metrics-step
