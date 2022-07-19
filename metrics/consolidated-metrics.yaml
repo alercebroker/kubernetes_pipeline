@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consolidated-metrics-step
+spec:
+  selector:
+    matchLabels:
+      app: consolidated-metrics-step
+  template:
+    metadata:
+      labels:
+        app: consolidated-metrics-step
+    spec:
+      containers:
+      - env:
+        - name: CONSUMER_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: consumer-server
+        - name: CONSUMER_TOPICS
+          value: metrics
+        - name: CONSUMER_GROUP_ID
+          value: contolidated-metrics-step
+        - name: METRICS_TOPIC
+          value: consolidated-metrics
+        - name: METRICS_HOST
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: producer-server
+        - name: REDIS_OM_URL
+          valueFrom:
+            secretKeyRef:
+              name: redis
+              key: metrics-server
+        - name: CONSUME_TIMEOUT
+          value: "1"
+        - name: CONSUME_MESSAGES
+          value: "1"
+        image: ghcr.io/alercebroker/consolidated_metrics_step:rc
+        imagePullPolicy: Always
+        name: consolidated-metrics-step
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: image-pull-access
