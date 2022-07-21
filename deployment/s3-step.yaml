@@ -56,7 +56,8 @@ spec:
                 name: aws
                 key: secret-access-key
           name: s3-step
-          image: ghcr.io/alercebroker/s3_step:latest
+          image: ghcr.io/alercebroker/s3_step:rc
+          imagePullPolicy: Always
           resources:
             requests:
               memory: 200M
