@@ -79,7 +79,7 @@ spec:
           value: "5"
         - name: CONSUME_MESSAGES
           value: "1000"
-        image: ghcr.io/alercebroker/xmatch_step:rc
+        image: ghcr.io/alercebroker/xmatch_step:latest
         imagePullPolicy: Always
         name: xmatch-step
         resources:
