@@ -1,27 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: alert-archiving-step
   name: alert-archiving-step
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: alert-archiving-step
-  strategy: {}
+      app: alert-archiving-step
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.service: alert-archiving-step
+        app: alert-archiving-step
     spec:
       containers:
         - env:
@@ -32,11 +20,8 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: consumer-server
-            - name: TOPIC_STRATEGY_FORMAT
-              valueFrom:
-                secretKeyRef:
-                  name: kafka
-                  key: topic-strategy-format
+            - name: CONSUMER_TOPICS
+              value: "^ztf*"
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -47,10 +32,27 @@ spec:
                 secretKeyRef:
                   name: aws
                   key: secret-access-key
-          image: ghcr.io/alercebroker/alert_archiving_step:latest
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
+            - name: S3_ZTF_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: s3
+                  key: grouped-avro
+          image: ghcr.io/alercebroker/alert_archiving_step:1.0.0
           name: alert-archiving-step
-          resources: {}
+          resources:
+            requests:
+              memory: 300M
+              cpu: 300m
       restartPolicy: Always
       imagePullSecrets:
         - name: image-pull-access
-status: {}

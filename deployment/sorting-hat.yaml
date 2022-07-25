@@ -1,0 +1,157 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sorting-hat-step-ztf
+spec:
+  selector:
+    matchLabels:
+      app: sorting-hat-step-ztf
+  template:
+    metadata:
+      labels:
+        app: sorting-hat-step-ztf
+    spec:
+      containers:
+        - env:
+            - name: CONSUME_MESSAGES
+              value: "500"
+            - name: CONSUMER_GROUP_ID
+              value: sorting-hat-step-ztf
+            - name: CONSUMER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: consumer-server
+            - name: PRODUCER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: producer-server
+            - name: CONSUMER_TOPICS
+              value: "^ztf*"
+            - name: PRODUCER_TOPIC
+              value: sorting-hat-ztf
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: host
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: database
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: port
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: password
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
+          name: sorting-hat-step-ztf
+          image: ghcr.io/alercebroker/sorting_hat_step:latest
+          resources:
+            requests:
+              memory: 256M
+              cpu: 250m
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: image-pull-access
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sorting-hat-step-atlas
+spec:
+  selector:
+    matchLabels:
+      app: sorting-hat-step-atlas
+  template:
+    metadata:
+      labels:
+        app: sorting-hat-step-atlas
+    spec:
+      containers:
+        - env:
+            - name: CONSUME_MESSAGES
+              value: "500"
+            - name: CONSUMER_GROUP_ID
+              value: sorting-hat-step-atlas
+            - name: CONSUMER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: consumer-server
+            - name: PRODUCER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: producer-server
+            - name: CONSUMER_TOPICS
+              value: "^ATLAS*"
+            - name: PRODUCER_TOPIC
+              value: sorting-hat-atlas
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: host
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: database
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: port
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: password
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
+          name: sorting-hat-step-atlas
+          image: ghcr.io/alercebroker/sorting_hat_step:latest
+          resources:
+            requests:
+              memory: 256M
+              cpu: 250m
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: image-pull-access
