@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: s3-step
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: s3-step
@@ -14,46 +13,13 @@ spec:
     spec:
       containers:
         - env:
-          - name: DB_ENGINE
-            valueFrom:
-              secretKeyRef:
-                name: database
-                key: engine
-          - name: DB_HOST
-            valueFrom:
-              secretKeyRef:
-                name: database
-                key: host
-          - name: DB_USER
-            valueFrom:
-              secretKeyRef:
-                name: database
-                key: user
-          - name: DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: database
-                key: password
-          - name: DB_PORT
-            valueFrom:
-              secretKeyRef:
-                name: database
-                key: port
-          - name: DB_NAME
-            valueFrom:
-              secretKeyRef:
-                name: database
-                key: name
           - name: CONSUMER_SERVER
             valueFrom:
               secretKeyRef:
                 name: kafka
                 key: consumer-server
-          - name: TOPIC_STRATEGY_FORMAT
-            valueFrom:
-              secretKeyRef:
-                name: kafka
-                key: topic-strategy-format
+          - name: CONSUMER_TOPICS
+            value: "^ztf.,^ATLAS."
           - name: CONSUMER_GROUP_ID
             value: s3_step
           - name: METRICS_HOST
@@ -67,13 +33,16 @@ spec:
                 name: metrics
                 key: topic
           - name: STEP_VERSION
-            value: s3_step_1.1.1
+            value: s3_step_1.2.0
           - name: STEP_ID
             value: s3_step
           - name: STEP_NAME
             value: s3_step
           - name: BUCKET_NAME
-            value: ztf-stream
+            valueFrom:
+              secretKeyRef:
+                name: s3
+                key: single-avro
           - name: REGION_NAME
             value: us-east-1
           - name: AWS_ACCESS_KEY
@@ -87,9 +56,12 @@ spec:
                 name: aws
                 key: secret-access-key
           name: s3-step
-          image: ghcr.io/alercebroker/s3_step:latest
-          resources: {}
+          image: ghcr.io/alercebroker/s3_step:rc
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: 200M
+              cpu: 300m
       restartPolicy: Always
       imagePullSecrets:
-        - name: test
-status: {}
+        - name: image-pull-access

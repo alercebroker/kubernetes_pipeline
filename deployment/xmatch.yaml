@@ -1,44 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f feature/docker-compose.yml
-    kompose.version: 1.19.0 (f63a96fgc)
-  labels:
-    io.kompose.service: feature
-  name: feature
+  name: xmatch-step
 spec:
-  replicas: 2
   selector:
     matchLabels:
-      app: feature
-  strategy: {}
+      app: xmatch-step
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f feature/docker-compose.yml
-        kompose.version: 1.19.0 (f63a96fgc)
       labels:
-        io.kompose.service: feature
-        app: feature
+        app: xmatch-step
     spec:
       containers:
       - env:
-        - name: ES_HOST
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: host
-        - name: LOGSTASH_USER
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-user
-        - name: LOGSTASH_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: elasticsearch
-              key: logstash-password
         - name: DB_ENGINE
           valueFrom:
             secretKeyRef:
@@ -75,22 +49,18 @@ spec:
               name: kafka
               key: consumer-server
         - name: CONSUMER_TOPICS
-          value: correction
+          value: ingestion
         - name: CONSUMER_GROUP_ID
-          value: feature_consumer
+          value: xmatch-step
         - name: PRODUCER_SERVER
           valueFrom:
             secretKeyRef:
               name: kafka
               key: producer-server
         - name: PRODUCER_TOPIC
-          value: feature
+          value: xmatch
         - name: STEP_VERSION
-          value: feature_1.2.1
-        - name: STEP_ID
-          value: feature_1.2.1
-        - name: FEATURE_VERSION
-          value: lc_classifier_1.2.1-P
+          value: xmatch_2.0.0
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
@@ -101,15 +71,22 @@ spec:
             secretKeyRef:
               name: metrics
               key: topic
+        - name: RETRIES
+          value: "3"
+        - name: RETRY_INTERVAL
+          value: "1"
         - name: CONSUME_TIMEOUT
-          value: "10"
+          value: "5"
         - name: CONSUME_MESSAGES
-          value: "50"
-        image: ghcr.io/alercebroker/feature_step:1.2.1
-        name: feature
+          value: "1000"
+        image: ghcr.io/alercebroker/xmatch_step:latest
+        imagePullPolicy: Always
+        name: xmatch-step
+        resources:
+          requests:
+            memory: 320M
+            cpu: 500m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-   #  nodeSelector:
-   #    disktype: feature
 status: {}
