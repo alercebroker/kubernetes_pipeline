@@ -13,43 +13,13 @@ spec:
     spec:
       containers:
         - env:
-          - name: DB_ENGINE
-            valueFrom:
-              secretKeyRef:
-                name: alerts-database
-                key: engine
-          - name: DB_HOST
-            valueFrom:
-              secretKeyRef:
-                name: alerts-database
-                key: host
-          - name: DB_USER
-            valueFrom:
-              secretKeyRef:
-                name: alerts-database
-                key: user
-          - name: DB_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: alerts-database
-                key: password
-          - name: DB_PORT
-            valueFrom:
-              secretKeyRef:
-                name: alerts-database
-                key: port
-          - name: DB_NAME
-            valueFrom:
-              secretKeyRef:
-                name: alerts-database
-                key: name
           - name: CONSUMER_SERVER
             valueFrom:
               secretKeyRef:
                 name: kafka
                 key: consumer-server
           - name: CONSUMER_TOPICS
-            value: "^ztf*"
+            value: "^ztf.,^ATLAS."
           - name: CONSUMER_GROUP_ID
             value: s3_step
           - name: METRICS_HOST
@@ -63,7 +33,7 @@ spec:
                 name: metrics
                 key: topic
           - name: STEP_VERSION
-            value: s3_step_1.1.1
+            value: s3_step_1.2.0
           - name: STEP_ID
             value: s3_step
           - name: STEP_NAME
@@ -86,7 +56,8 @@ spec:
                 name: aws
                 key: secret-access-key
           name: s3-step
-          image: ghcr.io/alercebroker/s3_step:latest
+          image: ghcr.io/alercebroker/s3_step:rc
+          imagePullPolicy: Always
           resources:
             requests:
               memory: 200M
