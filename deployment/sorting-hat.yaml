@@ -68,7 +68,7 @@ spec:
                   name: metrics
                   key: topic
           name: sorting-hat-step-ztf
-          image: ghcr.io/alercebroker/sorting_hat_step:rc
+          image: ghcr.io/alercebroker/sorting_hat_step:latest
           resources:
             requests:
               memory: 256M
@@ -147,7 +147,7 @@ spec:
                   name: metrics
                   key: topic
           name: sorting-hat-step-atlas
-          image: ghcr.io/alercebroker/sorting_hat_step:rc
+          image: ghcr.io/alercebroker/sorting_hat_step:latest
           resources:
             requests:
               memory: 256M

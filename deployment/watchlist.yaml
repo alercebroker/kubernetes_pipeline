@@ -1,27 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: watchlist
-  name: watchlist
+  name: watchlist-step
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: watchlist
-  strategy: {}
+      app: watchlist-step
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f docker-compose.yml
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.service: watchlist
+        app: watchlist-step
     spec:
       containers:
         - env:
@@ -57,8 +45,6 @@ spec:
                 secretKeyRef:
                   name: kafka
                   key: topic-strategy-format
-            # - name: CONSUMER_TOPICS
-            #   value: ztf_stream
             - name: CONSUME_MESSAGES
               value: "500"
             - name: USERS_DB_HOST
@@ -107,9 +93,11 @@ spec:
                   name: elasticsearch
                   key: logstash-password
           image: ghcr.io/alercebroker/watchlist_step:latest
-          name: watchlist
-          resources: {}
+          name: watchlist-step
+          resources:
+            requests:
+              memory: 300M
+              cpu: 250m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-status: {}
