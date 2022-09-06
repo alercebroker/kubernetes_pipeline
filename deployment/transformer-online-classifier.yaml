@@ -31,7 +31,7 @@ spec:
                   name: kafka
                   key: producer-public-server
             - name: PRODUCER_TOPIC_FORMAT
-              value: alerce_balto_lc_classifier_%s
+              value: alerce_elasticc_balto_classifier_%s
             - name: PRODUCER_DATE_FORMAT
               value: "%Y%m%d"
             - name: PRODUCER_CHANGE_HOUR
@@ -62,11 +62,15 @@ spec:
                 secretKeyRef:
                   name: metrics
                   key: topic
+            - name: MODEL_NAME
+              value: balto_classifier
+            - name: MODEL_VERSION
+              value: "2.0.0"
             - name: MODEL_PATH
-              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/1.0.0/EncoderHeader.pt
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.0/EncoderHeader.pt
             - name: QUANTILES_PATH
-              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/1.0.0/HeadNorm1QT/
-          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.0/HeaderNorm1QT/
+          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc-a9d5f8e
           imagePullPolicy: Always
           name: transformer-online-classifier-step
       restartPolicy: Always

@@ -28,7 +28,7 @@ spec:
               name: kafka
               key: producer-public-server
         - name: PRODUCER_TOPIC_FORMAT
-          value: alerce_balto_lc_classifier_rf_%s
+          value: alerce_elasticc_toretto_classifier_%s
         - name: PRODUCER_DATE_FORMAT
           value: "%Y%m%d"
         - name: PRODUCER_CHANGE_HOUR
@@ -66,16 +66,21 @@ spec:
         - name: CONSUME_TIMEOUT
           value: "10"
         - name: CONSUME_MESSAGES
-          value: "500"
+          value: "1000"
         - name: MODEL_PATH
-          value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/random_forest/1.0.0/
-        image: ghcr.io/alercebroker/lc_classifier_step:elasticc
+          value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/random_forest/2.0.1/
+        - name: MODEL_NAME
+          value: toretto
+        - name: MODEL_VERSION
+          value: "2.0.1"
+        image: ghcr.io/alercebroker/lc_classifier_step:elasticc-5d699c1
         imagePullPolicy: Always
         name: lc-classifier
         resources:
           requests:
-            memory: 600M
-            cpu: 500m
+            memory: 3Gi
+          limits:
+            memory: 5Gi
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
