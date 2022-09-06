@@ -70,8 +70,32 @@ spec:
               value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.0/EncoderHeader.pt
             - name: QUANTILES_PATH
               value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.0/HeaderNorm1QT/
-          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc-a9d5f8e
-          imagePullPolicy: Always
+            - name: MONGO_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: host
+            - name: MONGO_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: database
+            - name: MONGO_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: port
+            - name: MONGO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: user
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database-mongo
+                  key: password
+          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc-780d401
           name: transformer-online-classifier-step
       restartPolicy: Always
       imagePullSecrets:

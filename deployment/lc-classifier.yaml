@@ -73,8 +73,32 @@ spec:
           value: toretto
         - name: MODEL_VERSION
           value: "2.0.1"
-        image: ghcr.io/alercebroker/lc_classifier_step:elasticc-5d699c1
-        imagePullPolicy: Always
+        - name: MONGO_HOST
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: host
+        - name: MONGO_NAME
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: database
+        - name: MONGO_PORT
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: port
+        - name: MONGO_USER
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: user
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: password
+        image: ghcr.io/alercebroker/lc_classifier_step:elasticc-39b01c6
         name: lc-classifier
         resources:
           requests:
