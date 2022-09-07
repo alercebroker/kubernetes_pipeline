@@ -67,9 +67,9 @@ spec:
             - name: MODEL_VERSION
               value: "2.0.0"
             - name: MODEL_PATH
-              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.0/EncoderHeader.pt
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.1/EncoderHeader.pt
             - name: QUANTILES_PATH
-              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.0/HeaderNorm1QT/
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.1/HeaderNorm1QT/
             - name: MONGO_HOST
               valueFrom:
                 secretKeyRef:

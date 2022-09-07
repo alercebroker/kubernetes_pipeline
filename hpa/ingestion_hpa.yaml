@@ -9,7 +9,7 @@ spec:
     kind: Deployment
     name: ingestion-step-lsst
   minReplicas: 3
-  maxReplicas: 6
+  maxReplicas: 7
   metrics:
     - type: Resource
       resource:
