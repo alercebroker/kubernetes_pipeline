@@ -65,11 +65,11 @@ spec:
             - name: MODEL_NAME
               value: balto_classifier
             - name: MODEL_VERSION
-              value: "2.0.0"
+              value: "3.0.0"
             - name: MODEL_PATH
-              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.0/EncoderHeader.pt
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/3.0.0/EncoderHeader.pt
             - name: QUANTILES_PATH
-              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/2.0.0/HeaderNorm1QT/
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/3.0.0/HeaderNorm1QT/
             - name: MONGO_HOST
               valueFrom:
                 secretKeyRef:
@@ -95,7 +95,7 @@ spec:
                 secretKeyRef:
                   name: alerts-database-mongo
                   key: password
-          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc-780d401
+          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc-a6af74b
           name: transformer-online-classifier-step
           resources:
             requests:
