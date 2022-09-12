@@ -67,7 +67,7 @@ spec:
                 secretKeyRef:
                   name: metrics
                   key: topic
-          image: ghcr.io/alercebroker/ingestion_step:elasticc-090765f
+          image: ghcr.io/alercebroker/ingestion_step:elasticc-ed02758
           name: ingestion-step-lsst
           resources:
             requests:

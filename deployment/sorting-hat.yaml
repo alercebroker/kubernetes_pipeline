@@ -68,7 +68,7 @@ spec:
                   name: metrics
                   key: topic
           name: sorting-hat-step-lsst
-          image: ghcr.io/alercebroker/sorting_hat_step:elasticc
+          image: ghcr.io/alercebroker/sorting_hat_step:elasticc-311b21a
           imagePullPolicy: Always
           resources:
             requests:

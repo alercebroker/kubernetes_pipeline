@@ -21,7 +21,7 @@ spec:
         - name: CONSUMER_TOPICS
           value: features
         - name: CONSUMER_GROUP_ID
-          value: lc_classifier_consumer
+          value: lc-classifier-step
         - name: PRODUCER_SERVER
           valueFrom:
             secretKeyRef:
@@ -66,7 +66,7 @@ spec:
         - name: CONSUME_TIMEOUT
           value: "10"
         - name: CONSUME_MESSAGES
-          value: "1000"
+          value: "50"
         - name: MODEL_PATH
           value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/random_forest/2.0.1/
         - name: MODEL_NAME
@@ -98,13 +98,12 @@ spec:
             secretKeyRef:
               name: alerts-database-mongo
               key: password
-        image: ghcr.io/alercebroker/lc_classifier_step:elasticc-39b01c6
+        image: ghcr.io/alercebroker/lc_classifier_step:elasticc-eccad42
         name: lc-classifier
         resources:
           requests:
-            memory: 3Gi
-          limits:
-            memory: 5Gi
+            memory: 2G
+            cpu: 250m
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
