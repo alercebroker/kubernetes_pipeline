@@ -2,36 +2,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: transformer-online-classifier-step
+  name: transformer-lc-features-classifier
 spec:
   selector:
     matchLabels:
-      step: transformer-online-classifier-step
+      step: transformer-lc-features-classifier
   template:
     metadata:
       labels:
-        step: transformer-online-classifier-step
+        step: transformer-lc-features-classifier
     spec:
       containers:
         - env:
             - name: CONSUME_MESSAGES
               value: "10"
             - name: CONSUMER_GROUP_ID
-              value: balto-lc-classifier-step
+              value: messi-lc-classifier-step
             - name: CONSUMER_SERVER
               valueFrom:
                 secretKeyRef:
                   name: kafka
                   key: consumer-server
             - name: CONSUMER_TOPICS
-              value: ingestion
+              value: features
             - name: PRODUCER_SERVER
               valueFrom:
                 secretKeyRef:
                   name: kafka
                   key: producer-public-server
             - name: PRODUCER_TOPIC_FORMAT
-              value: alerce_elasticc_balto_classifier_%s
+              value: alerce_elasticc_messi_classifier_%s
             - name: PRODUCER_DATE_FORMAT
               value: "%Y%m%d"
             - name: PRODUCER_CHANGE_HOUR
@@ -62,14 +62,18 @@ spec:
                 secretKeyRef:
                   name: metrics
                   key: topic
+            - name: CLASSIFIER  # with this variable we select the model that use features
+              value: features
             - name: MODEL_NAME
-              value: balto_classifier
+              value: messi_classifier
             - name: MODEL_VERSION
-              value: "3.0.0"
+              value: "1.0.0"
             - name: MODEL_PATH
-              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/3.0.0/EncoderHeader.pt
-            - name: QUANTILES_PATH
-              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/balto_classifier_lc_header/3.0.0/HeaderNorm1QT/
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/messi/1.0.0/EncoderFeat.pt
+            - name: HEADER_QUANTILES_PATH
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/messi/1.0.0/HeaderNorm1QT/
+            - name: FEATURES_QUANTILES_PATH
+              value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/messi/1.0.0/FeatNorm1QT/
             - name: MONGO_HOST
               valueFrom:
                 secretKeyRef:
@@ -95,8 +99,8 @@ spec:
                 secretKeyRef:
                   name: alerts-database-mongo
                   key: password
-          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc-6ab7c2f
-          name: transformer-online-classifier-step
+          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc-3cb5d32
+          name: transformer-lc-features-classifier
           resources:
             requests:
               memory: 512M

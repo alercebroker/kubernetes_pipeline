@@ -45,7 +45,7 @@ spec:
           value: "10"
         - name: CONSUME_MESSAGES
           value: "100"
-        image: ghcr.io/alercebroker/feature_step:elasticc-a7a61eb
+        image: ghcr.io/alercebroker/feature_step:elasticc-79673c1
         imagePullPolicy: Always
         name: feature
         resources:

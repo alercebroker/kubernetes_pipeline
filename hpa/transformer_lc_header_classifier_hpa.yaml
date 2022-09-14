@@ -2,12 +2,12 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: transformer-online-classifier-hpa
+  name: transformer-lc-header-classifier-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: transformer-online-classifier-step
+    name: transformer-lc-header-classifier
   minReplicas: 5
   maxReplicas: 10
   metrics:
