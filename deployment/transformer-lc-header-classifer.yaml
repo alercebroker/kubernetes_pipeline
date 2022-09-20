@@ -95,7 +95,7 @@ spec:
                 secretKeyRef:
                   name: alerts-database-mongo
                   key: password
-          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc-3cb5d32
+          image: ghcr.io/alercebroker/transformer_online_classifier_step:elasticc-ce3d091
           name: transformer-lc-header-classifier
           resources:
             requests:
