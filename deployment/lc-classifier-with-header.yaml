@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lc-classifier-with-header
+spec:
+  selector:
+    matchLabels:
+      app: lc-classifier-with-header
+  template:
+    metadata:
+      labels:
+        app: lc-classifier-with-header
+    spec:
+      containers:
+      - env:
+        - name: CONSUMER_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: consumer-server
+        - name: CONSUMER_TOPICS
+          value: features
+        - name: CONSUMER_GROUP_ID
+          value: lc-classifier-with-header-step
+        - name: PRODUCER_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: producer-public-server
+        - name: PRODUCER_TOPIC_FORMAT
+          value: alerce_elasticc_barney_classifier_%s
+        - name: PRODUCER_DATE_FORMAT
+          value: "%Y%m%d"
+        - name: PRODUCER_CHANGE_HOUR
+          value: "22"
+        - name: PRODUCER_RETENTION_DAYS
+          value: "1"
+        - name: PRODUCER_SECURITY_PROTOCOL
+          value: SASL_PLAINTEXT
+        - name: PRODUCER_SASL_MECHANISM
+          value: "SCRAM-SHA-256"
+        - name: PRODUCER_SASL_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: lc_transformer_username
+        - name: PRODUCER_SASL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: lc_transformer_password
+        - name: STEP_ID
+          value: lc_classification_with_header
+        - name: STEP_VERSION
+          value: lc_classifier_with_header
+        - name: METRICS_HOST
+          valueFrom:
+            secretKeyRef:
+              name: metrics
+              key: host
+        - name: METRICS_TOPIC
+          valueFrom:
+            secretKeyRef:
+              name: metrics
+              key: topic
+        - name: CONSUME_TIMEOUT
+          value: "10"
+        - name: CONSUME_MESSAGES
+          value: "50"
+        - name: MODEL_PATH
+          value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/barney/1.0.0/
+        - name: MODEL_NAME
+          value: barney
+        - name: MODEL_VERSION
+          value: "1.0.0"
+        - name: MONGO_HOST
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: host
+        - name: MONGO_NAME
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: database
+        - name: MONGO_PORT
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: port
+        - name: MONGO_USER
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: user
+        - name: MONGO_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database-mongo
+              key: password
+        image: ghcr.io/alercebroker/lc_classifier_with_header_step:elasticc-eccad42-GET_THE_RIGHT_TAG
+        name: lc-classifier-with-header
+        resources:
+          requests:
+            memory: 2G
+            cpu: 250m
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: image-pull-access
