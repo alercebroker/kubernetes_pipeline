@@ -49,10 +49,12 @@ spec:
             secretKeyRef:
               name: kafka
               key: lc_transformer_password
-        - name: STEP_ID
+        - name: STEP_ID, "with_header")
           value: lc_classification_with_header
         - name: STEP_VERSION
           value: lc_classifier_with_header
+        - name: CLASSIFIER
+          value: "with_header"
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
@@ -68,11 +70,11 @@ spec:
         - name: CONSUME_MESSAGES
           value: "50"
         - name: MODEL_PATH
-          value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/barney/1.0.0/
+          value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/barney/2.0.0/barney.tar.gz
         - name: MODEL_NAME
           value: barney
         - name: MODEL_VERSION
-          value: "1.0.0"
+          value: "2.0.0"
         - name: MONGO_HOST
           valueFrom:
             secretKeyRef:
@@ -102,7 +104,7 @@ spec:
         name: lc-classifier-with-header
         resources:
           requests:
-            memory: 2G
+            memory: 5G
             cpu: 250m
       restartPolicy: Always
       imagePullSecrets:

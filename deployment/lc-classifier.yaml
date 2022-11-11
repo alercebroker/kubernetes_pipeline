@@ -53,6 +53,8 @@ spec:
           value: lc_classification
         - name: STEP_VERSION
           value: lc_classifier
+        - name: CLASSIFIER
+          value: "without_header"
         - name: METRICS_HOST
           valueFrom:
             secretKeyRef:
