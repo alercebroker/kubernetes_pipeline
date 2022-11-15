@@ -26,7 +26,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: kafka
-              key: producer-public-server
+              key: producer-server
         - name: PRODUCER_TOPIC_FORMAT
           value: alerce_elasticc_barney_classifier_%s
         - name: PRODUCER_DATE_FORMAT
@@ -49,7 +49,7 @@ spec:
             secretKeyRef:
               name: kafka
               key: lc_transformer_password
-        - name: STEP_ID, "with_header")
+        - name: STEP_ID
           value: lc_classification_with_header
         - name: STEP_VERSION
           value: lc_classifier_with_header
@@ -68,7 +68,7 @@ spec:
         - name: CONSUME_TIMEOUT
           value: "10"
         - name: CONSUME_MESSAGES
-          value: "50"
+          value: "5"
         - name: MODEL_PATH
           value: https://alerce-static.s3.amazonaws.com/pipeline/elasticc/barney/2.0.0/barney.tar.gz
         - name: MODEL_NAME
@@ -100,7 +100,7 @@ spec:
             secretKeyRef:
               name: alerts-database-mongo
               key: password
-        image: ghcr.io/alercebroker/lc_classifier_with_header_step:elasticc-eccad42-GET_THE_RIGHT_TAG
+        image: ghcr.io/alercebroker/lc_classifier_step:elasticc-250282a
         name: lc-classifier-with-header
         resources:
           requests:
