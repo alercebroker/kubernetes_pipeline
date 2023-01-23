@@ -100,4 +100,4 @@ spec:
               cpu: 250m
       restartPolicy: Always
       imagePullSecrets:
-      - name: image-pull-access
+        - name: image-pull-access
