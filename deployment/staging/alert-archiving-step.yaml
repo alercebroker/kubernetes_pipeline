@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alert-archiving-step
+spec:
+  selector:
+    matchLabels:
+      app: alert-archiving-step
+  template:
+    metadata:
+      labels:
+        app: alert-archiving-step
+    spec:
+      containers:
+        - env:
+            - name: CONSUMER_GROUP_ID
+              value: archiving-step
+            - name: CONSUMER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: consumer-server
+            - name: CONSUMER_TOPICS
+              value: "^ztf*"
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aws
+                  key: access-key
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws
+                  key: secret-access-key
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
+            - name: S3_ZTF_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: s3
+                  key: grouped-avro
+          image: ghcr.io/alercebroker/alert_archiving_step:1.0.0
+          name: alert-archiving-step
+          resources:
+            requests:
+              memory: 300M
+              cpu: 300m
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: image-pull-access
