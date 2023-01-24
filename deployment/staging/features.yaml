@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feature-step
+  namespace: pipeline
+spec:
+  selector:
+    matchLabels:
+      app: feature-step
+  template:
+    metadata:
+      labels:
+        app: feature-step
+    spec:
+      affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: eks.amazonaws.com/nodegroup
+                      operator: In
+                      values:
+                          - staging-pipeline
+      containers:
+      - env:
+        - name: DB_ENGINE
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database
+              key: engine
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database
+              key: host
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database
+              key: user
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database
+              key: password
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database
+              key: port
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: alerts-database
+              key: name
+        - name: CONSUMER_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: consumer-server
+        - name: CONSUMER_TOPICS
+          value: xmatch
+        - name: CONSUMER_GROUP_ID
+          value: feature_consumer
+        - name: PRODUCER_SERVER
+          valueFrom:
+            secretKeyRef:
+              name: kafka
+              key: producer-server
+        - name: PRODUCER_TOPIC
+          value: features
+        - name: STEP_VERSION
+          value: "1.0.0"
+        - name: STEP_ID
+          value: transitional_features
+        - name: FEATURE_VERSION
+          value: lc_classifier_1.2.1-P-transitional
+        - name: METRICS_HOST
+          valueFrom:
+            secretKeyRef:
+              name: metrics
+              key: host
+        - name: METRICS_TOPIC
+          valueFrom:
+            secretKeyRef:
+              name: metrics
+              key: topic
+        - name: CONSUME_TIMEOUT
+          value: "10"
+        - name: CONSUME_MESSAGES
+          value: "50"
+        image: ghcr.io/alercebroker/feature_step:latest
+        name: feature
+        resources:
+          requests:
+            memory: 300M
+            cpu: 600m
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: image-pull-access

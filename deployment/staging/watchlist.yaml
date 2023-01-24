@@ -1,0 +1,113 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watchlist-step
+  namespace: pipeline
+spec:
+  selector:
+    matchLabels:
+      app: watchlist-step
+  template:
+    metadata:
+      labels:
+        app: watchlist-step
+    spec:
+      affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: eks.amazonaws.com/nodegroup
+                      operator: In
+                      values:
+                          - staging-pipeline
+      containers:
+        - env:
+            - name: ALERTS_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: host
+            - name: ALERTS_DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: name
+            - name: ALERTS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: password
+            - name: ALERTS_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: alerts-database
+                  key: user
+            - name: CONSUMER_GROUP_ID
+              value: watchlist_consumer_k8
+            - name: CONSUMER_SERVER
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: consumer-server
+            - name: TOPIC_STRATEGY_FORMAT
+              valueFrom:
+                secretKeyRef:
+                  name: kafka
+                  key: topic-strategy-format
+            - name: CONSUME_MESSAGES
+              value: "500"
+            - name: USERS_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: users-database
+                  key: user-db-host
+            - name: USERS_DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: users-database
+                  key: name
+            - name: USERS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: users-database
+                  key: password
+            - name: USERS_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: users-database
+                  key: user
+            - name: METRICS_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: host
+            - name: METRICS_TOPIC
+              valueFrom:
+                secretKeyRef:
+                  name: metrics
+                  key: topic
+            - name: ES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: elasticsearch
+                  key: host
+            - name: LOGSTASH_USER
+              valueFrom:
+                secretKeyRef:
+                  name: elasticsearch
+                  key: logstash-user
+            - name: LOGSTASH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: elasticsearch
+                  key: logstash-password
+          image: ghcr.io/alercebroker/watchlist_step:latest
+          name: watchlist-step
+          resources:
+            requests:
+              memory: 300M
+              cpu: 250m
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: image-pull-access
