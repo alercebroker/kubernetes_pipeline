@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: feature-step
+  namespace: pipeline
 spec:
   selector:
     matchLabels:
@@ -11,6 +12,15 @@ spec:
       labels:
         app: feature-step
     spec:
+      affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: eks.amazonaws.com/nodegroup
+                      operator: In
+                      values:
+                          - staging-pipeline
       containers:
       - env:
         - name: DB_ENGINE
@@ -88,4 +98,3 @@ spec:
       restartPolicy: Always
       imagePullSecrets:
       - name: image-pull-access
-status: {}

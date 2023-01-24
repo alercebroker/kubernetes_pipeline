@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: watchlist-step
+  namespace: pipeline
 spec:
   selector:
     matchLabels:
@@ -11,6 +12,15 @@ spec:
       labels:
         app: watchlist-step
     spec:
+      affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: eks.amazonaws.com/nodegroup
+                      operator: In
+                      values:
+                          - staging-pipeline
       containers:
         - env:
             - name: ALERTS_DB_HOST
