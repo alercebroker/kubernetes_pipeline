@@ -3,6 +3,7 @@ apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: ingestion-ztf
+  namespace: pipeline
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -22,6 +23,7 @@ apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: ingestion-atlas
+  namespace: pipeline
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
