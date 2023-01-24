@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: s3-step-ztf
+  namespace: pipeline
 spec:
   selector:
     matchLabels:
@@ -11,6 +12,15 @@ spec:
       labels:
         app: s3-step-ztf
     spec:
+      affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: eks.amazonaws.com/nodegroup
+                      operator: In
+                      values:
+                          - staging-pipeline
       containers:
         - env:
           - name: CONSUMER_SERVER
@@ -71,6 +81,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: s3-step-atlas
+  namespace: pipeline
 spec:
   selector:
     matchLabels:
@@ -80,6 +91,15 @@ spec:
       labels:
         app: s3-step-atlas
     spec:
+      affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: eks.amazonaws.com/nodegroup
+                      operator: In
+                      values:
+                          - staging-pipeline
       containers:
         - env:
           - name: CONSUMER_SERVER

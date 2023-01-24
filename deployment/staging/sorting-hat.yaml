@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sorting-hat-step-ztf
+  namespace: pipeline
 spec:
   selector:
     matchLabels:
@@ -12,6 +13,15 @@ spec:
       labels:
         app: sorting-hat-step-ztf
     spec:
+      affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: eks.amazonaws.com/nodegroup
+                      operator: In
+                      values:
+                          - staging-pipeline
       containers:
         - env:
             - name: CONSUME_MESSAGES
@@ -82,6 +92,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sorting-hat-step-atlas
+  namespace: pipeline
 spec:
   selector:
     matchLabels:
@@ -91,6 +102,15 @@ spec:
       labels:
         app: sorting-hat-step-atlas
     spec:
+      affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: eks.amazonaws.com/nodegroup
+                      operator: In
+                      values:
+                          - staging-pipeline
       containers:
         - env:
             - name: CONSUME_MESSAGES
