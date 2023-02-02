@@ -20,14 +20,11 @@ data:
     }
     output {
         elasticsearch {
-            hosts       => ["${ES_HOST}:9200"]
-            user        => "${LOGSTASH_USER:logstash_internal}"
-            password    => "${LOGSTASH_PASSWORD:x-pack-test-password}"
+            hosts       => ["${ES_HOST}"]
+            user        => "${LOGSTASH_USER}"
+            password    => "${LOGSTASH_PASSWORD}"
             index => "pipeline-metrics-%{+YYYY-MM-dd}"
         }
-        stdout {
-            codec => rubydebug
-          }
     }
 
 ---
@@ -64,7 +61,7 @@ spec:
             name: filebeat
           - containerPort: 9600
             name: logstash
-        image: docker.elastic.co/logstash/logstash:8.2.0-amd64
+        image: docker.elastic.co/logstash/logstash-oss:8.6.1-amd64
         volumeMounts:
         - name: log-pipeline-config
           mountPath: /usr/share/logstash/pipeline/
@@ -85,12 +82,12 @@ spec:
           valueFrom:
             secretKeyRef:
               name: elasticsearch
-              key: filebeat-user
+              key: logstash-user
         - name: LOGSTASH_PASSWORD
           valueFrom:
             secretKeyRef:
               name: elasticsearch
-              key: filebeat-password
+              key: logstash-password
         - name: CONSUMER_SERVER
           valueFrom:
             secretKeyRef:
