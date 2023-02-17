@@ -1,0 +1,27 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "logstash.fullname" . }}
+  namespace: {{ .Values.namespace }}
+data:
+  log-pipeline-es.conf: |-
+    input {
+        kafka {
+            bootstrap_servers => "${CONSUMER_SERVER}:9092"
+            topics =>  ["${METRICS_TOPIC}"]
+            codec => "json"
+            group_id => "logstash"
+            auto_offset_reset => "earliest"
+      }
+    }
+    filter {
+
+    }
+    output {
+        elasticsearch {
+            hosts       => ["${ES_HOST}"]
+            user        => "${LOGSTASH_USER}"
+            password    => "${LOGSTASH_PASSWORD}"
+            index => "pipeline-metrics-%{+YYYY-MM-dd}"
+        }
+    }
