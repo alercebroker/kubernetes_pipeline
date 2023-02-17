@@ -284,32 +284,4 @@ Referential image
 
 ## Start up
 
-As a final result, we were looking to deploy all steps of the pipeline to the Kubernetes architecture. 
-
-Below I will attach the step by step to deploy the pipeline.
-
-1) General state of the cluster
-````
-kubectl get all
-````
-
-2) Deploy the metrics service in the cluster
-````
-kubectl apply -f 1-metrics/
-`````
-
-3) Deploy the manifests for each step in the pipeline
-````
-lsabatini@Luiss-MBP k8s % kubectl apply -f 2-deployment/
-````
-
-4) We apply the deployment of the HPA service, having this service running, the pods will begin to scale according to our configuration.
-````
-kubectl apply -f 3-hpa/
-````
-
-5) Following the previous steps, we would already have all the steps of the pipeline running in Kubernetes.
-
-
-Below is an image of the cluster running the pipeline.
-![](https://i.imgur.com/uMhpoBu.png)
+TODO 
