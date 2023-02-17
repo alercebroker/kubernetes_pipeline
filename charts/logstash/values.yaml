@@ -1,0 +1,35 @@
+replicaCount: 1
+
+namespace: "pipeline"
+
+fullnameOverride: ""
+nameOverride: ""
+
+image:
+  repository: docker.elastic.co/logstash/logstash-oss
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "8.6.1-amd64"
+
+containerPort:
+  filebeat: 5044
+  logstash: 9600
+
+elasticsearchHost: ""
+kafkaHost: ""
+kafkaTopic: "metrics"
+
+secrets:
+  username: ""
+  password: ""
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+affinity: {}
