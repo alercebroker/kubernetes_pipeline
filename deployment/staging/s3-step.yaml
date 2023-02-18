@@ -55,18 +55,8 @@ spec:
                 key: single-avro
           - name: REGION_NAME
             value: us-east-1
-          - name: AWS_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: aws
-                key: access-key
-          - name: AWS_SECRET_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: aws
-                key: secret-access-key
           name: s3-step
-          image: ghcr.io/alercebroker/s3_step:latest
+          image: ghcr.io/alercebroker/s3_step:rc
           imagePullPolicy: Always
           resources:
             requests:
@@ -134,18 +124,8 @@ spec:
                 key: single-avro
           - name: REGION_NAME
             value: us-east-1
-          - name: AWS_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: aws
-                key: access-key
-          - name: AWS_SECRET_ACCESS_KEY
-            valueFrom:
-              secretKeyRef:
-                name: aws
-                key: secret-access-key
           name: s3-step
-          image: ghcr.io/alercebroker/s3_step:latest
+          image: ghcr.io/alercebroker/s3_step:rc
           imagePullPolicy: Always
           resources:
             requests:

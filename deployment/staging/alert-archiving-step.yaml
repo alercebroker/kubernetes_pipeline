@@ -32,16 +32,6 @@ spec:
                   key: consumer-server
             - name: CONSUMER_TOPICS
               value: "^ztf*"
-            - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: aws
-                  key: access-key
-            - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: aws
-                  key: secret-access-key
             - name: METRICS_HOST
               valueFrom:
                 secretKeyRef:
