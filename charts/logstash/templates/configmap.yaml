@@ -7,7 +7,7 @@ data:
   log-pipeline-es.conf: |-
     input {
         kafka {
-            bootstrap_servers => "${CONSUMER_SERVER}:9092"
+            bootstrap_servers => "${CONSUMER_SERVER}"
             topics =>  ["${METRICS_TOPIC}"]
             codec => "json"
             group_id => "logstash"
