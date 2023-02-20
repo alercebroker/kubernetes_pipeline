@@ -52,5 +52,5 @@ secrets:
   bootstrapServers: ""
   #mockDb: flag that chooses if the scribe writes into database or just logs the commands
   mockDb: "True"
-  #secretName: name of the secret stored in AWS Secret Manager
+  #secretName: name of the secret stored in AWS Secret Manager containing MongoDB credentials
   secretName: ""
