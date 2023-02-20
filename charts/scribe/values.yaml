@@ -44,8 +44,13 @@ affinity:
               values: []
 
 secrets:
+  #topics: all the topics that will be consumed by Alerce Scribe
   topics: "w_object,w_detections,w_non_detections"
+  #numMessages: size of the message batch
   numMessages: "100"
+  #bootstrapServers: one or more Kafka servers
   bootstrapServers: ""
+  #mockDb: flag that chooses if the scribe writes into database or just logs the commands
   mockDb: "True"
+  #secretName: name of the secret stored in AWS Secret Manager
   secretName: ""
