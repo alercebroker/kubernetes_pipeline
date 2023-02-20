@@ -35,11 +35,13 @@ spec:
             - name: TOPICS
               value: {{ .Values.secrets.topics }}
             - name: NUM_MESSAGES
-              value: {{ .Values.secrets.numMessages }}
+              value: "{{ .Values.secrets.numMessages }}"
             - name: CONSUMER_SERVER
               value: {{ .Values.secrets.bootstrapServers }}
             - name: MOCK_DB_COLLECTION
-              value: {{  .Values.secrets.mockDb }}
+              value: "{{ .Values.secrets.mockDb }}"
+            - name: MONGODB_SECRET_NAME
+              value: "{{ .Values.secrets.secretName }}"
 
       {{- with .Values.affinity }}
       affinity:

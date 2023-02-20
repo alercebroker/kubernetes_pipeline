@@ -34,14 +34,18 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-affinity: {}
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+          - matchExpressions:
+            - key: eks.amazonaws.com/nodegroup
+              operator: In
+              values: []
 
 secrets:
   topics: "w_object,w_detections,w_non_detections"
   numMessages: "100"
   bootstrapServers: ""
-  mockDb: True
-
-logstashSecrets:
-  username: ""
-  password: ""
+  mockDb: "True"
+  secretName: ""
