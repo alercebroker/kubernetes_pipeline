@@ -1,6 +1,6 @@
 replicaCount: 1
 
-namespace: "pipeline"
+namespace: "logstash"
 
 fullnameOverride: ""
 nameOverride: ""
