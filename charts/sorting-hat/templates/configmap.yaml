@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: '{{ include "sorting-hat.fullname" . }}-atlas'
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-topics: {{ .Values.configmap.consumerTopics.atlas }}
+  internal-server: {{ .Values.configmap.internalServer }}
+  producer-topic: {{ .Values.configmap.producerTopic.atlas }}
+  metrics-topic: {{ .Values.configmap.metricsTopic }}
+  mongo-secret-name: {{ .Values.configmap.mongoSecretName }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: '{{ include "sorting-hat.fullname" . }}-ztf'
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-topics: {{ .Values.configmap.consumerTopics.ztf }}
+  internal-server: {{ .Values.configmap.internalServer }}
+  producer-topic: {{ .Values.configmap.producerTopic.ztf }}
+  metrics-topic: {{ .Values.configmap.metricsTopic }}
+  mongo-secret-name: {{ .Values.configmap.mongoSecretName }}
