@@ -4,7 +4,7 @@
 
 replicaCount: 1
 
-namespace: pipeline
+namespace: stamp-classifier
 
 image:
   ztf:
@@ -83,3 +83,9 @@ configmap:
     scribeTopic: "w_object"
     modelName: "ztf-stamp-classifier"
     modelVersion: ""
+
+imageCredentials:
+  registry: ""
+  username: ""
+  password: ""
+  email: ""
