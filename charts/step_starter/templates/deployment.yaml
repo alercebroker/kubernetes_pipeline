@@ -61,22 +61,22 @@ spec:
             - name: SCRIBE_SERVER
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: {{ include "<CHARTNAME>.fullname" . }}
                   key: internal-server
             - name: SCRIBE_TOPIC
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: {{ include "<CHARTNAME>.fullname" . }}
                   key: scribe-topic
             - name: METRICS_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: {{ include "<CHARTNAME>.fullname" . }}
                   key: internal-server
             - name: METRICS_TOPIC
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: {{ include "<CHARTNAME>.fullname" . }}
                   key: metrics-topic
       {{- with .Values.affinity }}
       affinity:
