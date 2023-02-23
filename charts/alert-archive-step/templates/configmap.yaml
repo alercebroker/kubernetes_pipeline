@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "alert-archive-step.fullname" . }}
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-topics: {{ .Values.configmap.consumerTopics }}
+  internal-server: {{ .Values.configmap.internalServer }}
+  metrics-topic: {{ .Values.configmap.metricsTopic }}
+  bucket-name: {{ .Values.configmap.bucketName }}
