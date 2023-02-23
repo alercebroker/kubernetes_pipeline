@@ -1,17 +1,21 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "chart.fullname" . }}
+  name: '{{ include "chart.fullname" . }}-ztf'
   namespace: {{ .Values.namespace }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
+    app.kubernetes.io/name: '{{ include "chart.name" . }}-ztf'
+    app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
+  {{- if not .Values.autoscaling.ztf.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "chart.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/name: '{{ include "chart.name" . }}-ztf'
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,7 +23,8 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "chart.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/name: '{{ include "chart.name" . }}-ztf'
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -27,29 +32,29 @@ spec:
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.ztf.repository }}:{{ .Values.image.ztf.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: metrics
               containerPort: 8000
               protocol: TCP
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+            {{- toYaml .Values.resources.ztf | nindent 12 }}
           env:
             - name: CONSUMER_TOPICS
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: '{{ include "chart.fullname" . }}-ztf'
                   key: consumer-topics
             - name: CONSUMER_SERVER
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: '{{ include "chart.fullname" . }}-ztf'
                   key: internal-server
             - name: CONSUMER_GROUP_ID
-              value: {{ include "chart.fullname" . }}
+              value: '{{ include "chart.fullname" . }}-ztf'
             - name: PRODUCER_TOPIC_FORMAT
-              value: '{{ include "chart.fullname" . }}_%s'
+              value: stamp_classifier_ztf_%s
             - name: PRODUCER_DATE_FORMAT
               value: '%Y%m%d'
             - name: PRODUCER_CHANGE_HOUR
@@ -59,7 +64,7 @@ spec:
             - name: PRODUCER_SERVER
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: '{{ include "chart.fullname" . }}-ztf'
                   key: public-server
             - name: PRODUCER_SASL_USERNAME
               valueFrom:
@@ -74,32 +79,32 @@ spec:
             - name: SCRIBE_SERVER
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: '{{ include "chart.fullname" . }}-ztf'
                   key: internal-server
             - name: SCRIBE_TOPIC
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: '{{ include "chart.fullname" . }}-ztf'
                   key: scribe-topic
             - name: METRICS_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: '{{ include "chart.fullname" . }}-ztf'
                   key: internal-server
             - name: METRICS_TOPIC
               value: "metrics"
             - name: MODEL_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: '{{ include "chart.fullname" . }}-ztf'
                   key: model-name
             - name: MODEL_VERSION
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "chart.fullname" . }}
+                  name: '{{ include "chart.fullname" . }}-ztf'
                   key: model-version
-            - name: MODEL_PATH
-              value: ""
+            - name: CLASSIFIER_STRATEGY
+              value: "ZTF"
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

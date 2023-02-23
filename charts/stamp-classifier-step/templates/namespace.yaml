@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.namespace }}
+  annotations:
+    "helm.sh/resource-policy": keep
+  labels:
+    name: {{ .Values.namespace }}

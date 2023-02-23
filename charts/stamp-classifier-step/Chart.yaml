@@ -1,6 +1,6 @@
 apiVersion: v2
-name: atlas-stamp-classifier-step
-description: ATLAS Stamp Classifier Step
+name: stamp-classifier-step
+description: Stamp Classifier Step
 
 # A chart can be either an 'application' or a 'library' chart.
 #
