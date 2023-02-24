@@ -6,10 +6,10 @@ fullnameOverride: ""
 nameOverride: ""
 
 image:
-  repository: docker.elastic.co/logstash/logstash-oss
+  repository: opensearchproject/logstash-oss-with-opensearch-output-plugin
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "8.6.1-amd64"
+  tag: "7.16.2"
 
 containerPort:
   filebeat: 5044
