@@ -1,0 +1,148 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: '{{ include "ingestion-step.fullname" . }}-ztf'
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "ingestion-step.labels" . | nindent 4 }}
+    app.kubernetes.io/name: {{ include "ingestion-step.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+spec:
+  {{- if not .Values.autoscaling.ztf.enabled }}
+  replicas: {{ .Values.replicaCount.ztf }}
+  {{- end }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: '{{ include "ingestion-step.name" . }}-ztf'
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app.kubernetes.io/name: '{{ include "ingestion-step.name" . }}-ztf'
+        app.kubernetes.io/instance: {{ .Release.Name }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: metrics
+              containerPort: 8000
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.resources.ztf | nindent 12 }}
+          env:
+            - name: CONSUME_MESSAGES
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-ztf'
+                  key: consume-messages
+            - name: CONSUMER_TOPICS
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-ztf'
+                  key: consumer-topics
+            - name: CONSUMER_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: internal-server
+            - name: CONSUMER_GROUP_ID
+              value: '{{ include "ingestion-step.fullname" . }}-ztf'
+            - name: PRODUCER_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: internal-server
+            - name: PRODUCER_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-ztf'
+                  key: producer-topic
+            - name: PSQL_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: psql-host
+            - name: PSQL_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: psql-name
+            - name: PSQL_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: psql-port
+            - name: PSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: psql-user
+            - name: PSQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: psql-password
+            - name: MONGO_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: mongo-host
+            - name: MONGO_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: mongo-name
+            - name: MONGO_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: mongo-port
+            - name: MONGO_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: mongo-user
+            - name: MONGO_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: mongo-password
+            - name: METRICS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: internal-server
+            - name: METRICS_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: metrics-topic
+            - name: STEP_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: step-version
+            - name: STEP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: step-id
+            - name: STEP_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "ingestion-step.fullname" . }}-common'
+                  key: step-name
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

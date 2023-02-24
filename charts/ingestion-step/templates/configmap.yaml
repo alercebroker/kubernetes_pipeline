@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: '{{ include "ingestion-step.fullname" . }}-common'
+  namespace: {{ .Values.namespace }}
+data:
+  psql-host: {{ .Values.configmap.psqlCredentials.host }}
+  psql-name: {{ .Values.configmap.psqlCredentials.name }}
+  psql-port: '{{ .Values.configmap.psqlCredentials.port }}'
+  psql-user: {{ .Values.configmap.psqlCredentials.user }}
+  psql-password: {{ .Values.configmap.psqlCredentials.password }}
+  mongo-host: {{ .Values.configmap.mongoCredentials.host }}
+  mongo-name: {{ .Values.configmap.mongoCredentials.name }}
+  mongo-port: '{{ .Values.configmap.mongoCredentials.port }}'
+  mongo-user: {{ .Values.configmap.mongoCredentials.user }}
+  mongo-password: {{ .Values.configmap.mongoCredentials.password }}
+  step-version: {{ .Values.image.tag | default .Chart.AppVersion }}
+  step-id: {{ .Values.configmap.stepId }}
+  step-name: {{ .Values.configmap.stepName }}
+  internal-server: {{ .Values.configmap.internalServer }}
+  metrics-topic: {{ .Values.configmap.metricsTopic }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: '{{ include "ingestion-step.fullname" . }}-atlas'
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-topics: {{ .Values.configmap.consumerTopics.atlas }}
+  producer-topic: {{ .Values.configmap.producerTopic.atlas }}
+  consume-messages: '{{ .Values.configmap.consumeMessages.atlas }}'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: '{{ include "ingestion-step.fullname" . }}-ztf'
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-topics: {{ .Values.configmap.consumerTopics.ztf }}
+  producer-topic: {{ .Values.configmap.producerTopic.ztf }}
+  consume-messages: '{{ .Values.configmap.consumeMessages.ztf }}'
