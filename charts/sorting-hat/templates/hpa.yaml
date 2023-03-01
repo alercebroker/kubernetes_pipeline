@@ -26,6 +26,15 @@ spec:
         name: memory
         targetAverageUtilization: {{ .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
     {{- end }}
+    {{- if .Values.autoscaling.ztf.targetConsumedMessages}}
+    - type: Pods
+      pods:
+        metric:
+          name: consumed_messages
+        target:
+          type: Value
+          averageValue: 200
+    {{- end}}
 {{- end }}
 ---
 {{- if .Values.autoscaling.atlas.enabled }}
@@ -55,4 +64,13 @@ spec:
         name: memory
         targetAverageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
     {{- end }}
+    {{- if .Values.autoscaling.ztf.targetConsumedMessages}}
+    - type: Pods
+      pods:
+        metric:
+          name: consumed_messages
+        target:
+          type: Value
+          averageValue: 200
+    {{- end}}
 {{- end }}
