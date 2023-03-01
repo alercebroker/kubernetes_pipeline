@@ -18,7 +18,7 @@ data:
 
     }
     output {
-        elasticsearch {
+        opensearch {
             hosts       => ["${ES_HOST}"]
             user        => "${LOGSTASH_USER}"
             password    => "${LOGSTASH_PASSWORD}"
