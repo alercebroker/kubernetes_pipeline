@@ -1,9 +1,10 @@
 ---
 {{- if .Values.autoscaling.ztf.enabled }}
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: '{{ include "sorting-hat.fullname" . }}-ztf'
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "sorting-hat.labels" . | nindent 4 }}
 spec:
@@ -14,34 +15,39 @@ spec:
   minReplicas: {{ .Values.autoscaling.ztf.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.ztf.maxReplicas }}
   metrics:
-    {{- if .Values.autoscaling.ztf.targetCPUUtilizationPercentage }}
+    {{- if .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: {{ .Values.autoscaling.ztf.targetCPUUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
     {{- end }}
-    {{- if .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
+    {{- if .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: {{ .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
     {{- end }}
-    {{- if .Values.autoscaling.ztf.targetConsumedMessages}}
+    {{- if .Values.autoscaling.atlas.targetConsumedMessages}}
     - type: Pods
       pods:
         metric:
           name: consumed_messages
         target:
-          type: Value
-          averageValue: 200
+          type: AverageValue
+          averageValue: {{ .Values.autoscaling.ztf.targetConsumedMessages }}
     {{- end}}
 {{- end }}
 ---
 {{- if .Values.autoscaling.atlas.enabled }}
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: '{{ include "sorting-hat.fullname" . }}-atlas'
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "sorting-hat.labels" . | nindent 4 }}
 spec:
@@ -56,21 +62,25 @@ spec:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: {{ .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
     {{- end }}
     {{- if .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
     {{- end }}
-    {{- if .Values.autoscaling.ztf.targetConsumedMessages}}
+    {{- if .Values.autoscaling.atlas.targetConsumedMessages}}
     - type: Pods
       pods:
         metric:
           name: consumed_messages
         target:
-          type: Value
-          averageValue: 200
+          type: AverageValue
+          averageValue: {{ .Values.autoscaling.atlas.targetConsumedMessages  }}
     {{- end}}
 {{- end }}
