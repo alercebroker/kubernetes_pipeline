@@ -1,6 +1,0 @@
-dependencies:
-- name: logstash
-  repository: https://alercebroker.github.io/kubernetes_pipeline
-  version: 0.1.0
-digest: sha256:16aee97b75da85792cfbcd943e1728d4cb7ffbfb89363213fbc3a32451da3bd7
-generated: "2023-02-17T16:19:58.628161043-03:00"
