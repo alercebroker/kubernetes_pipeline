@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: '{{ include "sorting-hat.fullname" . }}-ztf'
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "sorting-hat.labels" . | nindent 4 }}
 spec:
@@ -20,6 +21,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: '{{ include "sorting-hat.fullname" . }}-atlas'
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "sorting-hat.labels" . | nindent 4 }}
 spec:
