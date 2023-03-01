@@ -1,0 +1,91 @@
+apiVersion: v1
+entries:
+  alert-archive-step:
+  - apiVersion: v2
+    appVersion: 1.0.2
+    created: "2023-03-01T17:19:36.587949471Z"
+    description: A Helm chart for Kubernetes
+    digest: 46a44326e9ff2800f8c04c5e049a57708d921f9c5b214713d929879c10c986c4
+    name: alert-archive-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/alert-archive-step-0.1.0/alert-archive-step-0.1.0.tgz
+    version: 0.1.0
+  ingestion-step:
+  - apiVersion: v2
+    appVersion: 1.1.6
+    created: "2023-03-01T17:19:36.681214545Z"
+    description: A Helm chart for Kubernetes
+    digest: 3fedc14f2762de1d7cab28871ad831cf48296015629dbdb3a66a854d75cc073a
+    name: ingestion-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/ingestion-step-0.1.0/ingestion-step-0.1.0.tgz
+    version: 0.1.0
+  logstash:
+  - apiVersion: v2
+    appVersion: 8.6.1-amd64
+    created: "2023-03-01T17:19:36.776731355Z"
+    description: Logstash for sending pipeline metrics to elasticsearch
+    digest: 592384119fc07a6a324bcb441e50573163bfa75c40739533ff17a2d4ad6417d7
+    name: logstash
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/logstash-0.2.0/logstash-0.2.0.tgz
+    version: 0.2.0
+  s3-step:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-03-01T17:19:36.887277662Z"
+    description: A Helm chart for Kubernetes
+    digest: b64e15e5725545286286ae56c1bc2c7b58545edda91e9a3d9ce1f70ae5ad8f8f
+    name: s3-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/s3-step-0.1.0/s3-step-0.1.0.tgz
+    version: 0.1.0
+  scribe:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-03-01T17:19:36.971266039Z"
+    description: ALeRCE pipeline CQRS eventual consistency engine
+    digest: 5b46300adfd0bfd16e80c82bbff15183b261085b8e3f160e74db3477ccf06472
+    name: scribe
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/scribe-0.1.0/scribe-0.1.0.tgz
+    version: 0.1.0
+  sorting-hat:
+  - apiVersion: v2
+    appVersion: rc-864e914
+    created: "2023-03-01T17:19:37.073528995Z"
+    description: A Helm chart for Kubernetes
+    digest: f0588725c0e1aaee6dbbfbb9ce76e7f061ca12dbda74a2140922bcae07a634e4
+    name: sorting-hat
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/sorting-hat-0.1.0/sorting-hat-0.1.0.tgz
+    version: 0.1.0
+  stamp-classifier-step:
+  - apiVersion: v2
+    appVersion: rc
+    created: "2023-03-01T17:19:37.200618728Z"
+    description: Stamp Classifier Step
+    digest: 74aa0f519b6aebd45fac2a83aca39bcce5b6519e8143e0574b56fdc0d4dbdce6
+    name: stamp-classifier-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/stamp-classifier-step-0.1.0/stamp-classifier-step-0.1.0.tgz
+    version: 0.1.0
+  step_starter:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-03-01T17:19:37.30923218Z"
+    description: A Helm chart for Kubernetes
+    digest: 50512e002e440008e10565904248bec77ca94b83242899d3028cb456d2629587
+    name: step_starter
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-03-01T17:19:37.30923748Z"
