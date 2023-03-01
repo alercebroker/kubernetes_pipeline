@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "<CHARTNAME>.name" -}}
+{{- define "sorting-hat.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "<CHARTNAME>.fullname" -}}
+{{- define "sorting-hat.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "<CHARTNAME>.chart" -}}
+{{- define "sorting-hat.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "<CHARTNAME>.labels" -}}
-helm.sh/chart: {{ include "<CHARTNAME>.chart" . }}
-{{ include "<CHARTNAME>.selectorLabels" . }}
+{{- define "sorting-hat.labels" -}}
+helm.sh/chart: {{ include "sorting-hat.chart" . }}
+{{ include "sorting-hat.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "<CHARTNAME>.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "<CHARTNAME>.name" . }}
+{{- define "sorting-hat.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "sorting-hat.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "<CHARTNAME>.serviceAccountName" -}}
+{{- define "sorting-hat.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "<CHARTNAME>.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "sorting-hat.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
