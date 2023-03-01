@@ -7,7 +7,7 @@ replicaCount: 1
 namespace: <CHARTNAME>
 
 image:
-  repository: nginx
+  repository: ghcr.io/alercebroker/<CHARTNAME>
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
