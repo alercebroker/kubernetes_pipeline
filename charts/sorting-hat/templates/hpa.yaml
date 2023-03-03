@@ -15,23 +15,23 @@ spec:
   minReplicas: {{ .Values.autoscaling.ztf.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.ztf.maxReplicas }}
   metrics:
-    {{- if .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
+    {{- if .Values.autoscaling.ztf.targetCPUUtilizationPercentage }}
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: {{ .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
+          averageUtilization: {{ .Values.autoscaling.ztf.targetCPUUtilizationPercentage }}
     {{- end }}
-    {{- if .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
+    {{- if .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
     - type: Resource
       resource:
         name: memory
         target:
           type: Utilization
-          averageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
+          averageUtilization: {{ .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
     {{- end }}
-    {{- if .Values.autoscaling.atlas.targetConsumedMessages}}
+    {{- if .Values.autoscaling.ztf.targetConsumedMessages}}
     - type: Object
       object:
         metric:
