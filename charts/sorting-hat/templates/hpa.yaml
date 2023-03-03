@@ -32,13 +32,17 @@ spec:
           averageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
     {{- end }}
     {{- if .Values.autoscaling.atlas.targetConsumedMessages}}
-    - type: Pods
-      pods:
+    - type: Object
+      object:
         metric:
-          name: consumed_messages
+          name: consumed_messages_sum
+        describedObject:
+          apiVersion: apps/v1
+          kind: Deployment
+          name: '{{ include "sorting-hat.fullname" . }}-ztf'
         target:
           type: AverageValue
-          averageValue: {{ .Values.autoscaling.ztf.targetConsumedMessages }}
+          averageValue: {{ .Values.autoscaling.ztf.targetConsumedMessages  }}
     {{- end}}
 {{- end }}
 ---
@@ -75,10 +79,14 @@ spec:
           averageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
     {{- end }}
     {{- if .Values.autoscaling.atlas.targetConsumedMessages}}
-    - type: Pods
-      pods:
+    - type: Object
+      object:
         metric:
-          name: consumed_messages
+          name: consumed_messages_sum
+        describedObject:
+          apiVersion: apps/v1
+          kind: Deployment
+          name: '{{ include "sorting-hat.fullname" . }}-atlas'
         target:
           type: AverageValue
           averageValue: {{ .Values.autoscaling.atlas.targetConsumedMessages  }}
