@@ -10,3 +10,4 @@ data:
   scribe-topic: {{ .Values.configmap.ztf.scribeTopic }}
   model-name: {{ .Values.configmap.ztf.modelName }}
   model-version: {{ .Values.configmap.ztf.modelVersion }}
+  mongo-secret-name: {{ .Values.configmap.mongoSecretName }}
