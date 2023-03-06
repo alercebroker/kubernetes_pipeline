@@ -103,6 +103,11 @@ spec:
                 configMapKeyRef:
                   name: '{{ include "chart.fullname" . }}-ztf'
                   key: model-version
+            - name: MONGODB_SECRET_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "chart.fullname" . }}-ztf'
+                  key: model-version
             - name: CLASSIFIER_STRATEGY
               value: "ZTF"
       {{- with .Values.affinity }}

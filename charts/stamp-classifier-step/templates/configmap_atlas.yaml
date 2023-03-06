@@ -10,3 +10,4 @@ data:
   scribe-topic: {{ .Values.configmap.atlas.scribeTopic }}
   model-name: {{ .Values.configmap.atlas.modelName }}
   model-version: {{ .Values.configmap.atlas.modelVersion }}
+  mongo-secret-name: {{ .Values.configmap.mongoSecretName }}
