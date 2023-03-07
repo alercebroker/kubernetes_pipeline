@@ -58,14 +58,9 @@ affinity:
               values: []
 
 secrets:
-  atlas:
-    kafka:
-      username: ""
-      password: ""
-  ztf:
-    kafka:
-      username: ""
-      password: ""
+  kafka:
+    username: ""
+    password: ""
 
 
 configmap:
