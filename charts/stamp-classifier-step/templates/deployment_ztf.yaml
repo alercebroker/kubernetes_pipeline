@@ -107,7 +107,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: '{{ include "chart.fullname" . }}-ztf'
-                  key: model-version
+                  key: mongo-secret-name
             - name: CLASSIFIER_STRATEGY
               value: "ZTF"
       {{- with .Values.affinity }}
