@@ -48,6 +48,11 @@ spec:
                   key: internal-server
             - name: CONSUMER_GROUP_ID
               value: {{ include "prv-candidates.fullname" . }}
+            - name: CONSUME_MESSAGES
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "prv-candidates.fullname" . }}
+                  key: consume-messages
             - name: PRODUCER_SERVER
               valueFrom:
                 configMapKeyRef:
@@ -63,7 +68,7 @@ spec:
                 configMapKeyRef:
                   name: {{ include "prv-candidates.fullname" . }}
                   key: internal-server
-            - name: SCRIBE_TOPIC
+            - name: SCRIBE_PRODUCER_TOPIC
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "prv-candidates.fullname" . }}

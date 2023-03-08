@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "rc-51c2f55"
+appVersion: "rc-2db2507"
 description: A Helm chart for Kubernetes
 name: prv-candidates
 type: application
-version: 0.1.0
+version: 0.2.0

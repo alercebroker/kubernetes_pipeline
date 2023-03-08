@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
+  consume-messages: "{{ .Values.configmap.consumeMessages }}"
   internal-server: {{ .Values.configmap.internalServer }}
   scribe-topic: {{ .Values.configmap.scribeTopic }}
   producer-topic: {{ .Values.configmap.producerTopic }}

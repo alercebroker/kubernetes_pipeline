@@ -36,7 +36,7 @@ affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
-          - matchExpressions:
+        - matchExpressions:
             - key: eks.amazonaws.com/nodegroup
               operator: In
               ## Override this value with the NodeGroup tag accordingly
@@ -44,6 +44,7 @@ affinity:
 
 configmap:
   consumerTopics: ""
+  consumeMessages: ""
   internalServer: ""
   scribeTopic: ""
   metricsTopic: ""
