@@ -33,6 +33,17 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/logstash-0.2.0/logstash-0.2.0.tgz
     version: 0.2.0
+  magstats-step:
+  - apiVersion: v2
+    appVersion: rc-bee33c4
+    created: "2023-03-09T18:48:12.225518992Z"
+    description: A Helm chart for Kubernetes
+    digest: 0a80f752e06a68bfd8882f08dedf33b8c64c169604606197d0a1cfd659ff30fb
+    name: magstats-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/magstats-step-0.1.0/magstats-step-0.1.0.tgz
+    version: 0.1.0
   s3-step:
   - apiVersion: v2
     appVersion: 0.1.0
@@ -88,4 +99,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-01T17:19:37.30923748Z"
+generated: "2023-03-09T18:48:12.225528793Z"
