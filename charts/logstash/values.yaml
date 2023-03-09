@@ -20,8 +20,13 @@ kafkaHost: ""
 kafkaTopic: "metrics"
 
 secrets:
-  username: ""
-  password: ""
+  elasticsearch:
+    username: ""
+    password: ""
+  kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""
 
 resources: {}
 
