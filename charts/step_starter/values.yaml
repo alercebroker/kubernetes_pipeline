@@ -50,6 +50,12 @@ configmap:
   metricsTopic: ""
   producerTopic: ""
 
+secrets:
+  kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""
+
 imageCredentials:
   registry: ""
   username: ""
