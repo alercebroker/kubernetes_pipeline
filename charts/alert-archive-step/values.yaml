@@ -48,6 +48,12 @@ configmap:
   metricsTopic: ""
   bucketName: ""
 
+secrets:
+  kafkaAuth:
+    enabled: true
+    username: ""
+    password: ""
+
 imageCredentials:
   registry: ""
   username: ""
