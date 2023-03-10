@@ -54,3 +54,7 @@ secrets:
   mockDb: "True"
   #secretName: name of the secret stored in AWS Secret Manager containing MongoDB credentials
   secretName: ""
+  kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""

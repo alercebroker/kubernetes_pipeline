@@ -75,6 +75,18 @@ spec:
                 configMapKeyRef:
                   name: '{{ include "sorting-hat.fullname" . }}-atlas'
                   key: metrics-topic
+            {{- if .Values.secrets.kafkaAuth.enabled }}
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: kafka-username
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: kafka-password
+            {{- end }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

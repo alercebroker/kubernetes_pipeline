@@ -42,7 +42,18 @@ spec:
               value: "{{ .Values.secrets.mockDb }}"
             - name: MONGODB_SECRET_NAME
               value: "{{ .Values.secrets.secretName }}"
-
+            {{- if .Values.secrets.kafkaAuth.enabled }}
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: username
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: password
+            {{- end }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

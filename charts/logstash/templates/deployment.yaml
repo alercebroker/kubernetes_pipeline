@@ -54,10 +54,24 @@ spec:
               value: {{ .Values.kafkaHost }}
             - name: METRICS_TOPIC
               value: {{ .Values.kafkaTopic }}
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: username
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: password
       volumes:
       - name: log-pipeline-config
         configMap:
-          name: {{ include "logstash.fullname" . }}
+          {{- if .Values.secrets.kafkaAuth.enabled }}
+          name: '{{ include "logstash.fullname" . }}-sasl'
+          {{- else }}
+          name: '{{ include "logstash.fullname" . }}-plaintext'
+          {{- end}}
           items:
           - key: log-pipeline-es.conf
             path: log-pipeline-es.conf

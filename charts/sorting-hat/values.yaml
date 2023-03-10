@@ -61,6 +61,12 @@ configmap:
   metricsTopic: ""
   mongoSecretName: ""
 
+secrets:
+  kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""
+
 imageCredentials:
   registry: ""
   username: ""
