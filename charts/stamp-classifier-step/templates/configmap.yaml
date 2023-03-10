@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -11,3 +12,17 @@ data:
   model-name: {{ .Values.configmap.atlas.modelName }}
   model-version: {{ .Values.configmap.atlas.modelVersion }}
   mongo-secret-name: {{ .Values.configmap.atlas.mongoSecretName }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: '{{ include "chart.fullname" . }}-ztf'
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-topics: {{ .Values.configmap.ztf.consumerTopics }}
+  public-server: {{ .Values.configmap.ztf.publicServer }}
+  internal-server: {{ .Values.configmap.ztf.internalServer }}
+  scribe-topic: {{ .Values.configmap.ztf.scribeTopic }}
+  model-name: {{ .Values.configmap.ztf.modelName }}
+  model-version: {{ .Values.configmap.ztf.modelVersion }}
+  mongo-secret-name: {{ .Values.configmap.ztf.mongoSecretName }}

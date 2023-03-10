@@ -62,6 +62,10 @@ secrets:
   kafka:
     username: ""
     password: ""
+  kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""
 
 
 configmap:
