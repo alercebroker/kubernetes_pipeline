@@ -68,6 +68,16 @@ entries:
     version: 0.1.0
   sorting-hat:
   - apiVersion: v2
+    appVersion: rc-d0956a7
+    created: "2023-03-10T17:39:21.38970754Z"
+    description: A Helm chart for Kubernetes
+    digest: 82aa8863bc29bb6327c84a99a3582eca730c2b63c21357c64d23137c64dbc09f
+    name: sorting-hat
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/sorting-hat-0.2.0/sorting-hat-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
     appVersion: rc-864e914
     created: "2023-03-01T17:19:37.073528995Z"
     description: A Helm chart for Kubernetes
@@ -99,4 +109,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-09T18:48:12.225528793Z"
+generated: "2023-03-10T17:39:21.38971944Z"
