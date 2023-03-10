@@ -72,7 +72,6 @@ configmap:
     scribeTopic: "w_object"
     modelName: "atlas-stamp-classifier"
     modelVersion: ""
-    mongoSecretName: ""
   ztf:
     consumerTopics: "sorting-hat-ztf"
     publicServer: ""
@@ -80,7 +79,6 @@ configmap:
     scribeTopic: "w_object"
     modelName: "ztf-stamp-classifier"
     modelVersion: ""
-    mongoSecretName: ""
 
 imageCredentials:
   registry: ""

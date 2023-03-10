@@ -102,11 +102,6 @@ spec:
                 configMapKeyRef:
                   name: '{{ include "chart.fullname" . }}-atlas'
                   key: model-version
-            - name: MONGODB_SECRET_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: '{{ include "chart.fullname" . }}-atlas'
-                  key: mongo-secret-name
             - name: CLASSIFIER_STRATEGY
               value: "ATLAS"
       {{- with .Values.affinity }}
