@@ -80,6 +80,12 @@ configmap:
   stepId: "Ingestion Step"
   stepName: "Ingestion Step"
 
+secrets:
+  kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""
+
 
 imageCredentials:
   registry: ""
