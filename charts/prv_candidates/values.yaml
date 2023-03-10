@@ -55,3 +55,9 @@ imageCredentials:
   username: ""
   password: ""
   email: ""
+
+secrets:
+  kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""
