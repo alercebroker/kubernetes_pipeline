@@ -11,7 +11,6 @@ data:
   scribe-topic: {{ .Values.configmap.atlas.scribeTopic }}
   model-name: {{ .Values.configmap.atlas.modelName }}
   model-version: {{ .Values.configmap.atlas.modelVersion }}
-  mongo-secret-name: {{ .Values.configmap.atlas.mongoSecretName }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -25,4 +24,3 @@ data:
   scribe-topic: {{ .Values.configmap.ztf.scribeTopic }}
   model-name: {{ .Values.configmap.ztf.modelName }}
   model-version: {{ .Values.configmap.ztf.modelVersion }}
-  mongo-secret-name: {{ .Values.configmap.ztf.mongoSecretName }}
