@@ -3,6 +3,16 @@ entries:
   alert-archive-step:
   - apiVersion: v2
     appVersion: 1.0.2
+    created: "2023-03-14T20:00:24.109072433Z"
+    description: A Helm chart for Kubernetes
+    digest: 73f87a69c33f4e821fe38c7ebfb85037449ddb5d67bf3dc4d31d8e7e5fc3a82b
+    name: alert-archive-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/alert-archive-step-0.3.0/alert-archive-step-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
+    appVersion: 1.0.2
     created: "2023-03-01T17:19:36.587949471Z"
     description: A Helm chart for Kubernetes
     digest: 46a44326e9ff2800f8c04c5e049a57708d921f9c5b214713d929879c10c986c4
@@ -180,4 +190,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-14T18:48:18.971266824Z"
+generated: "2023-03-14T20:00:24.109104633Z"
