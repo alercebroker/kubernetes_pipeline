@@ -49,7 +49,10 @@ spec:
                   name: '{{ include "sorting-hat.fullname" . }}-ztf'
                   key: internal-server
             - name: CONSUMER_GROUP_ID
-              value: '{{ include "sorting-hat.fullname" . }}-ztf'
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "sorting-hat.fullname" . }}-ztf'
+                  key: consumer-group-id
             - name: PRODUCER_SERVER
               valueFrom:
                 configMapKeyRef:

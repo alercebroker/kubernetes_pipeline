@@ -6,6 +6,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics.atlas }}
+  consumer-group-id: {{ .Values.configmap.consumerGroupId.atlas | default (printf "%s-atlas" (include "sorting-hat.fullname" .)) }}
   internal-server: {{ .Values.configmap.internalServer }}
   producer-topic: {{ .Values.configmap.producerTopic.atlas }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
@@ -18,6 +19,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics.ztf }}
+  consumer-group-id: {{ .Values.configmap.consumerGroupId.ztf | default (printf "%s-atlas" (include "sorting-hat.fullname" .)) }}
   internal-server: {{ .Values.configmap.internalServer }}
   producer-topic: {{ .Values.configmap.producerTopic.ztf }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}

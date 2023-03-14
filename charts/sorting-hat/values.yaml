@@ -54,6 +54,9 @@ configmap:
   consumerTopics:
     ztf: ""
     atlas: ""
+  consumerGroupId:
+    ztf: ""
+    atlas: ""
   internalServer: ""
   producerTopic:
     ztf: ""
