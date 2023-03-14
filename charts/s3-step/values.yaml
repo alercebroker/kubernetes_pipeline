@@ -10,7 +10,7 @@ image:
   repository: ghcr.io/alercebroker/s3_step
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "rc"
+  tag: ""
 
 imagePullSecrets:
   - name: "image-pull-access"
@@ -57,12 +57,14 @@ affinity:
 configmap:
   ztf:
     consumerTopics: ""
+    consumerGroupId: ""
     internalServer: ""
     metricsTopic: ""
     bucketName: ""
     regionName: ""
   atlas:
     consumerTopics: ""
+    consumerGroupId: ""
     internalServer: ""
     metricsTopic: ""
     bucketName: ""

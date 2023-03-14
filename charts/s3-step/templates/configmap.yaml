@@ -6,6 +6,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.atlas.consumerTopics }}
+  consumer-group-id: {{ .Values.configmap.atlas.consumerGroupId | default (printf "%s-atlas" (include "s3-step.fullname" .)) }}
   internal-server: {{ .Values.configmap.atlas.internalServer }}
   metrics-topic: {{ .Values.configmap.atlas.metricsTopic }}
   bucket-name: {{ .Values.configmap.atlas.bucketName }}
@@ -18,6 +19,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.ztf.consumerTopics }}
+  consumer-group-id: {{ .Values.configmap.ztf.consumerGroupId | default (printf "%s-ztf" (include "s3-step.fullname" .)) }}
   internal-server: {{ .Values.configmap.ztf.internalServer }}
   metrics-topic: {{ .Values.configmap.ztf.metricsTopic }}
   bucket-name: {{ .Values.configmap.ztf.bucketName }}

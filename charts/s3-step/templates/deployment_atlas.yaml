@@ -51,7 +51,10 @@ spec:
                   name: '{{ include "s3-step.fullname" . }}-atlas'
                   key: internal-server
             - name: CONSUMER_GROUP_ID
-              value: '{{ include "s3-step.fullname" . }}-atlas'
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "s3-step.fullname" . }}-atlas'
+                  key: consumer-group-id
             - name: METRICS_HOST
               valueFrom:
                 configMapKeyRef:
