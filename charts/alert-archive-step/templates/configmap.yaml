@@ -5,6 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
+  consumer-group-id: {{ .Values.configmap.consumerGroupId | default (printf "%s" (include "alert-archive-step.fullname" .)) }}
   internal-server: {{ .Values.configmap.internalServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   bucket-name: {{ .Values.configmap.bucketName }}
