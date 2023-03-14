@@ -25,6 +25,16 @@ entries:
   logstash:
   - apiVersion: v2
     appVersion: 7.16.2
+    created: "2023-03-14T18:26:44.320280508Z"
+    description: Logstash for sending pipeline metrics to elasticsearch
+    digest: 684dc6dbf7d4e3e0e8a1eb9a0237b1262821d05b06a78329c06e9209a3dafd8a
+    name: logstash
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/logstash-0.4.0/logstash-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 7.16.2
     created: "2023-03-10T17:39:45.382161059Z"
     description: Logstash for sending pipeline metrics to elasticsearch
     digest: a3a0d2b7ff4b044b01499da42b6fa189504d48f8923df284b9f38e2833d641b5
@@ -66,6 +76,16 @@ entries:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/prv-candidates-0.3.0/prv-candidates-0.3.0.tgz
     version: 0.3.0
   s3-step:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2023-03-14T18:26:44.490218209Z"
+    description: A Helm chart for Kubernetes
+    digest: b07b81c622e04d98bdb37092e9b6e44f8228dcf2a5b0c37d20705d71a0d87539
+    name: s3-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/s3-step-0.3.0/s3-step-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: 0.1.0
     created: "2023-03-14T17:58:07.286442929Z"
@@ -150,4 +170,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-14T17:58:07.28649523Z"
+generated: "2023-03-14T18:26:44.490286917Z"
