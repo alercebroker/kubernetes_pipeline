@@ -6,6 +6,7 @@ metadata:
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
   internal-server: {{ .Values.configmap.internalServer }}
+  public-server: {{ .Values.configmap.publicServer }}
   db-engine: {{ .Values.configmap.dbEngine }}
   db-host: {{ .Values.configmap.dbHost }}
   db-port: "{{ .Values.configmap.dbPort }}"
