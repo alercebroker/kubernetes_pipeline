@@ -46,8 +46,15 @@ configmap:
   consumerTopics: ""
   publicServer: ""
   internalServer: ""
+  dbEngine: ""
+  dbHost: ""
+  dbPort: ""
+  dbName: ""
 
 secrets:
+  db:
+    username: ""
+    password: ""
   kafka:
     username: ""
     password: ""

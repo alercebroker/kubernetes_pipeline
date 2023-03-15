@@ -76,6 +76,36 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: internal-server
+            - name: DB_ENGINE
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: db-engine
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: db-host
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: db-port
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: db-name
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: '{{ include "lc-classifier-step.fullname" . }}-db'
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: '{{ include "lc-classifier-step.fullname" . }}-db'
+                  key: password
             - name: METRICS_TOPIC
               value: "metrics"
             {{- if .Values.secrets.kafkaAuth.enabled }}
