@@ -60,7 +60,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
-                  key: internal-server
+                  key: public-server
             - name: PRODUCER_SASL_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -76,6 +76,8 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: internal-server
+            - name: METRICS_TOPIC
+              value: "metrics"
             - name: DB_ENGINE
               valueFrom:
                 configMapKeyRef:
@@ -106,8 +108,6 @@ spec:
                 secretKeyRef:
                   name: '{{ include "lc-classifier-step.fullname" . }}-db'
                   key: password
-            - name: METRICS_TOPIC
-              value: "metrics"
             {{- if .Values.secrets.kafkaAuth.enabled }}
             - name: KAFKA_USERNAME
               valueFrom:
