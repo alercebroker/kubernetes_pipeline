@@ -8,5 +8,5 @@ data:
   internal-server: {{ .Values.configmap.internalServer }}
   db-engine: {{ .Values.configmap.dbEngine }}
   db-host: {{ .Values.configmap.dbHost }}
-  db-port: {{ .Values.configmap.dbPort }}
+  db-port: "{{ .Values.configmap.dbPort }}"
   db-name: {{ .Values.configmap.dbName }}
