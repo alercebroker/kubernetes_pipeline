@@ -1,0 +1,6 @@
+apiVersion: v2
+appVersion: "rc-a024e7a"
+description: Sorting Hat Step with MSK
+name: sorting-hat-msk
+type: application
+version: 0.1.0
