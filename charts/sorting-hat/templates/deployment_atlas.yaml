@@ -83,12 +83,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: kafka-username
+                  key: username
             - name: KAFKA_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: kafka-password
+                  key: password
             {{- end }}
       {{- with .Values.affinity }}
       affinity:
