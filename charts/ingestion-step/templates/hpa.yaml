@@ -34,7 +34,7 @@ spec:
 {{- end }}
 ---
 {{- if .Values.autoscaling.ztf.enabled }}
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: '{{ include "ingestion-step.fullname" . }}-ztf'
