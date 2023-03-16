@@ -1,6 +1,6 @@
 ---
 {{- if .Values.autoscaling.atlas.enabled }}
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: '{{ include "ingestion-step.fullname" . }}-atlas'
@@ -19,13 +19,17 @@ spec:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: {{ .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
     {{- end }}
     {{- if .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
     {{- end }}
 {{- end }}
 ---
@@ -49,12 +53,16 @@ spec:
     - type: Resource
       resource:
         name: cpu
-        targetAverageUtilization: {{ .Values.autoscaling.ztf.targetCPUUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.ztf.targetCPUUtilizationPercentage }}
     {{- end }}
     {{- if .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
     - type: Resource
       resource:
         name: memory
-        targetAverageUtilization: {{ .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
     {{- end }}
 {{- end }}
