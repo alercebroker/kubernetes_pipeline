@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "feature-step.fullname" . }}
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-topics: {{ .Values.configmap.consumerTopics }}
+  internal-server: {{ .Values.configmap.internalServer }}
+  producer-topic: {{ .Values.configmap.producerTopic }}
+  feature-version: {{ .Values.configmap.featureVersion }}
+  step-version: {{ .Values.configmap.stepVersion }}
+  db-engine: {{ .Values.configmap.dbEngine }}
+  db-host: {{ .Values.configmap.dbHost }}
+  db-port: "{{ .Values.configmap.dbPort }}"
+  db-name: {{ .Values.configmap.dbName }}
