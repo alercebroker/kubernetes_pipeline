@@ -65,6 +65,16 @@ spec:
                   key: internal-server
             - name: METRICS_TOPIC
               value: "metrics"
+            - name: FEATURE_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "feature-step.fullname" . }}
+                  key: feature-version
+            - name: STEP_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "feature-step.fullname" . }}
+                  key: step-version
             - name: DB_ENGINE
               valueFrom:
                 configMapKeyRef:
