@@ -7,7 +7,7 @@ replicaCount: 1
 namespace: feature-step
 
 image:
-  repository: ghcr.io/alercebroker/feature-step
+  repository: ghcr.io/alercebroker/feature_step
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
