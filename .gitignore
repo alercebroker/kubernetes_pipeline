@@ -1,3 +1,7 @@
 values.override.yaml
 values.override.yml
+values.staging.yaml
+values.production.yaml
+values.staging.yml
+values.production.yml
 *.tgz
