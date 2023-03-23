@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "lightcurve-step.fullname" . }}
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-topics: {{ .Values.configmap.consumerTopics }}
+  consume-messages: "{{ .Values.configmap.consumeMessages }}"
+  consumer-server: {{ .Values.configmap.consumerServer }}
+  producer-server: {{ .Values.configmap.producerServer }}
+  producer-topic: {{ .Values.configmap.producerTopic }}
+  metrics-server: {{ .Values.configmap.metricsServer }}
+  metrics-topic: {{ .Values.configmap.metricsTopic }}
+  use-prometheus: "{{ .Values.configmap.usePrometheus }}"
