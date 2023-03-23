@@ -44,14 +44,20 @@ affinity:
 
 configmap:
   consumerTopics: ""
-  internalServer: ""
+  consumerServer: ""
+  scribeServer: ""
   scribeTopic: ""
+  metricsServer: ""
   metricsTopic: ""
   excludedCalculators: ""
 
 secrets:
   kafkaAuth:
     consumer:
+      enabled: false
+      username: ""
+      password: ""
+    scribe:
       enabled: false
       username: ""
       password: ""

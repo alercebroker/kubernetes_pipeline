@@ -6,7 +6,9 @@ metadata:
 data:
   consumer-class: {{ .Values.configmap.consumerClass | default "apf.consumers.KafkaConsumer" }}
   consumer-topics: {{ .Values.configmap.consumerTopics }}
-  internal-server: {{ .Values.configmap.internalServer }}
+  consumer-server: {{ .Values.configmap.consumerServer }}
+  scribe-server: {{ .Values.configmap.scribeServer }}
   scribe-topic: {{ .Values.configmap.scribeTopic }}
+  metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   excluded-calculators: {{ .Values.configmap.excludedCalculators }}

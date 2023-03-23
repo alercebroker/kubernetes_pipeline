@@ -55,14 +55,14 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "magstats-step.fullname" . }}
-                  key: internal-server
+                  key: consumer-server
             - name: CONSUMER_GROUP_ID
               value: {{ include "magstats-step.fullname" . }}
             - name: SCRIBE_SERVER
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "magstats-step.fullname" . }}
-                  key: internal-server
+                  key: scribe-server
             - name: SCRIBE_TOPIC
               valueFrom:
                 configMapKeyRef:
@@ -72,7 +72,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "magstats-step.fullname" . }}
-                  key: internal-server
+                  key: metrics-server
             - name: METRICS_TOPIC
               valueFrom:
                 configMapKeyRef:
@@ -89,6 +89,18 @@ spec:
                 secretKeyRef:
                   name: kafka-auth
                   key: consumer-password
+            {{- end }}
+            {{- if .Values.secrets.kafkaAuth.scribe.enabled}}
+            - name: SCRIBE_KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: scribe-username
+            - name: SCRIBE_KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: scribe-password
             {{- end }}
             {{- if .Values.secrets.kafkaAuth.metrics.enabled}}
             - name: METRICS_KAFKA_USERNAME
