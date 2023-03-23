@@ -150,6 +150,16 @@ entries:
   sorting-hat:
   - apiVersion: v2
     appVersion: 1.1.0
+    created: "2023-03-23T17:50:35.46774275Z"
+    description: Sorting Hat deployment chart
+    digest: c16bcd4584b464f96df4a4df2939149599a843ae0af941bd948ff46ef416a974
+    name: sorting-hat
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/sorting-hat-0.4.0/sorting-hat-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: 1.1.0
     created: "2023-03-14T20:00:52.893571709Z"
     description: A Helm chart for Kubernetes
     digest: 3485889e1bf8063009361d75d464eb8490ccc953b6d6b9fa4c5edec1a43db903
@@ -210,4 +220,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-16T14:31:19.341828604Z"
+generated: "2023-03-23T17:50:35.467912154Z"
