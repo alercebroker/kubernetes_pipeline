@@ -57,11 +57,13 @@ configmap:
   consumerGroupId:
     ztf: ""
     atlas: ""
-  internalServer: ""
+  consumerServer: ""
+  producerServer: ""
   producerTopic:
     ztf: ""
     atlas: ""
   metricsTopic: ""
+  metricsServer: ""
   mongoSecretName: ""
 
 secrets:
