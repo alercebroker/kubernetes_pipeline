@@ -41,6 +41,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "magstats-step.fullname" . }}
                   key: excluded-calculators
+            - name: CONSUMER_CLASS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "magstats-step.fullname" . }}
+                  key: consumer-class
             - name: CONSUMER_TOPICS
               valueFrom:
                 configMapKeyRef:

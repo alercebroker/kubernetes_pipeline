@@ -4,6 +4,7 @@ metadata:
   name: {{ include "magstats-step.fullname" . }}
   namespace: {{ .Values.namespace }}
 data:
+  consumer-class: {{ .Values.configmap.consumerClass | default "apf.consumers.KafkaConsumer" }}
   consumer-topics: {{ .Values.configmap.consumerTopics }}
   internal-server: {{ .Values.configmap.internalServer }}
   scribe-topic: {{ .Values.configmap.scribeTopic }}
