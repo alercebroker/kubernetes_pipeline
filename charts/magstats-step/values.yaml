@@ -37,16 +37,28 @@ affinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
           - matchExpressions:
-            - key: eks.amazonaws.com/nodegroup
+            - key: nodegroup
               operator: In
               ## Override this value with the NodeGroup tag accordingly
-              values: [staging-pipeline]
+              values: []
 
 configmap:
   consumerTopics: ""
   internalServer: ""
   scribeTopic: ""
   metricsTopic: ""
+  excludedCalculators: ""
+
+secrets:
+  kafkaAuth:
+    consumer:
+      enabled: false
+      username: ""
+      password: ""
+    metrics:
+      enabled: false
+      username: ""
+      password: ""
 
 imageCredentials:
   registry: ""

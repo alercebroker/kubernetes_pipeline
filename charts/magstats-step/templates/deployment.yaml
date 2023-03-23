@@ -36,6 +36,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
+            - name: EXCLUDED_CALCULATORS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "magstats-step.fullname" . }}
+                  key: excluded-calculators
             - name: CONSUMER_TOPICS
               valueFrom:
                 configMapKeyRef:
@@ -68,6 +73,30 @@ spec:
                 configMapKeyRef:
                   name: {{ include "magstats-step.fullname" . }}
                   key: metrics-topic
+            {{- if .Values.secrets.kafkaAuth.consumer.enabled}}
+            - name: CONSUMER_KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: consumer-username
+            - name: CONSUMER_KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: consumer-password
+            {{- end }}
+            {{- if .Values.secrets.kafkaAuth.metrics.enabled}}
+            - name: METRICS_KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: metrics-username
+            - name: METRICS_KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: metrics-password
+            {{- end }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
