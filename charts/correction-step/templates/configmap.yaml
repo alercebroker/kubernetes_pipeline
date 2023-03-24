@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "correction-step.fullname" . }}
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-topics: {{ .Values.configmap.consumerTopics }}
+  consumer-server: {{ .Values.configmap.consumerServer }}
+  scribe-server: {{ .Values.configmap.scribeServer }}
+  scribe-topic: {{ .Values.configmap.scribeTopic }}
+  producer-server: {{ .Values.configmap.producerServer }}
+  producer-topic: {{ .Values.configmap.producerTopic }}
+  metrics-server: {{ .Values.configmap.metricsServer }}
+  metrics-topic: {{ .Values.configmap.metricsTopic }}
+  consume-messages: "{{ .Values.configmap.consumeMessages }}"
