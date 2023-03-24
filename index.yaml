@@ -140,6 +140,16 @@ entries:
   s3-step:
   - apiVersion: v2
     appVersion: 1.3.0
+    created: "2023-03-24T17:31:59.927551351Z"
+    description: A Helm chart for Kubernetes
+    digest: 71a6eb78e7873fccb9cc85dc66ec2ddf443c99800ebe79208c47ebd7c1d9c4c3
+    name: s3-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/s3-step-0.5.0/s3-step-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
+    appVersion: 1.3.0
     created: "2023-03-14T18:48:18.971244824Z"
     description: A Helm chart for Kubernetes
     digest: 5be0259cb159d55f2ab8c402e12a0c8ee6441da06afdf9c004ecf9a7d9551bb8
@@ -190,6 +200,16 @@ entries:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/scribe-0.1.0/scribe-0.1.0.tgz
     version: 0.1.0
   sorting-hat:
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2023-03-24T17:32:00.070440759Z"
+    description: Sorting Hat deployment chart
+    digest: fa6ffe636635c74d72b93a36369617e9b77c5cea49218d942fd1956b155573b4
+    name: sorting-hat
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/sorting-hat-0.5.0/sorting-hat-0.5.0.tgz
+    version: 0.5.0
   - apiVersion: v2
     appVersion: 1.1.0
     created: "2023-03-23T17:50:35.46774275Z"
@@ -262,4 +282,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-24T13:48:37.112689185Z"
+generated: "2023-03-24T17:32:00.07048366Z"
