@@ -42,6 +42,17 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/ingestion-step-0.1.0/ingestion-step-0.1.0.tgz
     version: 0.1.0
+  lightcurve-step:
+  - apiVersion: v2
+    appVersion: rc-123029d
+    created: "2023-03-24T13:05:01.228470724Z"
+    description: Full lightcurve provider step
+    digest: 83379a1da7c1de651cf51236dcc1dfbe9a8ed06558642362869c02cda22c7745
+    name: lightcurve-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/lightcurve-step-0.1.0/lightcurve-step-0.1.0.tgz
+    version: 0.1.0
   logstash:
   - apiVersion: v2
     appVersion: 7.16.2
@@ -230,4 +241,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-24T13:04:51.947888549Z"
+generated: "2023-03-24T13:05:01.228501024Z"
