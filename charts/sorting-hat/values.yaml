@@ -68,9 +68,18 @@ configmap:
 
 secrets:
   kafkaAuth:
-    enabled: false
-    username: ""
-    password: ""
+    consumer:
+      enabled: false
+      username: ""
+      password: ""
+    producer:
+      enabled: false
+      username: ""
+      password: ""
+    metrics:
+      enabled: false
+      username: ""
+      password: ""
 
 imageCredentials:
   registry: ""
