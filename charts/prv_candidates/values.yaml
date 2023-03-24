@@ -28,16 +28,15 @@ resources: {}
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
+  maxReplicas: 4
+  targetConsumedMessages: 500
 
 affinity:
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
         - matchExpressions:
-            - key: eks.amazonaws.com/nodegroup
+            - key: nodegroup
               operator: In
               ## Override this value with the NodeGroup tag accordingly
               values: []
