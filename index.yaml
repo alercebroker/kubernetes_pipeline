@@ -128,6 +128,16 @@ entries:
     version: 0.1.0
   prv-candidates:
   - apiVersion: v2
+    appVersion: rc-9442894
+    created: "2023-03-24T18:03:57.896544383Z"
+    description: Previous candidates processor step
+    digest: a1f0f1cda2ab86f1219c4ad75f0d5fc2c90b27e5ff1fec673c00fbd10c7d6e13
+    name: prv-candidates
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/prv-candidates-0.4.0/prv-candidates-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
     appVersion: rc-2db2507
     created: "2023-03-10T17:39:33.528110971Z"
     description: A Helm chart for Kubernetes
@@ -282,4 +292,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-24T17:32:00.07048366Z"
+generated: "2023-03-24T18:03:57.896592783Z"
