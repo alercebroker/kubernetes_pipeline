@@ -21,6 +21,17 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/alert-archive-step-0.1.0/alert-archive-step-0.1.0.tgz
     version: 0.1.0
+  correction-step:
+  - apiVersion: v2
+    appVersion: rc-472b399
+    created: "2023-03-24T13:48:36.995613538Z"
+    description: Correction step chart
+    digest: 3c2243943490c619e9a739c2554419d82ae31171a2a018160645c3281069cc43
+    name: correction-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/correction-step-0.1.0/correction-step-0.1.0.tgz
+    version: 0.1.0
   ingestion-step:
   - apiVersion: v2
     appVersion: 1.1.6
@@ -43,6 +54,16 @@ entries:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/ingestion-step-0.1.0/ingestion-step-0.1.0.tgz
     version: 0.1.0
   lightcurve-step:
+  - apiVersion: v2
+    appVersion: rc-c7ec3d8
+    created: "2023-03-24T13:48:37.112315171Z"
+    description: Full lightcurve provider step
+    digest: 4c125d88d4cebbd52f245dc71cfe8fd31a8dddc5afaa6e6363d655126c8e88db
+    name: lightcurve-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/lightcurve-step-0.2.0/lightcurve-step-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: rc-123029d
     created: "2023-03-24T13:05:01.228470724Z"
@@ -241,4 +262,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-24T13:05:01.228501024Z"
+generated: "2023-03-24T13:48:37.112689185Z"
