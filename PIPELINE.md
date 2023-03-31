@@ -10,7 +10,7 @@ Every step works as a "event driven microservice", which listens to a topic and 
 
 ### Sorting Hat
 
-The Sorting Hat is a gateway step which assign an ALeRCE ID (aid) to every incoming alert. This `aid` can be newly generated or an already existing one, depending on the result of the crossmatch performed on the object database. 
+The Sorting Hat is a gateway step which assigns an ALeRCE ID (aid) to every incoming alert. This `aid` can be newly generated or an already existing one, depending on the result of the crossmatch performed on the object database. 
 At the present time, this step must be deployed once per survey, with different settings to work with the given survey. So you might find more than one instance of sorting hat deployed.
 
 #### Input Schema
