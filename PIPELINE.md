@@ -218,8 +218,9 @@ This step returns a list with the processed objects, including their `aid`, dete
 
 ### Lightcurve Step 
 
-This step retrieves from the database and then returns the entire lightcurve of an object.
-It merges the repeated objects within the same batch of messages.
+This step retrieves from the database and then returns all stored detections and non-detections of an object, together with the new detections/non-detections coming from the previous step.
+
+Repeated objects within the same batch of messages are merged.
 
 #### Output Schema
 
