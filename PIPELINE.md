@@ -367,6 +367,14 @@ It also calculates the object mean RA and declination based on the position of i
       "type": "string"
     },
     {
+      "name": "meanra",
+      "type": "float"
+    },
+    {
+      "name": "meandec",
+      "type": "float"
+    },
+    {
       "name": "detections",
       "type": {
         "type": "array",
