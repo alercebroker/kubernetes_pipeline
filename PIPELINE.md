@@ -350,7 +350,9 @@ Repeated objects within the same batch of messages are merged.
 
 ### Correction Step
 
-Process alerts and applies correction to pass from difference magnitude to apparent magnitude. This includes the previous detections coming from the ZTF alerts.
+Process detections and applies correction to pass from difference magnitude to apparent magnitude.
+
+It also calculates the object mean RA and declination based on the position of its detections.
 
 #### Output Schema
 
