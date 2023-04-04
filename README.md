@@ -60,10 +60,10 @@ Other steps that aren't part of the alert processing pipeline
 
 ### Glossary
 
- - Alert:
- - Survey: ...
- - Object: ...
- - Detection: ...
- - Non Detection: ...
+ - Alert: Incoming detection from a given survey
+ - Survey: Specific observational project that generates alerts based on changes in the sky. Note that they can use one or more telescopes
+ - Object: A collection of spatially close detections (as defined by ALeRCE), assumed to be from the same source
+ - Detection: Alert stored in the database for which a significant flux change with respect to its template image can be detected
+ - Non Detection: Observations included in the stream in which no significant flux change was detected. These never come as alerts and are only present in ZTF as part of an alert previous candidates
 
 More details in the PIPELINE.md file
