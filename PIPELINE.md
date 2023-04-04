@@ -522,7 +522,7 @@ It also calculates the object mean RA and declination based on the position of i
 
 ### Magstats Step
 
-Calculates some important statistics of the object.
+Generates/updates the object that is to be stored in the DB.
 
 #### Output Schema
 
