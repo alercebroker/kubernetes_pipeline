@@ -70,7 +70,7 @@ and the **EXTRA_FIELDS** type:
 
 ### Stamp Classifier Step
 
-Applies a machine learning model to determine the classification of an object based on a image of the former, called stamp.
+Applies a machine learning model to determine the classification of an alert based on its stamps. This should have an instance per survey, since the ML models are survey dependent.
 
 #### Output Information
 
