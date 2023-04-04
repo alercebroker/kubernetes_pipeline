@@ -78,7 +78,9 @@ This step doesn't publish to any Kafka topic related to the pipeline.
 
 ### Previous Candidates Step
 
-Parses the `extra_fields` of the detections to retrieve the binary field `prv_candidates` if the alert comes from ZTF. Otherwise, it does nothing. Then, this step returns a list with the processed objects, including their `aid`, previous candidates, detections without the `extra_fields` field and their non_detections.
+Parses the `extra_fields` of the detections to retrieve the binary field `prv_candidates` if the alert comes from ZTF. This will add to the main alert the previous detections and (possibly) non-detections. For other surveys, only the main alert is passed among the detections and the non-detections are empty. 
+
+This step returns a list with the processed objects, including their `aid`, detections (main alert and previous detections), and non-detections.
 
 #### Output Information
 
