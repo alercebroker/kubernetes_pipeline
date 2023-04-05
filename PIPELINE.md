@@ -11,7 +11,11 @@ Every step works as a "event driven microservice", which listens to a topic and 
 ### Sorting Hat
 
 The Sorting Hat is a gateway step which assigns an ALeRCE ID (aid) to every incoming alert. This `aid` can be newly generated or an already existing one, depending on the result of a query performed on the object database. The query is based on whether the alert `oid` is already present in an object in the database, or if it lies within 1.5 arcsec of an object in the database.  
-At the present time, this step must be deployed once per survey, with different settings to work with the given survey. So you might find more than one instance of sorting hat deployed.
+At the present time, this step must be deployed once per survey, with the same settings except of the topic it consumes and produces to. So you might find more than one instance of sorting hat deployed.
+
+#### About the ALeRCE ID generation
+
+The `aid` encodes the truncated position of the alert into a string.
 
 #### Output Information
 
@@ -224,129 +228,7 @@ Repeated objects within the same batch of messages are merged.
 
 #### Output Schema
 
-```python
-{
-  "type": "record",
-  "doc": "Lightcurve schema with detections and non-detections",
-  "name": "Lightcurve",
-  "fields": [
-    {
-      "name": "aid",
-      "type": "string"
-    },
-    {
-      "name": "detections",
-      "type": {
-        "type": "array",
-        "items": {
-            "type": "record",
-            "name": "alert",
-            "fields": [
-              {
-                  "name": "aid",
-                  "type": "string"
-              },
-              {
-                  "name": "oid",
-                  "type": "string"
-              },
-              {
-                  "name": "tid",
-                  "type": "string"
-              },
-              {
-                  "name": "candid",
-                  "type": ["long", "string"]
-              },
-              {
-                  "name": "mjd",
-                  "type": "double"
-              },
-              {
-                  "name": "fid",
-                  "type": "int"
-              },
-              {
-                  "name": "ra",
-                  "type": "double"
-              },
-              {
-                  "name": "dec",
-                  "type": "double"
-              },
-              {
-                  "name": "mag",
-                  "type": "float"
-              },
-              {
-                  "name": "e_mag",
-                  "type": "float"
-              },
-              {
-                  "name": "isdiffpos",
-                  "type": "int"
-              },
-              {
-                  "name": "e_ra",
-                  "type": "float"
-              },
-              {
-                  "name": "e_dec",
-                  "type": "float"
-              },
-              {
-                  "name": "extra_fields",
-                  "type": {
-                  "default": {},
-                  "type": "map",
-                  "values": ["null", "int", "float", "string", "bytes"]
-                  }
-              }
-            ]
-        },
-        "default": []
-      }
-    },
-    {
-      "name": "non_detections",
-      "type": {
-        "type": "array",
-        "items": {
-          "type": "record",
-          "name": "non_detection",
-          "fields": [
-            {
-              "name": "aid",
-              "type": "string"
-            },
-            {
-              "name": "tid",
-              "type": "string"
-            },
-            {
-              "name": "oid",
-              "type": "string"
-            },
-            {
-              "name": "mjd",
-              "type": "double"
-            },
-            {
-              "name": "fid",
-              "type": "int"
-            },
-            {
-              "name": "diffmaglim",
-              "type": "int"
-            }
-          ]
-        }
-      },
-      "default": []
-    }
-  ]
-}
-```
+The same output schema of the **Previous candidates step**.
 
 ### Correction Step
 
