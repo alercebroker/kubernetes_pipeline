@@ -15,7 +15,7 @@ At the present time, this step must be deployed once per survey, with the same s
 
 #### About the ALeRCE ID generation
 
-The `aid` encodes the truncated position of the alert into a string.
+The `aid` encodes the truncated position of the alert into a string. It always starts with AL and the last two digits of the current year.
 
 #### Output Information
 
