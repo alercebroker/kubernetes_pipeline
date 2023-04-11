@@ -49,7 +49,7 @@ affinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
           - matchExpressions:
-            - key: eks.amazonaws.com/nodegroup
+            - key: nodegroup
               operator: In
               ## Override this value with the NodeGroup tag accordingly
               values: []
@@ -72,9 +72,14 @@ configmap:
 
 secrets:
   kafkaAuth:
-    enabled: false
-    username: ""
-    password: ""
+    consumer:
+      enabled: true
+      username: ""
+      password: ""
+    metrics:
+      enabled: true
+      username: ""
+      password: ""
 
 imageCredentials:
   registry: ""
