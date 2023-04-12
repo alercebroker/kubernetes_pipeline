@@ -8,3 +8,12 @@ data:
   internal-server: {{ .Values.configmap.internalServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
+  step-version: {{ .Chart.AppVersion }}
+  retries: "{{ .Values.configmap.retries }}"
+  retry-interval: "{{ .Values.configmap.retryInterval }}"
+  consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
+  consume-messages: "{{ .Values.configmap.consumeMessages }}"
+  db-host: {{ .Values.configmap.db.host }}
+  db-name: {{ .Values.configmap.db.name }}
+  db-engine: {{ .Values.configmap.db.engine }}
+  db-port: "{{ .Values.configmap.db.port }}"

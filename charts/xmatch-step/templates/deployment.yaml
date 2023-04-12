@@ -58,6 +58,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "xmatch-step.fullname" . }}
                   key: producer-topic
+            - name: STEP_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: step-version
             - name: METRICS_HOST
               valueFrom:
                 configMapKeyRef:
@@ -80,17 +85,16 @@ spec:
                   name: kafka-auth
                   key: password
             {{- end }}
-            {{- if .Values.secrets.sql.enabled }}
             - name: DB_ENGINE
               valueFrom:
-                secretKeyRef:
-                  name: sql
-                  key: engine
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: db-engine
             - name: DB_HOST
               valueFrom:
-                secretKeyRef:
-                  name: sql
-                  key: host
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: db-host
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
@@ -103,15 +107,34 @@ spec:
                   key: password
             - name: DB_PORT
               valueFrom:
-                secretKeyRef:
-                  name: sql
-                  key: port
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: db-port
             - name: DB_NAME
               valueFrom:
-                secretKeyRef:
-                  name: sql
-                  key: name
-            {{- end }}
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: db-name
+            - name: RETRIES
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: retries
+            - name: RETRY_INTERVAL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: retry-interval
+            - name: CONSUME_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: consume-timeout
+            - name: CONSUME_MESSAGES
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: consume-messages
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
