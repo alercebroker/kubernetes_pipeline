@@ -5,10 +5,13 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
+  group-id: {{ .Values.configmap.groupId }}
   internal-server: {{ .Values.configmap.internalServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
   feature-version: {{ .Values.configmap.featureVersion }}
-  step-version: {{ .Values.configmap.stepVersion }}
+  step-id: {{ .Values.configmap.stepId }}
+  consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
+  consume-messages: "{{ .Values.configmap.consumeMessages }}"
   db-engine: {{ .Values.configmap.dbEngine }}
   db-host: {{ .Values.configmap.dbHost }}
   db-port: "{{ .Values.configmap.dbPort }}"
