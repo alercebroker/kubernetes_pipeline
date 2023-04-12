@@ -38,15 +38,16 @@ affinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
           - matchExpressions:
-            - key: eks.amazonaws.com/nodegroup
+            - key: nodegroup
               operator: In
               ## Override this value with the NodeGroup tag accordingly
               values: []
 
 configmap:
   consumerTopics: ""
-  publicServer: ""
-  internalServer: ""
+  consumerServer: ""
+  producerServer: ""
+  metricsServer: ""
   metricsTopic: "metrics"
   producerTopicFormat: "stamp_classifier_%s"
   producerDateFormat: "%Y%m%d"
@@ -55,11 +56,18 @@ configmap:
 
 secrets:
   kafkaAuth:
-    enabled: false
-    username: ""
-    password: ""
-    producerUsername: ""
-    producerPassword: ""
+    consumer:
+      enabled: false
+      username: ""
+      password: ""
+    producer:
+      enabled: false
+      username: ""
+      password: ""
+    metrics:
+      enabled: false
+      username: ""
+      password: ""
   db:
     host: ""
     user: ""

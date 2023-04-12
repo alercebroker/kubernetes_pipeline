@@ -5,10 +5,11 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
-  internal-server: {{ .Values.configmap.internalServer }}
-  public-server: {{ .Values.configmap.publicServer }}
+  consumer-server: {{ .Values.configmap.consumerServer }}
+  producer-server: {{ .Values.configmap.producerServer }}
   producer-topic-format: {{ .Values.configmap.producerTopicFormat }}
   producer-date-format: "{{ .Values.configmap.producerDateFormat }}"
   producer-change-hour: "{{ .Values.configmap.producerChangeHour }}"
+  metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   classifier-version: {{ .Values.configmap.classifierVersion }}
