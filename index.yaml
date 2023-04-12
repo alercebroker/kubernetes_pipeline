@@ -85,6 +85,17 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/ingestion-step-0.1.0/ingestion-step-0.1.0.tgz
     version: 0.1.0
+  lc-classifier-step:
+  - apiVersion: v2
+    appVersion: 1.1.13
+    created: "2023-04-12T19:08:43.30293845Z"
+    description: Lightcurve classifier step
+    digest: 5c4a376a9aa7d974e660a77bc9fa71c5b4ac49a5da235d2a5180a402be9cb655
+    name: lc-classifier-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/lc-classifier-step-1.0.0/lc-classifier-step-1.0.0.tgz
+    version: 1.0.0
   lightcurve-step:
   - apiVersion: v2
     appVersion: rc-c7ec3d8
@@ -334,4 +345,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-04-12T19:07:18.85719664Z"
+generated: "2023-04-12T19:08:43.30297705Z"
