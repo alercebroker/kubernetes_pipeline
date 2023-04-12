@@ -46,6 +46,7 @@ affinity:
 configmap:
   consumerTopics: ""
   consumerServer: ""
+  consumerGroup: ""
   producerServer: ""
   metricsServer: ""
   metricsTopic: "metrics"
