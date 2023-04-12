@@ -6,6 +6,8 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
+  consumer-group: {{ .Values.configmap.consumerGroup }}
+  consume-messages: "{{ .Values.configmap.consumeMessages }}"
   internal-server: {{ .Values.configmap.internalServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
 ---
