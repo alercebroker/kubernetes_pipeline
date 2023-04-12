@@ -44,8 +44,13 @@ affinity:
 
 configmap:
   consumerTopics: ""
+  groupId: "feature_consumer"
   internalServer: ""
   producerTopic: ""
+  featureVersion: ""
+  stepId: "feature-step"
+  consumeTimeout: "10"
+  consumeMessages: "50"
   dbEngine: ""
   dbHost: ""
   dbPort: ""
