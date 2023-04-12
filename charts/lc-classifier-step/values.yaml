@@ -28,7 +28,7 @@ resources: {}
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 4
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
@@ -50,6 +50,10 @@ configmap:
   dbHost: ""
   dbPort: ""
   dbName: ""
+  stepId: ""
+  stepVersion: ""
+  consumeTimeout: "10"
+  consumeMessages: "100"
 
 secrets:
   db:
@@ -58,6 +62,8 @@ secrets:
   kafka:
     username: ""
     password: ""
+    securityProtocol: ""
+    saslMechanism: ""
   kafkaAuth:
     enabled: false
     username: ""
