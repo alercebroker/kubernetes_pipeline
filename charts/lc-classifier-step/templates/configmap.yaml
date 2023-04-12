@@ -11,3 +11,7 @@ data:
   db-host: {{ .Values.configmap.dbHost }}
   db-port: "{{ .Values.configmap.dbPort }}"
   db-name: {{ .Values.configmap.dbName }}
+  step-id: {{ .Values.configmap.stepId }}
+  step-version: {{ .Values.configmap.stepVersion }}
+  consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
+  consume-messages: "{{ .Values.configmap.consumeMessages }}"

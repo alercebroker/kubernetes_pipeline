@@ -71,6 +71,16 @@ spec:
                 secretKeyRef:
                   name: '{{ include "lc-classifier-step.fullname" . }}-kafka'
                   key: password
+            - name: PRODUCER_SECURITY_PROTOCOL
+              valueFrom:
+                secretKeyRef:
+                  name: '{{ include "lc-classifier-step.fullname" . }}-kafka'
+                  key: security-protocol
+            - name: PRODUCER_SASL_MECHANISM
+              valueFrom:
+                secretKeyRef:
+                  name: '{{ include "lc-classifier-step.fullname" . }}-kafka'
+                  key: sasl-mechanism
             - name: METRICS_HOST
               valueFrom:
                 configMapKeyRef:
@@ -120,6 +130,26 @@ spec:
                   name: kafka-auth
                   key: password
             {{- end }}
+            - name: STEP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: step-id
+            - name: STEP_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: step-version
+            - name: CONSUME_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: consume-timeout
+            - name: CONSUME_MESSAGES
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: consume-messages
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
