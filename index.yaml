@@ -345,4 +345,15 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/step_starter-0.1.0/step_starter-0.1.0.tgz
     version: 0.1.0
-generated: "2023-04-12T19:08:43.30297705Z"
+  xmatch-step:
+  - apiVersion: v2
+    appVersion: 2.0.3
+    created: "2023-04-12T19:31:19.218542289Z"
+    description: A Helm chart for Kubernetes
+    digest: 11460f9f1bd0ab9cccdb3eb158707b0049457335c40830281c6bacc60cedcbcb
+    name: xmatch-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
+    version: 1.0.0
+generated: "2023-04-12T19:31:19.218678801Z"
