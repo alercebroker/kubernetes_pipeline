@@ -346,6 +346,16 @@ entries:
     version: 0.1.0
   stamp-classifier-step:
   - apiVersion: v2
+    appVersion: rc-c9c0ace
+    created: "2023-04-13T18:56:22.364112704Z"
+    description: Stamp Classifier Step
+    digest: 987ab7b9345e10934d3f94a493b9202b5b9eae6089858b8fd043278bfae0c1a3
+    name: stamp-classifier-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/stamp-classifier-step-0.3.0/stamp-classifier-step-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     appVersion: rc
     created: "2023-03-10T17:39:55.890439493Z"
     description: Stamp Classifier Step
@@ -398,4 +408,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-13T16:08:19.22196454Z"
+generated: "2023-04-13T18:56:22.364205806Z"
