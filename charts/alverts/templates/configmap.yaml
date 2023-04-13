@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka
+  namespace: {{ .Values.namespace }}
+data:
+  consumer-server: {{ .Values.configmap.kafka.consumerServer }}
+  consumer-group-format: {{ .Values.configmap.kafka.consumerGroupFormat }}
+  source-topic-format: {{ .Values.configmap.kafka.sourceTopicFormat }}
+  source-topic-date-format: "'{{ .Values.configmap.kafka.sourceTopicDateFormat }}'"
+  consumer-group-s3: {{ .Values.configmap.kafka.consumerGroupS3 }}
+  consumer-group-archive: {{ .Values.configmap.kafka.consumerGroupArchive }}
+  consumer-group-watchlist: {{ .Values.configmap.kafka.consumerGroupWatchlist }}
+  consumer-group-stamp: {{ .Values.configmap.kafka.consumerGroupStamp }}
+  consumer-group-sortinghat: {{ .Values.configmap.kafka.consumerGroupSortinghat }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alerts-database
+  namespace: {{ .Values.namespace }}
+data:
+  host: {{ .Values.configmap.alertsDb.host }}
+  port: "{{ .Values.configmap.alertsDb.port }}"
+  name: {{ .Values.configmap.alertsDb.name }}
+  detections-id-field: {{ .Values.configmap.alertsDb.detectionsIdField }}
+  detections-table: {{ .Values.configmap.alertsDb.detectionsTable }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: schedule
+  namespace: {{ .Values.namespace }}
+data:
+  tz: {{ .Values.configmap.schedule.tz }}
+  lag-report: "{{ .Values.configmap.schedule.lagReport }}"
+  detections-report: "{{ .Values.configmap.schedule.detectionsReport }}"
+  stamp-report: "{{ .Values.configmap.schedule.stampReport }}"

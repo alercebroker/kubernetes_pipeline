@@ -1,0 +1,68 @@
+replicaCount: 1
+
+namespace: alverts
+
+image:
+  repository: ghcr.io/alercebroker/alverts
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets:
+  - name: "image-pull-access"
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+resources: {}
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+          - matchExpressions:
+            - key: nodegroup
+              operator: In
+              ## Override this value with the NodeGroup tag accordingly
+              values: []
+
+configmap:
+  kafka:
+    consumerServer: ""
+    consumerGroupFormat: "detections_report_%s"
+    sourceTopicFormat: "ztf_%s_programid1"
+    sourceTopicDateFormat: "'%Y%m%d'"
+    consumerGroupS3: ""
+    consumerGroupArchive: ""
+    consumerGroupWatchlist: ""
+    consumerGroupStamp: ""
+    consumerGroupSortinghat: ""
+  alertsDb:
+    host: ""
+    port: ""
+    name: ""
+    detectionsIdField: "candid"
+    detectionsTable: "detection"
+  schedule:
+    tz: America/Santiago
+    lagReport: ""
+    detectionsReport: ""
+    stampReport: ""
+
+secrets:
+  kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""
+  slack:
+    token: ""
+  alertsDb:
+    username: ""
+    password: ""
+
+imageCredentials:
+  registry: ""
+  username: ""
+  password: ""
+  email: ""

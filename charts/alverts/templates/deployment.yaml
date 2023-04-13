@@ -1,0 +1,158 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "alverts.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "alverts.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "alverts.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "alverts.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: SLACK_BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: slack
+            - name: KAFKA_BOOTSTRAP_SERVERS_PROD
+              valueFrom:
+                configMapKeyRef:
+                  key: consumer-server
+                  name: kafka
+            - name: DB_HOST_PROD
+              valueFrom:
+                configMapKeyRef:
+                  key: host
+                  name: alerts-database
+            - name: DB_USER_PROD
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: alerts-database
+            - name: DB_PASSWORD_PROD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: alerts-database
+            - name: DB_PORT_PROD
+              valueFrom:
+                configMapKeyRef:
+                  key: port
+                  name: alerts-database
+            - name: DB_DATABASE_PROD
+              valueFrom:
+                configMapKeyRef:
+                  key: name
+                  name: alerts-database
+            - name: DETECTIONS_ID_FIELD_PROD
+              valueFrom:
+                configMapKeyRef:
+                  key: detections-id-field
+                  name: alerts-database
+            - name: DETECTIONS_TABLE_PROD
+              valueFrom:
+                configMapKeyRef:
+                  key: detections-table
+                  name: alerts-database
+            - name: KAFKA_GROUP_ID_FORMAT
+              valueFrom:
+                configMapKeyRef:
+                  key: consumer-group-format
+                  name: kafka
+            - name: KAFKA_SOURCE_DATE_FORMAT
+              valueFrom:
+                configMapKeyRef:
+                  key: source-topic-date-format
+                  name: kafka
+            - name: KAFKA_TOPIC_FORMAT
+              valueFrom:
+                configMapKeyRef:
+                  key: source-topic-format
+                  name: kafka
+            - name: KAFKA_SOURCE_TOPIC_FORMAT
+              valueFrom:
+                configMapKeyRef:
+                  key: source-topic-format
+                  name: kafka
+            - name: KAFKA_GROUP_ID_S3
+              valueFrom:
+                configMapKeyRef:
+                  key: consumer-group-s3
+                  name: kafka
+            - name: KAFKA_GROUP_ID_ARCHIVE
+              valueFrom:
+                configMapKeyRef:
+                  key: consumer-group-archive
+                  name: kafka
+            - name: KAFKA_GROUP_ID_WATCHLIST
+              valueFrom:
+                configMapKeyRef:
+                  key: consumer-group-watchlist
+                  name: kafka
+            - name: KAFKA_GROUP_ID_STAMP
+              valueFrom:
+                configMapKeyRef:
+                  key: consumer-group-stamp
+                  name: kafka
+            - name: KAFKA_GROUP_ID_SORTING_HAT
+              valueFrom:
+                configMapKeyRef:
+                  key: consumer-group-sortinghat
+                  name: kafka
+            - name: TZ
+              valueFrom:
+                configMapKeyRef:
+                  key: tz
+                  name: schedule
+            - name: SCHEDULE_LAG_REPORT_TIME
+              valueFrom:
+                configMapKeyRef:
+                  key: lag-report
+                  name: schedule
+            - name: SCHEDULE_DETECTIONS_REPORT_TIME
+              valueFrom:
+                configMapKeyRef:
+                  key: detections-report
+                  name: schedule
+            - name: SCHEDULE_STAMP_REPORT_TIME
+              valueFrom:
+                configMapKeyRef:
+                  key: stamp-report
+                  name: schedule
+            {{- if .Values.secrets.kafkaAuth.enabled }}
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: username
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: password
+            {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
