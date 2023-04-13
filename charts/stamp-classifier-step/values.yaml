@@ -59,13 +59,23 @@ affinity:
               values: []
 
 secrets:
-  kafka:
-    username: ""
-    password: ""
   kafkaAuth:
-    enabled: false
-    username: ""
-    password: ""
+    consumer:
+      enabled: false
+      username: ""
+      password: ""
+    producer:
+      enabled: false
+      username: ""
+      password: ""
+    scribe:
+      enabled: false
+      username: ""
+      password: ""
+    metrics:
+      enabled: false
+      username: ""
+      password: ""
 
 
 configmap:
