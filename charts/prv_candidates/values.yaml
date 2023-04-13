@@ -44,9 +44,12 @@ affinity:
 configmap:
   consumerTopics: ""
   consumeMessages: ""
-  internalServer: ""
+  consumerServer: ""
+  scribeServer: ""
   scribeTopic: ""
+  metricsServer: ""
   metricsTopic: ""
+  producerServer: ""
   producerTopic: ""
 
 imageCredentials:
@@ -57,6 +60,19 @@ imageCredentials:
 
 secrets:
   kafkaAuth:
-    enabled: false
-    username: ""
-    password: ""
+    consumer:
+      enabled: false
+      username: ""
+      password: ""
+    producer:
+      enabled: false
+      username: ""
+      password: ""
+    scribe:
+      enabled: false
+      username: ""
+      password: ""
+    metrics:
+      enabled: false
+      username: ""
+      password: ""
