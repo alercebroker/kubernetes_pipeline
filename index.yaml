@@ -21,6 +21,17 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/alert-archive-step-0.1.0/alert-archive-step-0.1.0.tgz
     version: 0.1.0
+  alverts:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-04-13T16:08:19.22190684Z"
+    description: 'ALVERTS: ALeRCE Verification and ReporT System'
+    digest: 37618b65b5d31333307cec36e6077e90139a4b46bacf665ec6426d1d5d1dc89b
+    name: alverts
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/alverts-1.0.0/alverts-1.0.0.tgz
+    version: 1.0.0
   correction-step:
   - apiVersion: v2
     appVersion: rc-472b399
@@ -387,4 +398,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-12T20:34:39.459444394Z"
+generated: "2023-04-13T16:08:19.22196454Z"
