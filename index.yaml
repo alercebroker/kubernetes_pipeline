@@ -66,6 +66,16 @@ entries:
     version: 1.0.0
   feature-step:
   - apiVersion: v2
+    appVersion: 1.3.0
+    created: "2023-04-14T14:16:52.907981492Z"
+    description: Step for feature calculation
+    digest: a6e685eb83fce2c648a0915ddd5cda17712be27f8617d6d27be3e248492fbcbf
+    name: feature-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/feature-step-1.1.0/feature-step-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
     appVersion: 1.2.2
     created: "2023-04-12T19:07:18.85703824Z"
     description: Step for feature calculation
@@ -428,4 +438,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-14T12:52:52.187243911Z"
+generated: "2023-04-14T14:16:52.908412792Z"
