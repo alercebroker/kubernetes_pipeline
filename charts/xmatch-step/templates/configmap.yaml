@@ -5,9 +5,11 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
-  internal-server: {{ .Values.configmap.internalServer }}
+  consumer-server: {{ .Values.configmap.consumerServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
+  producer-server: {{ .Values.configmap.producerServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
+  metrics-server: {{ .Values.configmap.metricsServer }}
   step-version: {{ .Chart.AppVersion }}
   retries: "{{ .Values.configmap.retries }}"
   retry-interval: "{{ .Values.configmap.retryInterval }}"
