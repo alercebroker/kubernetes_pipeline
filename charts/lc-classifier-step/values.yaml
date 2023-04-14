@@ -60,15 +60,19 @@ secrets:
   db:
     username: ""
     password: ""
-  kafka:
-    username: ""
-    password: ""
-    securityProtocol: ""
-    saslMechanism: ""
   kafkaAuth:
-    enabled: false
-    username: ""
-    password: ""
+    consumer:
+      enabled: false
+      username: ""
+      password: ""
+    producer:
+      enabled: false
+      username: ""
+      password: ""
+    metrics:
+      enabled: false
+      username: ""
+      password: ""
 
 imageCredentials:
   registry: ""

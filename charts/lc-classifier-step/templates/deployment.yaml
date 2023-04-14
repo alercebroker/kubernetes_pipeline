@@ -64,26 +64,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: public-server
-            - name: PRODUCER_SASL_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: '{{ include "lc-classifier-step.fullname" . }}-kafka'
-                  key: username
-            - name: PRODUCER_SASL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: '{{ include "lc-classifier-step.fullname" . }}-kafka'
-                  key: password
-            - name: PRODUCER_SECURITY_PROTOCOL
-              valueFrom:
-                secretKeyRef:
-                  name: '{{ include "lc-classifier-step.fullname" . }}-kafka'
-                  key: security-protocol
-            - name: PRODUCER_SASL_MECHANISM
-              valueFrom:
-                secretKeyRef:
-                  name: '{{ include "lc-classifier-step.fullname" . }}-kafka'
-                  key: sasl-mechanism
             - name: METRICS_HOST
               valueFrom:
                 configMapKeyRef:
@@ -121,17 +101,41 @@ spec:
                 secretKeyRef:
                   name: '{{ include "lc-classifier-step.fullname" . }}-db'
                   key: password
-            {{- if .Values.secrets.kafkaAuth.enabled }}
-            - name: KAFKA_USERNAME
+            {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
+            - name: CONSUMER_KAFKA_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: username
-            - name: KAFKA_PASSWORD
+                  key: consumer-username
+            - name: CONSUMER_KAFKA_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: password
+                  key: consumer-password
+            {{- end }}
+            {{- if .Values.secrets.kafkaAuth.producer.enabled }}
+            - name: PRODUCER_KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: producer-username
+            - name: PRODUCER_KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: producer-password
+            {{- end }}
+            {{- if .Values.secrets.kafkaAuth.metrics.enabled }}
+            - name: METRICS_KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: metrics-username
+            - name: METRICS_KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: metrics-password
             {{- end }}
             - name: STEP_ID
               valueFrom:
