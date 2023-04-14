@@ -171,6 +171,16 @@ entries:
   logstash:
   - apiVersion: v2
     appVersion: 7.16.2
+    created: "2023-04-14T19:54:05.454567809Z"
+    description: Logstash for sending pipeline metrics to elasticsearch
+    digest: 4b3da408b89d2f22b31e033671e0ddbd1bbcfa05e4381f42539d12a1ac4edd08
+    name: logstash
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/logstash-1.0.0/logstash-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 7.16.2
     created: "2023-03-14T18:26:44.320280508Z"
     description: Logstash for sending pipeline metrics to elasticsearch
     digest: 684dc6dbf7d4e3e0e8a1eb9a0237b1262821d05b06a78329c06e9209a3dafd8a
@@ -448,4 +458,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-14T15:11:06.35439047Z"
+generated: "2023-04-14T19:54:05.454746111Z"
