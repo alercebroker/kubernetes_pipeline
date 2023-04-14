@@ -44,10 +44,11 @@ affinity:
 
 configmap:
   consumerTopics: ""
-  publicServer: ""
-  internalServer: ""
+  consumerServer: ""
   metricsTopic: ""
+  metricsServer: ""
   producerTopic: ""
+  producerServer: ""
   stepVersion: ""
   retries: ""
   retryInterval: ""
@@ -61,9 +62,18 @@ configmap:
 
 secrets:
   kafkaAuth:
-    enabled: false
-    username: ""
-    password: ""
+    consumer:
+      enabled: false
+      username: ""
+      password: ""
+    producer:
+      enabled: false
+      username: ""
+      password: ""
+    metrics:
+      enabled: false
+      username: ""
+      password: ""
   sql:
     user: ""
     password: ""
