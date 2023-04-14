@@ -409,6 +409,16 @@ entries:
     version: 1.0.0
   xmatch-step:
   - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2023-04-14T12:52:52.180653522Z"
+    description: A Helm chart for Kubernetes
+    digest: 9576279b258e0b02c05abc4c2ad0d370e52d4f255d491e2df9334848b7b63542
+    name: xmatch-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.1.0/xmatch-step-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
     appVersion: 2.0.3
     created: "2023-04-12T19:31:19.218542289Z"
     description: A Helm chart for Kubernetes
@@ -418,4 +428,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-13T20:10:07.436320483Z"
+generated: "2023-04-14T12:52:52.187243911Z"
