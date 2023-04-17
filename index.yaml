@@ -221,6 +221,16 @@ entries:
     version: 0.2.0
   magstats-step:
   - apiVersion: v2
+    appVersion: rc-4625da3
+    created: "2023-04-17T20:25:07.001969765Z"
+    description: A Helm chart for Kubernetes
+    digest: 4ccb745cf1ddfa6d3471795cd15539c2982af9c52ad32fa2004e738464293d4b
+    name: magstats-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/magstats-step-0.3.0/magstats-step-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     appVersion: rc-40b42dd
     created: "2023-03-24T13:04:51.947859149Z"
     description: A Helm chart for Kubernetes
@@ -468,4 +478,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-17T20:00:47.319927026Z"
+generated: "2023-04-17T20:25:07.002300365Z"
