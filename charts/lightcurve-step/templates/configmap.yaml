@@ -11,4 +11,5 @@ data:
   producer-topic: {{ .Values.configmap.producerTopic }}
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
+  mongo-secret-name: "{{ .Values.configmap.mongoSecret }}"
   use-prometheus: "{{ .Values.configmap.usePrometheus }}"
