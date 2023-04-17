@@ -12,3 +12,4 @@ data:
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   use-prometheus: "{{ .Values.configmap.usePrometheus }}"
+  mongo-secret: {{ .Values.configmap.mongoSecret }}

@@ -51,6 +51,7 @@ configmap:
   metricsServer: ""
   metricsTopic: ""
   usePrometheus: ""
+  mongoSecret: ""
 
 secrets:
   kafkaAuth:

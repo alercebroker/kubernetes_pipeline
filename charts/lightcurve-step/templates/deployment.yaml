@@ -36,6 +36,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
+            - name: MONGODB_SECRET_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lightcurve-step.fullname" . }}
+                  key: mongo-secret
             - name: CONSUMER_TOPICS
               valueFrom:
                 configMapKeyRef:
@@ -78,36 +83,36 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: username
+                  key: consumer-username
             - name: CONSUMER_KAFKA_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: password
+                  key: consumer-password
             {{- end }}
             {{- if .Values.secrets.kafkaAuth.producer.enabled }}
             - name: PRODUCER_KAFKA_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: username
+                  key: producer-username
             - name: PRODUCER_KAFKA_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: password
+                  key: producer-password
             {{- end }}
             {{- if .Values.secrets.kafkaAuth.metrics.enabled }}
             - name: METRICS_KAFKA_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: username
+                  key: metrics-username
             - name: METRICS_KAFKA_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: password
+                  key: metrics-password
             {{- end }}
             - name: USE_PROMETHEUS
               valueFrom:
