@@ -107,9 +107,9 @@ spec:
                   name: kafka-auth
                   key: producer-password
             - name: PRODUCER_SECURITY_PROTOCOL
-              value: "SASL_PLAINTEXT"
+              value: "SASL_SSL"
             - name: PRODUCER_SASL_MECHANISM
-              value: "SCRAM-SHA-256"
+              value: "SCRAM-SHA-512"
             {{- end }}
             {{- if .Values.secrets.kafkaAuth.metrics.enabled }}
             - name: METRICS_KAFKA_USERNAME
