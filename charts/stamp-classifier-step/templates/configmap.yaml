@@ -11,6 +11,8 @@ data:
   scribe-topic: {{ .Values.configmap.atlas.scribeTopic }}
   model-name: {{ .Values.configmap.atlas.modelName }}
   model-version: {{ .Values.configmap.atlas.modelVersion }}
+  producer-security-protocol: {{ .Values.configmap.atlas.kafka.producerSecurityProtocol }}
+  producer-sasl-mechanism: {{ .Values.configmap.atlas.kafka.producerSaslMechanism }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -24,3 +26,5 @@ data:
   scribe-topic: {{ .Values.configmap.ztf.scribeTopic }}
   model-name: {{ .Values.configmap.ztf.modelName }}
   model-version: {{ .Values.configmap.ztf.modelVersion }}
+  producer-security-protocol: {{ .Values.configmap.ztf.kafka.producerSecurityProtocol }}
+  producer-sasl-mechanism: {{ .Values.configmap.ztf.kafka.producerSaslMechanism }}

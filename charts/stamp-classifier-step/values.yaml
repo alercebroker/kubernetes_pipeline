@@ -86,6 +86,9 @@ configmap:
     scribeTopic: "w_object"
     modelName: "atlas-stamp-classifier"
     modelVersion: ""
+    kafka:
+      producerSecurityProtocol: "SASL_SSL"
+      producerSaslMechanism: "SCRAM-SHA-512"
   ztf:
     consumerTopics: "sorting-hat-ztf"
     publicServer: ""
@@ -93,6 +96,9 @@ configmap:
     scribeTopic: "w_object"
     modelName: "ztf-stamp-classifier"
     modelVersion: ""
+    kafka:
+      producerSecurityProtocol: "SASL_SSL"
+      producerSaslMechanism: "SCRAM-SHA-512"
 
 imageCredentials:
   registry: ""

@@ -107,6 +107,16 @@ spec:
                   key: consumer-password
             {{- end }}
             {{- if .Values.secrets.kafkaAuth.producer.enabled }}
+            - name: PRODUCER_SECURITY_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "chart.fullname" . }}-atlas'
+                  key: producer-security-protocol
+            - name: PRODUCER_SASL_MECHANISM
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "chart.fullname" . }}-atlas'
+                  key: producer-sasl-mechanism
             - name: PRODUCER_KAFKA_USERNAME
               valueFrom:
                 secretKeyRef:
