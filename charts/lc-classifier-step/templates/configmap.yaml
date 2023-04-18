@@ -16,3 +16,5 @@ data:
   step-version: {{ .Values.configmap.stepVersion }}
   consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
+  kafka-producer-security-protocol: {{ .Values.configmap.kafka.securityProtocol }}
+  kafka-producer-sasl-mechanism: {{ .Values.configmap.kafka.saslMechanism }}

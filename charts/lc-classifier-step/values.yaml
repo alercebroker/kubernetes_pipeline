@@ -55,6 +55,9 @@ configmap:
   stepVersion: ""
   consumeTimeout: "10"
   consumeMessages: "100"
+  kafka:
+    securityProtocol: "SASL_SSL"
+    saslMechanism: "SCRAM-SHA-512"
 
 secrets:
   db:

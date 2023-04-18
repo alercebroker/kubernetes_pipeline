@@ -114,6 +114,16 @@ spec:
                   key: consumer-password
             {{- end }}
             {{- if .Values.secrets.kafkaAuth.producer.enabled }}
+            - name: PRODUCER_SECURITY_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: kafka-producer-security-protocol
+            - name: PRODUCER_SASL_MECHANISM
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: kafka-producer-sasl-mechanism
             - name: PRODUCER_KAFKA_USERNAME
               valueFrom:
                 secretKeyRef:
