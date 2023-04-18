@@ -46,6 +46,16 @@ entries:
   early-classifier:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2023-04-18T15:51:23.758375175Z"
+    description: A Helm chart for Kubernetes
+    digest: 3f9986e9df5ac6af76d3e83f002890263733517f09387f5d0563783a4bbe5436
+    name: early-classifier
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/early-classifier-1.1.2/early-classifier-1.1.2.tgz
+    version: 1.1.2
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2023-04-12T20:15:35.866255094Z"
     description: A Helm chart for Kubernetes
     digest: 567bc3c5e9d3f260dd293579fb5039c94b395d2a58ddafa9a4f0e3a7373afe8b
@@ -478,4 +488,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-17T20:25:07.002300365Z"
+generated: "2023-04-18T15:51:23.758444476Z"
