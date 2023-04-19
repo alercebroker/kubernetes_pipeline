@@ -35,6 +35,16 @@ entries:
   correction-step:
   - apiVersion: v2
     appVersion: rc-472b399
+    created: "2023-04-19T19:12:46.331699492Z"
+    description: Correction step chart
+    digest: f824b5c0eba284de080f88bb7e656f20e84c0b0c6b13701bbdd8ccc72d36bc8e
+    name: correction-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/correction-step-0.2.0/correction-step-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: rc-472b399
     created: "2023-03-24T13:48:36.995613538Z"
     description: Correction step chart
     digest: 3c2243943490c619e9a739c2554419d82ae31171a2a018160645c3281069cc43
@@ -518,4 +528,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-19T19:12:20.388393376Z"
+generated: "2023-04-19T19:12:46.331817593Z"
