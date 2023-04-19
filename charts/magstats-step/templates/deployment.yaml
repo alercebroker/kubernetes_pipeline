@@ -58,17 +58,17 @@ spec:
                   key: consumer-server
             - name: CONSUMER_GROUP_ID
               value: {{ include "magstats-step.fullname" . }}
-            - name: SCRIBE_SERVER
+            - name: SCRIBE_PRODUCER_SERVER
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "magstats-step.fullname" . }}
                   key: scribe-server
-            - name: SCRIBE_TOPIC
+            - name: SCRIBE_PRODUCER_TOPIC
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "magstats-step.fullname" . }}
                   key: scribe-topic
-            - name: METRICS_HOST
+            - name: METRICS_SERVER
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "magstats-step.fullname" . }}
