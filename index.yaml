@@ -118,6 +118,16 @@ entries:
   ingestion-step:
   - apiVersion: v2
     appVersion: 1.2.0
+    created: "2023-04-21T16:08:56.510495608Z"
+    description: Ingestion step chart
+    digest: 479ba8ffb242ba3f63a736e401c439ecccb901af9765fbaf912058401a7576b3
+    name: ingestion-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/ingestion-step-1.2.0/ingestion-step-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
+    appVersion: 1.2.0
     created: "2023-04-19T19:18:01.78650044Z"
     description: Ingestion step chart
     digest: d342a6155c78c9d89659a88df9bdc21cd7a41c05089f6e9095d7d58009a74d39
@@ -588,4 +598,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-20T20:37:44.139784728Z"
+generated: "2023-04-21T16:08:56.510655908Z"
