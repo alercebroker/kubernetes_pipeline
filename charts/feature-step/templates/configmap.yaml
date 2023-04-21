@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
-  group-id: {{ .Values.configmap.groupId }}
+  group-id: {{ .Values.configmap.groupId | default (printf "%s" (include "feature-step.fullname" .)) }}
   internal-server: {{ .Values.configmap.internalServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
   feature-version: {{ .Values.configmap.featureVersion }}
