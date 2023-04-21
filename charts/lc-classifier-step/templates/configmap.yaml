@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
-  consumer-group: {{ .Values.configmap.consumerGroup }}
+  consumer-group: {{ .Values.configmap.consumerGroup | default (printf "%s" (include "lc-classifier-step.fullname" .)) }}
   internal-server: {{ .Values.configmap.internalServer }}
   public-server: {{ .Values.configmap.publicServer }}
   db-engine: {{ .Values.configmap.dbEngine }}
