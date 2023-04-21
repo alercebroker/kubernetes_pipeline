@@ -63,6 +63,9 @@ configmap:
   consumeMessages:
     atlas: ""
     ztf: ""
+  consumerGroupId:
+    atlas: ""
+    ztf: ""
   internalServer: ""
   metricsTopic: ""
   psqlCredentials:

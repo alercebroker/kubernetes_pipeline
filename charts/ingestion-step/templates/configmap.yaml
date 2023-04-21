@@ -30,6 +30,7 @@ data:
   consumer-topics: {{ .Values.configmap.consumerTopics.atlas }}
   producer-topic: {{ .Values.configmap.producerTopic.atlas }}
   consume-messages: '{{ .Values.configmap.consumeMessages.atlas }}'
+  consumer-group-id: {{ .Values.configmap.consumerGroupId.atlas | default (printf "%s-ztf" (include "ingestion-step.fullname" .)) }}
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -40,3 +41,4 @@ data:
   consumer-topics: {{ .Values.configmap.consumerTopics.ztf }}
   producer-topic: {{ .Values.configmap.producerTopic.ztf }}
   consume-messages: '{{ .Values.configmap.consumeMessages.ztf }}'
+  consumer-group-id: {{ .Values.configmap.consumerGroupId.ztf | default (printf "%s-ztf" (include "ingestion-step.fullname" .)) }}
