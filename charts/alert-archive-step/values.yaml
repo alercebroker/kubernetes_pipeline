@@ -46,7 +46,6 @@ configmap:
   consumerTopics: ""
   consumerGroupId: ""
   internalServer: ""
-  metricsTopic: ""
   bucketName: ""
 
 secrets:

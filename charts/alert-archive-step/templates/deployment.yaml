@@ -51,16 +51,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "alert-archive-step.fullname" . }}
                   key: consumer-group-id
-            - name: METRICS_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "alert-archive-step.fullname" . }}
-                  key: internal-server
-            - name: METRICS_TOPIC
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "alert-archive-step.fullname" . }}
-                  key: metrics-topic
             - name: S3_ZTF_BUCKET_NAME
               valueFrom:
                 configMapKeyRef:
