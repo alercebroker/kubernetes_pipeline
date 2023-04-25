@@ -106,17 +106,29 @@ spec:
                 configMapKeyRef:
                   name: {{ include "watchlist-step.fullname" . }}
                   key: metrics-topic
-            {{- if .Values.secrets.kafkaAuth.enabled }}
-            - name: KAFKA_USERNAME
+            {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
+            - name: CONSUMER_KAFKA_USERNAME
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: username
-            - name: KAFKA_PASSWORD
+                  key: consumer-username
+            - name: CONSUMER_KAFKA_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: kafka-auth
-                  key: password
+                  key: consumer-password
+            {{- end }}
+            {{- if .Values.secrets.kafkaAuth.metrics.enabled }}
+            - name: METRICS_KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: metrics-username
+            - name: METRICS_KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: metrics-password
             {{- end }}
       {{- with .Values.affinity }}
       affinity:
