@@ -668,6 +668,16 @@ entries:
     version: 0.1.0
   watchlist-step:
   - apiVersion: v2
+    appVersion: 1.1.4
+    created: "2023-04-25T13:06:23.060677606Z"
+    description: A Helm chart for Kubernetes
+    digest: 4ddfcbd303c161dd2b3546ca273d7d9bcd9725ca66d9417c63ecfad3ff9dd2c9
+    name: watchlist-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/watchlist-step-1.1.0/watchlist-step-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
     appVersion: 1.1.1
     created: "2023-04-12T20:34:39.459304787Z"
     description: A Helm chart for Kubernetes
@@ -708,4 +718,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-04-25T13:02:38.700294462Z"
+generated: "2023-04-25T13:06:23.060937405Z"
