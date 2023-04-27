@@ -55,11 +55,7 @@ configmap:
   retryInterval: ""
   consumeTimeout: ""
   consumeMessages: ""
-  db:
-    host: ""
-    engine: ""
-    port: ""
-    name: ""
+  scribeServer: ""
 
 secrets:
   kafkaAuth:
@@ -75,9 +71,10 @@ secrets:
       enabled: false
       username: ""
       password: ""
-  sql:
-    user: ""
-    password: ""
+    scribe:
+      enabled: false
+      username: ""
+      password: ""
 
 imageCredentials:
   registry: ""
