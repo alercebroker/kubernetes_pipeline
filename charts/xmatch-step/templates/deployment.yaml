@@ -76,6 +76,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "xmatch-step.fullname" . }}
                   key: metrics-topic
+            - name: SCRIBE_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: scribe-server
+            - name: SCRIBE_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "xmatch-step.fullname" . }}
+                  key: scribe-topic
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
               valueFrom:
@@ -112,56 +122,18 @@ spec:
                   name: kafka-auth
                   key: metrics-password
             {{- end }}
-            - name: DB_ENGINE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "xmatch-step.fullname" . }}
-                  key: db-engine
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "xmatch-step.fullname" . }}
-                  key: db-host
-            - name: DB_USER
+            {{- if .Values.secrets.kafkaAuth.scribe.enabled }}
+            - name: SCRIBE_KAFKA_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: sql
-                  key: user
-            - name: DB_PASSWORD
+                  name: kafka-auth
+                  key: scribe-username
+            - name: SCRIBE_KAFKA_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: sql
-                  key: password
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "xmatch-step.fullname" . }}
-                  key: db-port
-            - name: DB_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "xmatch-step.fullname" . }}
-                  key: db-name
-            - name: RETRIES
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "xmatch-step.fullname" . }}
-                  key: retries
-            - name: RETRY_INTERVAL
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "xmatch-step.fullname" . }}
-                  key: retry-interval
-            - name: CONSUME_TIMEOUT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "xmatch-step.fullname" . }}
-                  key: consume-timeout
-            - name: CONSUME_MESSAGES
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "xmatch-step.fullname" . }}
-                  key: consume-messages
+                  name: kafka-auth
+                  key: scribe-password
+            {{- end }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
