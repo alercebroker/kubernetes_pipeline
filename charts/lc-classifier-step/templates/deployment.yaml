@@ -64,6 +64,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: public-server
+            - name: SCRIBE_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: internal-server
+            - name: SCRIBE_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: scribe-topic
             - name: METRICS_HOST
               valueFrom:
                 configMapKeyRef:
@@ -71,36 +81,6 @@ spec:
                   key: internal-server
             - name: METRICS_TOPIC
               value: "metrics"
-            - name: DB_ENGINE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "lc-classifier-step.fullname" . }}
-                  key: db-engine
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "lc-classifier-step.fullname" . }}
-                  key: db-host
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "lc-classifier-step.fullname" . }}
-                  key: db-port
-            - name: DB_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "lc-classifier-step.fullname" . }}
-                  key: db-name
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: '{{ include "lc-classifier-step.fullname" . }}-db'
-                  key: username
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: '{{ include "lc-classifier-step.fullname" . }}-db'
-                  key: password
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
               valueFrom:
@@ -112,6 +92,18 @@ spec:
                 secretKeyRef:
                   name: kafka-auth
                   key: consumer-password
+            {{- end }}
+            {{- if .Values.secrets.kafkaAuth.scribe.enabled }}
+            - name: SCRIBE_KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: scribe-username
+            - name: SCRIBE_KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: scribe-password
             {{- end }}
             {{- if .Values.secrets.kafkaAuth.producer.enabled }}
             - name: PRODUCER_SECURITY_PROTOCOL
@@ -147,16 +139,6 @@ spec:
                   name: kafka-auth
                   key: metrics-password
             {{- end }}
-            - name: STEP_ID
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "lc-classifier-step.fullname" . }}
-                  key: step-id
-            - name: STEP_VERSION
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "lc-classifier-step.fullname" . }}
-                  key: step-version
             - name: CONSUME_TIMEOUT
               valueFrom:
                 configMapKeyRef:

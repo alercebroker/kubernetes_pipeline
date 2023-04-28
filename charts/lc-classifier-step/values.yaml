@@ -47,12 +47,7 @@ configmap:
   consumerGroup: ""
   publicServer: ""
   internalServer: ""
-  dbEngine: ""
-  dbHost: ""
-  dbPort: ""
-  dbName: ""
-  stepId: ""
-  stepVersion: ""
+  scribeTopic: ""
   consumeTimeout: "10"
   consumeMessages: "100"
   kafka:
@@ -60,9 +55,6 @@ configmap:
     saslMechanism: "SCRAM-SHA-512"
 
 secrets:
-  db:
-    username: ""
-    password: ""
   kafkaAuth:
     consumer:
       enabled: false
@@ -73,6 +65,10 @@ secrets:
       username: ""
       password: ""
     metrics:
+      enabled: false
+      username: ""
+      password: ""
+    scribe:
       enabled: false
       username: ""
       password: ""
