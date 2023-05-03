@@ -29,6 +29,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: settings
+              mountPath: /app/user_interface/slack/slack_bot/settings.yml
+              subPath: settings.yml
           env:
             - name: SLACK_BOT_TOKEN
               valueFrom:
@@ -156,3 +160,10 @@ spec:
       affinity:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: settings
+          configMap:
+            name: settings
+            items:
+              - key: "settings.yml"
+                path: "settings.yml"

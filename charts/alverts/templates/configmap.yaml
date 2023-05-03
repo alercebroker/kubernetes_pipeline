@@ -36,3 +36,34 @@ data:
   lag-report: "{{ .Values.configmap.schedule.lagReport }}"
   detections-report: "{{ .Values.configmap.schedule.detectionsReport }}"
   stamp-report: "{{ .Values.configmap.schedule.stampReport }}"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: settings
+  namespace: {{ .Values.namespace }}
+data:
+  settings.yml: |
+    ---
+    slack_bot:
+      stage: ${SLACK_BOT_STAGE}
+      log_level: ${SLACK_BOT_LOG_LEVEL}
+      slack_credentials:
+        token: ${SLACK_BOT_TOKEN}
+      reports:
+        - name: stamp_classifications_report
+          database:
+            - host: ${DB_HOST_PROD}
+              database: ${DB_DATABASE_PROD}
+              user: ${DB_USER_PROD}
+              password: ${DB_PASSWORD_PROD}
+              port: ${DB_PORT_PROD}
+              table_names: [probability, object]
+              mjd_name: firstmjd
+      schedule:
+        - period: every_day
+          report: stamp_classifications_report
+          channels:
+            - test-bots
+          times:
+            - '${SCHEDULE_STAMP_REPORT_TIME}'

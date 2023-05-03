@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: 1.0.0
+appVersion: "rc-e3d1796"
 description: "ALVERTS: ALeRCE Verification and ReporT System"
 name: alverts
 type: application
-version: 1.0.0
+version: 1.1.0
