@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "elasticc-simulator.fullname" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "elasticc-simulator.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "elasticc-simulator.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "elasticc-simulator.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+            - name: CONSUMER_CLASS
+              value: {{ .Values.consumerClass }}
+            - name: MESSAGES
+              value: {{ .Values.consumerMessages }}
+            - name: SCHEMA_PATH
+              value: {{ .Values.producerSchemaPath }}
+            - name: PRODUCER_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "elasticc-simulator.fullname" . }}
+                  key: internal-server
+            - name: PRODUCER_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "elasticc-simulator.fullname" . }}
+                  key: producer-topic
+            {{- if .Values.secrets.kafkaAuth.enabled }}
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: username
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: password
+            {{- end }}
+            - name: EXPOSURE_TIME
+              value: {{ .Values.exposureTime }}
+            - name: PROCESS_TIME
+              value: {{ .Values.processTime }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

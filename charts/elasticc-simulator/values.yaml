@@ -1,0 +1,55 @@
+replicaCount: 1
+
+namespace: elasticc-simulator
+
+image:
+  repository: ghcr.io/alercebroker/elasticc-simulator
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets:
+  - name: "image-pull-access"
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+          - matchExpressions:
+            - key: nodegroup
+              operator: In
+              values: []
+
+consumerClass: "apf.consumers.AVROFileConsumer"
+consumerMessages: "1000"
+producerSchemaPath: "schemas/lsst.json"
+exposureTime: "1"
+processTime: "1"
+
+configmap:
+  internalServer: ""
+  producerTopic: ""
+
+secrets:
+  kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""
+
+imageCredentials:
+  registry: ""
+  username: ""
+  password: ""
+  email: ""
