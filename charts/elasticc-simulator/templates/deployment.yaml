@@ -35,7 +35,7 @@ spec:
             - name: CONSUMER_CLASS
               value: {{ .Values.consumerClass }}
             - name: MESSAGES
-              value: {{ .Values.consumerMessages }}
+              value: "{{ .Values.consumerMessages }}"
             - name: SCHEMA_PATH
               value: {{ .Values.producerSchemaPath }}
             - name: PRODUCER_SERVER
@@ -61,9 +61,9 @@ spec:
                   key: password
             {{- end }}
             - name: EXPOSURE_TIME
-              value: {{ .Values.exposureTime }}
+              value: "{{ .Values.exposureTime }}"
             - name: PROCESS_TIME
-              value: {{ .Values.processTime }}
+              value: "{{ .Values.processTime }}"
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
