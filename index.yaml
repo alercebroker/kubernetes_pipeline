@@ -127,6 +127,16 @@ entries:
   elasticc-simulator:
   - apiVersion: v2
     appVersion: 0.1.0
+    created: "2023-05-09T14:20:36.810870336Z"
+    description: Produce elasticc alerts
+    digest: 82284dec20c89e862e7631fceec99ed2c6073c00ad21eb5c66c846ca921a2844
+    name: elasticc-simulator
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/elasticc-simulator-0.2.0/elasticc-simulator-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 0.1.0
     created: "2023-05-09T13:13:47.739300154Z"
     description: Produce elasticc alerts
     digest: 0fd489abc4f6990aade23339d8e9dfe95c7f498a0a6d202eb56b00a346828afb
@@ -739,4 +749,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-05-09T13:13:47.739458253Z"
+generated: "2023-05-09T14:20:36.811032037Z"
