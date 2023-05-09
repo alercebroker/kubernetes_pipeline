@@ -8,12 +8,7 @@ data:
   consumer-group: {{ .Values.configmap.consumerGroup | default (printf "%s" (include "lc-classifier-step.fullname" .)) }}
   internal-server: {{ .Values.configmap.internalServer }}
   public-server: {{ .Values.configmap.publicServer }}
-  db-engine: {{ .Values.configmap.dbEngine }}
-  db-host: {{ .Values.configmap.dbHost }}
-  db-port: "{{ .Values.configmap.dbPort }}"
-  db-name: {{ .Values.configmap.dbName }}
-  step-id: {{ .Values.configmap.stepId }}
-  step-version: {{ .Values.configmap.stepVersion }}
+  scribe-topic: {{ .Values.configmap.scribeTopic }}
   consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
   kafka-producer-security-protocol: {{ .Values.configmap.kafka.securityProtocol }}
