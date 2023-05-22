@@ -42,6 +42,8 @@ spec:
               value: "{{ .Values.secrets.mockDb }}"
             - name: MONGODB_SECRET_NAME
               value: "{{ .Values.secrets.secretName }}"
+            - name: CONSUMER_GROUP_ID
+              value: "{{ .Values.secrets.consumerGroupId }}"
             {{- if .Values.secrets.kafkaAuth.enabled }}
             - name: KAFKA_USERNAME
               valueFrom:

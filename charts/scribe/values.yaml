@@ -13,7 +13,7 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-namespace: pipeline
+namespace: scribe-step
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -45,15 +45,16 @@ affinity:
 
 secrets:
   #topics: all the topics that will be consumed by Alerce Scribe
-  topics: "w_object,w_detections,w_non_detections"
+  topics: ""
   #numMessages: size of the message batch
   numMessages: "100"
   #bootstrapServers: one or more Kafka servers
   bootstrapServers: ""
   #mockDb: flag that chooses if the scribe writes into database or just logs the commands
-  mockDb: "True"
+  mockDb: "False"
   #secretName: name of the secret stored in AWS Secret Manager containing MongoDB credentials
   secretName: ""
+  consumerGroupId: ""
   kafkaAuth:
     enabled: false
     username: ""
