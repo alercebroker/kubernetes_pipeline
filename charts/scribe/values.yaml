@@ -55,7 +55,13 @@ secrets:
   #secretName: name of the secret stored in AWS Secret Manager containing MongoDB credentials
   secretName: ""
   consumerGroupId: ""
+  metricsHost: ""
+  metricsTopic: ""
   kafkaAuth:
+    enabled: false
+    username: ""
+    password: ""
+  metricsKafkaAuth:
     enabled: false
     username: ""
     password: ""
