@@ -360,6 +360,16 @@ entries:
     version: 1.0.0
   lightcurve-step:
   - apiVersion: v2
+    appVersion: rc-09d51cb
+    created: "2023-05-24T20:24:19.697352817Z"
+    description: Full lightcurve provider step
+    digest: 121ae90e18c2ad447d93b70765f3a16659ea62eacab63dd1821bf00240544e53
+    name: lightcurve-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/lightcurve-step-0.4.0/lightcurve-step-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
     appVersion: rc-a4f7fc3
     created: "2023-04-17T20:00:47.319594321Z"
     description: Full lightcurve provider step
@@ -483,6 +493,16 @@ entries:
     version: 0.1.0
   prv-candidates:
   - apiVersion: v2
+    appVersion: rc-84b45f7
+    created: "2023-05-24T20:24:19.806471544Z"
+    description: Previous candidates processor step
+    digest: cd2ff37a0fd802ca204c33c0d46635624e3aab24d079dba7e93ae1e5c8b93bad
+    name: prv-candidates
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/prv-candidates-0.7.0/prv-candidates-0.7.0.tgz
+    version: 0.7.0
+  - apiVersion: v2
     appVersion: rc-7e8958a
     created: "2023-05-22T20:36:25.437688844Z"
     description: Previous candidates processor step
@@ -594,6 +614,16 @@ entries:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/s3-step-0.1.0/s3-step-0.1.0.tgz
     version: 0.1.0
   scribe:
+  - apiVersion: v2
+    appVersion: rc-296f9b3
+    created: "2023-05-24T20:24:19.904216205Z"
+    description: ALeRCE pipeline CQRS eventual consistency engine
+    digest: 00a1ef67f392f12e8fd300179577642c354f45a5999be9c859c3552f3bba707f
+    name: scribe
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/scribe-0.3.6/scribe-0.3.6.tgz
+    version: 0.3.6
   - apiVersion: v2
     appVersion: rc-7646ff1
     created: "2023-05-22T20:36:25.535430751Z"
@@ -869,4 +899,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-05-22T20:36:25.633228159Z"
+generated: "2023-05-24T20:24:19.907994227Z"
