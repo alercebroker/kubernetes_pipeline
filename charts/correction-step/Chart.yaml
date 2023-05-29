@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: rc-bc4293f
+appVersion: rc-b60c5f3
 description: Correction step chart
 name: correction-step
 type: application
-version: 0.3.0
+version: 0.3.1
