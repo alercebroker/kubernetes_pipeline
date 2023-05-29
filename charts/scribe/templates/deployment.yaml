@@ -42,6 +42,12 @@ spec:
               value: "{{ .Values.secrets.mockDb }}"
             - name: MONGODB_SECRET_NAME
               value: "{{ .Values.secrets.secretName }}"
+            - name: CONSUMER_GROUP_ID
+              value: "{{ .Values.secrets.consumerGroupId }}"
+            - name: METRICS_HOST
+              value: "{{ .Values.secrets.metricsHost }}"
+            - name: METRICS_TOPIC
+              value: "{{ .Values.secrets.metricsTopic }}"
             {{- if .Values.secrets.kafkaAuth.enabled }}
             - name: KAFKA_USERNAME
               valueFrom:
@@ -53,6 +59,18 @@ spec:
                 secretKeyRef:
                   name: kafka-auth
                   key: password
+            {{- end }}
+            {{- if .Values.secrets.metricsKafkaAuth.enabled }}
+            - name: METRICS_KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: metrics-username
+            - name: METRICS_KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-auth
+                  key: metrics-password
             {{- end }}
       {{- with .Values.affinity }}
       affinity:
