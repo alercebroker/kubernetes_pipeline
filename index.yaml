@@ -676,6 +676,16 @@ entries:
     version: 0.1.0
   sorting-hat:
   - apiVersion: v2
+    appVersion: 2.1.1
+    created: "2023-05-29T19:49:37.463657145Z"
+    description: Sorting Hat deployment chart
+    digest: 97d2e1ec492576e1152d642102f68fea9a625878c228a59c13baea9ba48da655
+    name: sorting-hat
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/sorting-hat-2.0.1/sorting-hat-2.0.1.tgz
+    version: 2.0.1
+  - apiVersion: v2
     appVersion: 1.2.3
     created: "2023-05-22T15:52:25.659144817Z"
     description: Sorting Hat deployment chart
@@ -929,4 +939,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-05-29T17:32:15.953307836Z"
+generated: "2023-05-29T19:49:37.463796449Z"
