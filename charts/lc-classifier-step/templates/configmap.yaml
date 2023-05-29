@@ -15,6 +15,7 @@ data:
   kafka-producer-sasl-mechanism: {{ .Values.configmap.kafka.saslMechanism }}
   model: {{ .Values.configmap.model }}
   model-version: {{ .Values.configmap.modelVersion }}
+  model-path: {{ .Values.configmap.modelPath }}
   predictor-class: {{ .Values.configmap.predictorClass }}
   predictor-parser-class: {{ .Values.configmap.predictorParserClass }}
   scribe-parser-class: {{ .Values.configmap.scribeParserClass }}
