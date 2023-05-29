@@ -1,9 +1,9 @@
 ---
-{{- if .Values.autoscaling.ztf.enabled }}
+{{- if .Values.autoscaling.enabled }}
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: '{{ include "sorting-hat.fullname" . }}-ztf'
+  name: '{{ include "sorting-hat.fullname" . }}'
   namespace: {{ .Values.namespace }}
   labels:
     {{- include "sorting-hat.labels" . | nindent 4 }}
@@ -11,27 +11,27 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: '{{ include "sorting-hat.fullname" . }}-ztf'
-  minReplicas: {{ .Values.autoscaling.ztf.minReplicas }}
-  maxReplicas: {{ .Values.autoscaling.ztf.maxReplicas }}
+    name: '{{ include "sorting-hat.fullname" . }}'
+  minReplicas: {{ .Values.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
-    {{- if .Values.autoscaling.ztf.targetCPUUtilizationPercentage }}
+    {{- if .Values.autoscaling.targetCPUUtilizationPercentage }}
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: {{ .Values.autoscaling.ztf.targetCPUUtilizationPercentage }}
+          averageUtilization: {{ .Values.autoscaling.targetCPUUtilizationPercentage }}
     {{- end }}
-    {{- if .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
+    {{- if .Values.autoscaling.targetMemoryUtilizationPercentage }}
     - type: Resource
       resource:
         name: memory
         target:
           type: Utilization
-          averageUtilization: {{ .Values.autoscaling.ztf.targetMemoryUtilizationPercentage }}
+          averageUtilization: {{ .Values.autoscaling.targetMemoryUtilizationPercentage }}
     {{- end }}
-    {{- if .Values.autoscaling.ztf.targetConsumedMessages}}
+    {{- if .Values.autoscaling.targetConsumedMessages}}
     - type: Object
       object:
         metric:
@@ -39,56 +39,9 @@ spec:
         describedObject:
           apiVersion: apps/v1
           kind: Deployment
-          name: '{{ include "sorting-hat.fullname" . }}-ztf'
+          name: '{{ include "sorting-hat.fullname" . }}'
         target:
           type: AverageValue
-          averageValue: {{ .Values.autoscaling.ztf.targetConsumedMessages  }}
-    {{- end}}
-{{- end }}
----
-{{- if .Values.autoscaling.atlas.enabled }}
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: '{{ include "sorting-hat.fullname" . }}-atlas'
-  namespace: {{ .Values.namespace }}
-  labels:
-    {{- include "sorting-hat.labels" . | nindent 4 }}
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: '{{ include "sorting-hat.fullname" . }}-atlas'
-  minReplicas: {{ .Values.autoscaling.atlas.minReplicas }}
-  maxReplicas: {{ .Values.autoscaling.atlas.maxReplicas }}
-  metrics:
-    {{- if .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: {{ .Values.autoscaling.atlas.targetCPUUtilizationPercentage }}
-    {{- end }}
-    {{- if .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
-    - type: Resource
-      resource:
-        name: memory
-        target:
-          type: Utilization
-          averageUtilization: {{ .Values.autoscaling.atlas.targetMemoryUtilizationPercentage }}
-    {{- end }}
-    {{- if .Values.autoscaling.atlas.targetConsumedMessages}}
-    - type: Object
-      object:
-        metric:
-          name: consumed_messages_sum
-        describedObject:
-          apiVersion: apps/v1
-          kind: Deployment
-          name: '{{ include "sorting-hat.fullname" . }}-atlas'
-        target:
-          type: AverageValue
-          averageValue: {{ .Values.autoscaling.atlas.targetConsumedMessages  }}
+          averageValue: {{ .Values.autoscaling.targetConsumedMessages  }}
     {{- end}}
 {{- end }}

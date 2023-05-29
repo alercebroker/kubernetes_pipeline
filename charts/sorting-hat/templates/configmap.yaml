@@ -2,29 +2,14 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: '{{ include "sorting-hat.fullname" . }}-atlas'
+  name: '{{ include "sorting-hat.fullname" . }}'
   namespace: {{ .Values.namespace }}
 data:
-  consumer-topics: {{ .Values.configmap.consumerTopics.atlas }}
-  consumer-group-id: {{ .Values.configmap.consumerGroupId.atlas | default (printf "%s-atlas" (include "sorting-hat.fullname" .)) }}
+  consumer-topics: {{ .Values.configmap.consumerTopics }}
+  consumer-group-id: {{ .Values.configmap.consumerGroupId | default (printf "%s" (include "sorting-hat.fullname" .)) }}
   consumer-server: {{ .Values.configmap.consumerServer }}
   producer-server: {{ .Values.configmap.producerServer }}
-  producer-topic: {{ .Values.configmap.producerTopic.atlas }}
-  metrics-server: {{ .Values.configmap.metricsServer }}
-  metrics-topic: {{ .Values.configmap.metricsTopic }}
-  mongo-secret-name: {{ .Values.configmap.mongoSecretName }}
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: '{{ include "sorting-hat.fullname" . }}-ztf'
-  namespace: {{ .Values.namespace }}
-data:
-  consumer-topics: {{ .Values.configmap.consumerTopics.ztf }}
-  consumer-group-id: {{ .Values.configmap.consumerGroupId.ztf | default (printf "%s-ztf" (include "sorting-hat.fullname" .)) }}
-  consumer-server: {{ .Values.configmap.consumerServer }}
-  producer-server: {{ .Values.configmap.producerServer }}
-  producer-topic: {{ .Values.configmap.producerTopic.ztf }}
+  producer-topic: {{ .Values.configmap.producerTopic }}
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   mongo-secret-name: {{ .Values.configmap.mongoSecretName }}
