@@ -53,6 +53,24 @@ configmap:
   kafka:
     securityProtocol: "SASL_SSL"
     saslMechanism: "SCRAM-SHA-512"
+  # Model can be one of elasticc or ztf
+  model: "ztf"
+  # This is the actual model implementation version
+  modelVersion: ""
+  # The class within the step module used for the predictor
+  # This will begin with lc_classification.predictors
+  # It should be the full module path to the predictor class
+  # so something like module.submodule.ClassName
+  predictorClass: "lc_classification.predictors.ztf_random_forest.ztf_random_forest_predictor.ZtfRandomForestPredictor"
+  # Same as the predictorClass but for the predictor parser
+  predictorParserClass: "lc_classification.predictors.ztf_random_forest.ztf_random_forest_parser.ZtfRandomForestParser"
+  # Same as the predictorClass but for the scribe parser
+  # Probably no need to change this
+  scribeParserClass: "lc_classification.core.parsers.scribe_parser.ScribeParser"
+  # Same as predictorClass but for the step output parser
+  # This could be one output for the regular ALeRCE output or one for the ELASTICC stream output
+  # The regular ALeRCE output is the default
+  stepParserClass: "lc_classification.core.parsers.alerce_parser.AlerceParser"
 
 secrets:
   kafkaAuth:

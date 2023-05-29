@@ -149,6 +149,41 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: consume-messages
+            - name: MODEL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: model
+            - name: MODEL_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: model-version
+            - name: PREDICTOR_CLASS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: predictor-class
+            - name: MODEL_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: model-path
+            - name: PREDICTOR_PARSER_CLASS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: predictor-parser-class
+            - name: SCRIBE_PARSER_CLASS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: scribe-parser-class
+            - name: STEP_PARSER_CLASS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: step-parser-class
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

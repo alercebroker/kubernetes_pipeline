@@ -13,3 +13,9 @@ data:
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
   kafka-producer-security-protocol: {{ .Values.configmap.kafka.securityProtocol }}
   kafka-producer-sasl-mechanism: {{ .Values.configmap.kafka.saslMechanism }}
+  model: {{ .Values.configmap.model }}
+  model-version: {{ .Values.configmap.modelVersion }}
+  predictor-class: {{ .Values.configmap.predictorClass }}
+  predictor-parser-class: {{ .Values.configmap.predictorParserClass }}
+  scribe-parser-class: {{ .Values.configmap.scribeParserClass }}
+  step-parser-class: {{ .Values.configmap.stepParserClass }}
