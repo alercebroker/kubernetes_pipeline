@@ -46,20 +46,13 @@ configmap:
   consumerTopics: ""
   groupId: "feature_consumer"
   internalServer: ""
+  featureExtractor: ""
   producerTopic: ""
-  featureVersion: ""
-  stepId: "feature-step"
+  loggingDebug: ""
   consumeTimeout: "10"
   consumeMessages: "50"
-  dbEngine: ""
-  dbHost: ""
-  dbPort: ""
-  dbName: ""
 
 secrets:
-  db:
-    username: ""
-    password: ""
   kafkaAuth:
     enabled: false
     username: ""
