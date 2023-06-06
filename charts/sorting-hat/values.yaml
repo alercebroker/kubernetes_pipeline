@@ -43,7 +43,7 @@ affinity:
               values: []
 
 configmap:
-  consumerTopics:""
+  consumerTopics: ""
   consumerGroupId: ""
   consumerServer: ""
   producerServer: ""
