@@ -36,6 +36,16 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
+            - name: FEATURE_EXTRACTOR
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "feature-step.fullname" . }}
+                  key: feature-extractor
+            - name: LOGGING_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "feature-step.fullname" . }}
+                  key: logging-debug
             - name: CONSUMER_TOPICS
               valueFrom:
                 configMapKeyRef:
@@ -71,51 +81,15 @@ spec:
                 configMapKeyRef:
                   name: {{ include "feature-step.fullname" . }}
                   key: internal-server
+            - name: SCRIBE_TOPIC
+              value: "w_object"
+            - name: SCRIBE_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "feature-step.fullname" . }}
+                  key: internal-server
             - name: METRICS_TOPIC
               value: "metrics"
-            - name: FEATURE_VERSION
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "feature-step.fullname" . }}
-                  key: feature-version
-            - name: STEP_VERSION
-              value: {{ .Chart.AppVersion }}
-            - name: STEP_ID
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "feature-step.fullname" . }}
-                  key: step-id
-            - name: DB_ENGINE
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "feature-step.fullname" . }}
-                  key: db-engine
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "feature-step.fullname" . }}
-                  key: db-host
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "feature-step.fullname" . }}
-                  key: db-port
-            - name: DB_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "feature-step.fullname" . }}
-                  key: db-name
-            - name: DB_USER
-              valueFrom:
-                secretKeyRef:
-                  name: '{{ include "feature-step.fullname" . }}-db'
-                  key: username
-            - name: DB_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: '{{ include "feature-step.fullname" . }}-db'
-                  key: password
-            {{- if .Values.secrets.kafkaAuth.enabled }}
             - name: KAFKA_USERNAME
               valueFrom:
                 secretKeyRef:
@@ -126,7 +100,6 @@ spec:
                 secretKeyRef:
                   name: kafka-auth
                   key: password
-            {{- end }}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

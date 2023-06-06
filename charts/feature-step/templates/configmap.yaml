@@ -8,11 +8,7 @@ data:
   group-id: {{ .Values.configmap.groupId | default (printf "%s" (include "feature-step.fullname" .)) }}
   internal-server: {{ .Values.configmap.internalServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
-  feature-version: {{ .Values.configmap.featureVersion }}
-  step-id: {{ .Values.configmap.stepId }}
   consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
-  db-engine: {{ .Values.configmap.dbEngine }}
-  db-host: {{ .Values.configmap.dbHost }}
-  db-port: "{{ .Values.configmap.dbPort }}"
-  db-name: {{ .Values.configmap.dbName }}
+  feature-extractor: "{{ .Values.configmap.featureExtractor }}"
+  logging-debug: "{{ .Values.configmap.loggingDebug }}"
