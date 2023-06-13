@@ -48,6 +48,11 @@ spec:
                 configMapKeyRef:
                   name: '{{ include "sorting-hat.fullname" . }}'
                   key: consumer-server
+            - name: CONSUMER_CLASS
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "sorting-hat.fullname" . }}'
+                  key: consumer-class
             - name: CONSUMER_GROUP_ID
               valueFrom:
                 configMapKeyRef:
@@ -78,6 +83,11 @@ spec:
                 configMapKeyRef:
                   name: '{{ include "sorting-hat.fullname" . }}'
                   key: metrics-topic
+            - name: RUN_CONESEARCH
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "sorting-hat.fullname" . }}'
+                  key: run-conesearch
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
               valueFrom:

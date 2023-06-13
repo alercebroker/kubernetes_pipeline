@@ -1,5 +1,5 @@
-values.override.yaml
-values.override.yml
+values*.override.yaml
+values*.override.yml
 values.staging.yaml
 values.production.yaml
 values.staging.yml

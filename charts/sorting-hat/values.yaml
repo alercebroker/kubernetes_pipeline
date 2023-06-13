@@ -46,11 +46,13 @@ configmap:
   consumerTopics: ""
   consumerGroupId: ""
   consumerServer: ""
+  consumerClass: ""
   producerServer: ""
   producerTopic: ""
   metricsTopic: ""
   metricsServer: ""
   mongoSecretName: ""
+  runConesearch: ""
 
 secrets:
   kafkaAuth:
