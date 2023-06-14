@@ -554,6 +554,16 @@ entries:
   prv-candidates:
   - apiVersion: v2
     appVersion: rc-6d4c93d
+    created: "2023-06-14T20:12:11.533808559Z"
+    description: Previous candidates processor step
+    digest: 36b513afcd18e3588630cc48884500fe050931d6d2da72de024f9dcd5647d1ef
+    name: prv-candidates
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/prv-candidates-0.7.3/prv-candidates-0.7.3.tgz
+    version: 0.7.3
+  - apiVersion: v2
+    appVersion: rc-6d4c93d
     created: "2023-06-13T13:43:29.149900727Z"
     description: Previous candidates processor step
     digest: 2adb250239285942835d27a33cab121c6eb8be006b490edcd24db8f2d5930087
@@ -999,4 +1009,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-06-13T13:43:29.412203184Z"
+generated: "2023-06-14T20:12:11.533944461Z"
