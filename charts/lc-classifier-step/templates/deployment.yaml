@@ -149,11 +149,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: consume-messages
-            - name: MODEL
+            - name: STREAM
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
-                  key: model
+                  key: stream
             - name: MODEL_VERSION
               valueFrom:
                 configMapKeyRef:
@@ -169,6 +169,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: model-path
+            - name: QUANTILES_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: quantiles-path
             - name: PREDICTOR_PARSER_CLASS
               valueFrom:
                 configMapKeyRef:

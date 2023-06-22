@@ -3,6 +3,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "prv-candidates.fullname" . }}
+  namespace: {{ .Values.namespace }}
   labels:
     {{- include "prv-candidates.labels" . | nindent 4 }}
 spec:
