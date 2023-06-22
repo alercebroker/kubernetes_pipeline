@@ -57,7 +57,10 @@ spec:
                   name: {{ include "lightcurve-step.fullname" . }}
                   key: consume-messages
             - name: CONSUMER_GROUP_ID
-              value: {{ include "lightcurve-step.fullname" . }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lightcurve-step.fullname" . }}
+                  key: consumer-group-id
             - name: PRODUCER_SERVER
               valueFrom:
                 configMapKeyRef:
@@ -77,7 +80,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "lightcurve-step.fullname" . }}
-                  key: metrics-topic
+                  key: metrics-topic            
+            - name: LOGGING_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lightcurve-step.fullname" . }}
+                  key: logging-debug
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
               valueFrom:

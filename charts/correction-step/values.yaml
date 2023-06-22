@@ -45,6 +45,8 @@ affinity:
 configmap:
   consumerTopics: ""
   consumerServer: ""
+  consumerGroupId: ""
+  loggingDebug: ""
   producerServer: ""
   producerTopic: ""
   scribeServer: ""

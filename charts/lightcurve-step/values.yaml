@@ -46,6 +46,8 @@ configmap:
   consumerTopics: ""
   consumeMessages: ""
   consumerServer: ""
+  consumerGroupId: ""
+  loggingDebug: ""
   producerServer: ""
   producerTopic: ""
   metricsServer: ""

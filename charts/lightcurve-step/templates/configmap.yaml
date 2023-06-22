@@ -7,9 +7,11 @@ data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
   consumer-server: {{ .Values.configmap.consumerServer }}
+  consumer-group-id: {{ .Values.configmap.consumerGroupId | default (printf "%s" (include "lightcurve-step.fullname" .)) }}
   producer-server: {{ .Values.configmap.producerServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   use-prometheus: "{{ .Values.configmap.usePrometheus }}"
   mongo-secret: {{ .Values.configmap.mongoSecret }}
+  logging-debug: "{{ .Values.configmap.loggingDebug }}"

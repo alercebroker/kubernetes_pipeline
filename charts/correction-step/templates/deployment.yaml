@@ -47,7 +47,10 @@ spec:
                   name: {{ include "correction-step.fullname" . }}
                   key: consumer-server
             - name: CONSUMER_GROUP_ID
-              value: {{ include "correction-step.fullname" . }}
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "correction-step.fullname" . }}
+                  key: consumer-group-id
             - name: CONSUME_MESSAGES
               valueFrom:
                 configMapKeyRef:
@@ -83,6 +86,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "correction-step.fullname" . }}
                   key: metrics-topic
+            - name: LOGGING_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "correction-step.fullname" . }}
+                  key: logging-debug
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
               valueFrom:

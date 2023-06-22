@@ -57,6 +57,7 @@ configmap:
   consumeMessages: ""
   scribeServer: ""
   scribeTopic: ""
+  skipXmatch: ""
 
 secrets:
   kafkaAuth:

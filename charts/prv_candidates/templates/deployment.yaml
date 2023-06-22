@@ -47,7 +47,10 @@ spec:
                   name: {{ include "prv-candidates.fullname" . }}
                   key: consumer-server
             - name: CONSUMER_GROUP_ID
-              value: {{ include "prv-candidates.fullname" . }}
+              valueFrom:
+                configMapKeyRef:  
+                  name: {{ include "prv-candidates.fullname" . }}
+                  key: consumer-group-id
             - name: CONSUME_MESSAGES
               valueFrom:
                 configMapKeyRef:

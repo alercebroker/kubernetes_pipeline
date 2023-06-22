@@ -86,6 +86,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "xmatch-step.fullname" . }}
                   key: scribe-topic
+            - name: SKIP_XMATCH
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "xmatch-step.fullname" . }}'
+                  key: skip-xmatch
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
               valueFrom:

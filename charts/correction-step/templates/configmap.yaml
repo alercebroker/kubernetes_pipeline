@@ -6,6 +6,7 @@ metadata:
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
   consumer-server: {{ .Values.configmap.consumerServer }}
+  consumer-group-id: {{ .Values.configmap.consumerGroupId | default (printf "%s" (include "correction-step.fullname" .)) }}
   scribe-server: {{ .Values.configmap.scribeServer }}
   scribe-topic: {{ .Values.configmap.scribeTopic }}
   producer-server: {{ .Values.configmap.producerServer }}
@@ -13,3 +14,4 @@ data:
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
+  logging-debug: "{{ .Values.configmap.loggingDebug }}"
