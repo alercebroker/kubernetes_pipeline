@@ -3,4 +3,4 @@ appVersion: rc-50edac5
 description: A Helm chart for Kubernetes
 name: xmatch-step
 type: application
-version: 2.1.1
+version: 2.1.2
