@@ -51,6 +51,8 @@ configmap:
   loggingDebug: ""
   consumeTimeout: "10"
   consumeMessages: "50"
+  metricsTopic: ""
+  scribeTopic: ""
 
 secrets:
   kafkaAuth:

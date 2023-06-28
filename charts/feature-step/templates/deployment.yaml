@@ -82,14 +82,20 @@ spec:
                   name: {{ include "feature-step.fullname" . }}
                   key: internal-server
             - name: SCRIBE_TOPIC
-              value: "w_object"
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "feature-step.fullname" . }}
+                  key: scribe-topic
             - name: SCRIBE_SERVER
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "feature-step.fullname" . }}
                   key: internal-server
             - name: METRICS_TOPIC
-              value: "metrics"
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "feature-step.fullname" . }}
+                  key: metrics-topic
             - name: KAFKA_USERNAME
               valueFrom:
                 secretKeyRef:

@@ -7,8 +7,10 @@ data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
   group-id: {{ .Values.configmap.groupId | default (printf "%s" (include "feature-step.fullname" .)) }}
   internal-server: {{ .Values.configmap.internalServer }}
+  metrics-topic: {{ .Values.configmap.metricsTopic }}
   producer-topic: {{ .Values.configmap.producerTopic }}
   consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
   feature-extractor: "{{ .Values.configmap.featureExtractor }}"
   logging-debug: "{{ .Values.configmap.loggingDebug }}"
+  scribe-topic: "{{ .Values.configmap.scribeTopic }}"
