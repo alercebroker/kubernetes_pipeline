@@ -43,7 +43,7 @@ spec:
             {{- if .Values.configmap.atlas.topicStrategy.enabled }}
             - name: TOPIC_STRATEGY_FORMAT
               configMapKeyRef:
-                name: '{{ include "s3-step.fullname" . }}'
+                name: '{{ include "s3-step.fullname" . }}-atlas'
                 key: topic-strategy-format
             {{- end }}
             - name: CONSUMER_TOPICS
