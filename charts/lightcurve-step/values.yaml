@@ -37,13 +37,14 @@ affinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
           - matchExpressions:
-            - key: eks.amazonaws.com/nodegroup
+            - key: nodegroup
               operator: In
               ## Override this value with the NodeGroup tag accordingly
               values: []
 
 configmap:
   consumerTopics: ""
+  consumeTimeout: ""
   consumeMessages: ""
   consumerServer: ""
   producerServer: ""

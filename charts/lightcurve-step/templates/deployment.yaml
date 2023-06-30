@@ -56,6 +56,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lightcurve-step.fullname" . }}
                   key: consume-messages
+            - name: CONSUME_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lightcurve-step.fullname" . }}
+                  key: consume-timeout
             - name: CONSUMER_GROUP_ID
               value: {{ include "lightcurve-step.fullname" . }}
             - name: PRODUCER_SERVER
