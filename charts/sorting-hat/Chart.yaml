@@ -3,4 +3,4 @@ appVersion: "rc-bf2bf21"
 description: Sorting Hat deployment chart
 name: sorting-hat
 type: application
-version: 2.1.2
+version: 2.1.3

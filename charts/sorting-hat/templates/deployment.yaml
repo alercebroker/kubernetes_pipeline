@@ -45,11 +45,13 @@ spec:
                   name: '{{ include "sorting-hat.fullname" . }}'
                   key: topic-strategy-format
             {{- end }}
+            {{- if not .Values.configmap.topicStrategy.enabled }}
             - name: CONSUMER_TOPICS
               valueFrom:
                 configMapKeyRef:
                   name: '{{ include "sorting-hat.fullname" . }}'
                   key: consumer-topics
+            {{- end}}
             - name: CONSUMER_SERVER
               valueFrom:
                 configMapKeyRef:
