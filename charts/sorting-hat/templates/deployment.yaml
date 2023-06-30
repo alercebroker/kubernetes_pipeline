@@ -40,9 +40,10 @@ spec:
           env:
             {{- if .Values.configmap.topicStrategy.enabled }}
             - name: TOPIC_STRATEGY_FORMAT
-              configMapKeyRef:
-                name: '{{ include "sorting-hat.fullname" . }}'
-                key: topic-strategy-format
+              valuefrom:
+                configMapKeyRef:
+                  name: '{{ include "sorting-hat.fullname" . }}'
+                  key: topic-strategy-format
             {{- end }}
             - name: CONSUMER_TOPICS
               valueFrom:
