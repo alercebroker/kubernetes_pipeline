@@ -42,9 +42,10 @@ spec:
           env:
             {{- if .Values.configmap.ztf.topicStrategy.enabled }}
             - name: TOPIC_STRATEGY_FORMAT
-              configMapKeyRef:
-                name: '{{ include "s3-step.fullname" . }}-ztf'
-                key: topic-strategy-format
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "s3-step.fullname" . }}-ztf'
+                  key: topic-strategy-format
             {{- end }}
             - name: CONSUMER_TOPICS
               valueFrom:
