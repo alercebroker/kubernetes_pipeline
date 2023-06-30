@@ -6,6 +6,7 @@ metadata:
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
+  consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
   consumer-server: {{ .Values.configmap.consumerServer }}
   consumer-group-id: {{ .Values.configmap.consumerGroupId | default (printf "%s" (include "lightcurve-step.fullname" .)) }}
   producer-server: {{ .Values.configmap.producerServer }}

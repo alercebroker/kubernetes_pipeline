@@ -15,3 +15,5 @@ data:
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
   logging-debug: "{{ .Values.configmap.loggingDebug }}"
+  consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
+  pyroscope-server: {{ .Values.configmap.pyroscopeServer }}

@@ -6,6 +6,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 data:
   consumer-topics: {{ .Values.configmap.consumerTopics }}
+  topic-strategy-format: {{ .Values.configmap.topicStrategy.format }}
   consumer-group-id: {{ .Values.configmap.consumerGroupId | default (printf "%s" (include "sorting-hat.fullname" .)) }}
   consumer-server: {{ .Values.configmap.consumerServer }}
   consumer-class: {{ .Values.configmap.consumerClass }}

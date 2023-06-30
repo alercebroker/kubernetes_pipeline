@@ -57,6 +57,8 @@ configmap:
   metricsServer: ""
   metricsTopic: ""
   consumeMessages: "500"
+  consumeTimeout: "0"
+  pyroscopeServer: "http://pyroscope.pyroscope:4040"
 
 secrets:
   kafkaAuth:

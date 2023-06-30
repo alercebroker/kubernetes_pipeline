@@ -57,6 +57,9 @@ affinity:
 configmap:
   ztf:
     consumerTopics: ""
+    topicStrategy:
+      enabled: true
+      format: ""
     consumerGroupId: ""
     internalServer: ""
     metricsTopic: ""
@@ -64,6 +67,9 @@ configmap:
     regionName: ""
   atlas:
     consumerTopics: ""
+    topicStrategy:
+      enabled: true
+      format: ""
     consumerGroupId: ""
     internalServer: ""
     metricsTopic: ""

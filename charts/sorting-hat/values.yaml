@@ -47,6 +47,9 @@ affinity:
 
 configmap:
   consumerTopics: ""
+  topicStrategy:
+    enabled: false
+    format: ""
   consumerGroupId: ""
   consumerServer: ""
   consumerClass: ""

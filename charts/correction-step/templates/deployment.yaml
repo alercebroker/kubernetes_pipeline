@@ -56,6 +56,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "correction-step.fullname" . }}
                   key: consume-messages
+            - name: CONSUME_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "correction-step.fullname" . }}
+                  key: consume-timeout
             - name: PRODUCER_SERVER
               valueFrom:
                 configMapKeyRef:
@@ -92,7 +97,10 @@ spec:
                   name: {{ include "correction-step.fullname" . }}
                   key: logging-debug
             - name: PYROSCOPE_SERVER
-              value: "http://pyroscope.pyroscope:4040"
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "correction-step.fullname" . }}
+                  key: pyroscope-server
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
               valueFrom:
