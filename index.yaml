@@ -715,6 +715,16 @@ entries:
   s3-step:
   - apiVersion: v2
     appVersion: 1.4.0
+    created: "2023-06-30T21:27:37.55486468Z"
+    description: A Helm chart for Kubernetes
+    digest: e450d982fe6ff20f99b74c575833257d39736e2b851fb29040cc28100672c249
+    name: s3-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/s3-step-1.2.3/s3-step-1.2.3.tgz
+    version: 1.2.3
+  - apiVersion: v2
+    appVersion: 1.4.0
     created: "2023-06-30T21:03:20.89615314Z"
     description: A Helm chart for Kubernetes
     digest: ed76955757aedf87bf6e75a27e9800f67cd0154c329b7cb643be6777b84308dc
@@ -1159,4 +1169,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-06-30T21:09:04.177722709Z"
+generated: "2023-06-30T21:27:37.555220483Z"
