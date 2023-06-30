@@ -40,6 +40,12 @@ spec:
           resources:
             {{- toYaml .Values.resources.atlas | nindent 12 }}
           env:
+            {{- if .Values.configmap.atlas.topicStrategy.enabled }}
+            - name: TOPIC_STRATEGY_FORMAT
+              configMapKeyRef:
+                name: '{{ include "s3-step.fullname" . }}'
+                key: topic-strategy-format
+            {{- end }}
             - name: CONSUMER_TOPICS
               valueFrom:
                 configMapKeyRef:
