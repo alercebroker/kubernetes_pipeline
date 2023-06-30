@@ -3,4 +3,4 @@ appVersion: "rc-5b0b800"
 description: Sorting Hat deployment chart
 name: sorting-hat
 type: application
-version: 2.1.0
+version: 2.1.1
