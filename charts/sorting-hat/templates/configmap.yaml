@@ -15,3 +15,4 @@ data:
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   mongo-secret-name: {{ .Values.configmap.mongoSecretName }}
   run-conesearch: '{{ .Values.configmap.runConesearch }}'
+  use-profiling: '{{ .Values.configmap.useProfiling }}'
