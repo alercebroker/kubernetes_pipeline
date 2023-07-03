@@ -39,11 +39,21 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             {{- if .Values.configmap.topicStrategy.enabled }}
-            - name: TOPIC_STRATEGY_FORMAT
+            - name: TOPIC_STRATEGY_TOPIC_FORMAT
               valueFrom:
                 configMapKeyRef:
                   name: '{{ include "sorting-hat.fullname" . }}'
-                  key: topic-strategy-format
+                  key: topic-strategy-topic-format
+            - name: TOPIC_STRATEGY_DATE_FORMAT
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "sorting-hat.fullname" . }}'
+                  key: topic-strategy-date-format
+            - name: TOPIC_STRATEGY_CHANGE_HOUR
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "sorting-hat.fullname" . }}'
+                  key: topic-strategy-change-hour
             {{- end }}
             {{- if not .Values.configmap.topicStrategy.enabled }}
             - name: CONSUMER_TOPICS
