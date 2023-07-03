@@ -11,7 +11,7 @@ data:
             bootstrap_servers => "${CONSUMER_SERVER}"
             topics =>  ["${METRICS_TOPIC}"]
             codec => "json"
-            group_id => "logstash"
+            group_id => ${CONSUMER_GROUP_ID}
             auto_offset_reset => "earliest"
       }
     }
@@ -39,7 +39,7 @@ data:
             bootstrap_servers => "${CONSUMER_SERVER}"
             topics =>  ["${METRICS_TOPIC}"]
             codec => "json"
-            group_id => "logstash"
+            group_id => ${CONSUMER_GROUP_ID}
             auto_offset_reset => "earliest"
             security_protocol => "SASL_SSL"
             sasl_mechanism => "SCRAM-SHA-512"
