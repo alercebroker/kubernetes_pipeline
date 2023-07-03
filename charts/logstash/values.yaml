@@ -18,6 +18,7 @@ containerPort:
 elasticsearchHost: ""
 kafkaHost: ""
 kafkaTopic: "metrics"
+consumerGroupId: "logstash"
 
 secrets:
   elasticsearch:
@@ -33,7 +34,7 @@ resources: {}
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 2
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
