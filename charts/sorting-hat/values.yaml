@@ -49,7 +49,9 @@ configmap:
   consumerTopics: ""
   topicStrategy:
     enabled: false
-    format: ""
+    topicFormat: ""
+    dateFormat: ""
+    changeHour: ""
   consumerGroupId: ""
   consumerServer: ""
   consumerClass: ""
