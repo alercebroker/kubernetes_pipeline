@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "rc-54a3b5b"
+appVersion: "rc-eb817fd"
 description: Sorting Hat deployment chart
 name: sorting-hat
 type: application
-version: 2.2.0
+version: 2.3.0

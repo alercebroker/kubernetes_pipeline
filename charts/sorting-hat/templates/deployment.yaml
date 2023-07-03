@@ -38,6 +38,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
+            - name: LOGGING_DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "sorting-hat.fullname" . }}'
+                  key: logging-debug
             {{- if .Values.configmap.topicStrategy.enabled }}
             - name: TOPIC_STRATEGY_TOPIC_FORMAT
               valueFrom:

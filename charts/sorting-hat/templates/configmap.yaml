@@ -19,3 +19,4 @@ data:
   mongo-secret-name: {{ .Values.configmap.mongoSecretName }}
   run-conesearch: '{{ .Values.configmap.runConesearch }}'
   use-profiling: '{{ .Values.configmap.useProfiling }}'
+  logging-debug: {{ .Values.configmap.loggingDebug }}

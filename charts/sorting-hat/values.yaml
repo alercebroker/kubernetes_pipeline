@@ -46,6 +46,7 @@ affinity:
               values: []
 
 configmap:
+  loggingDebug: false
   consumerTopics: ""
   topicStrategy:
     enabled: false
