@@ -57,6 +57,7 @@ secrets:
   consumerGroupId: ""
   metricsHost: ""
   metricsTopic: ""
+  useProfiling: ""
   kafkaAuth:
     enabled: false
     username: ""

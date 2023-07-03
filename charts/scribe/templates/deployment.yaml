@@ -48,6 +48,10 @@ spec:
               value: "{{ .Values.secrets.metricsHost }}"
             - name: METRICS_TOPIC
               value: "{{ .Values.secrets.metricsTopic }}"
+            - name: USE_PROFILING
+              value: "{{ .Values.secrets.useProfiling }}"
+            - name: PYROSCOPE_SERVER
+              value: "http://pyroscope.pyroscope:4040"
             {{- if .Values.secrets.kafkaAuth.enabled }}
             - name: KAFKA_USERNAME
               valueFrom:
