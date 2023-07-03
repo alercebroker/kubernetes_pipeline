@@ -886,6 +886,16 @@ entries:
   scribe:
   - apiVersion: v2
     appVersion: rc-296f9b3
+    created: "2023-07-03T19:33:30.249484839Z"
+    description: ALeRCE pipeline CQRS eventual consistency engine
+    digest: c74102f96ef482ac36173ba1b37f0b35719318b17a48eb543a98b6501f66797e
+    name: scribe
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/scribe-0.3.10/scribe-0.3.10.tgz
+    version: 0.3.10
+  - apiVersion: v2
+    appVersion: rc-296f9b3
     created: "2023-05-24T20:24:19.904216205Z"
     description: ALeRCE pipeline CQRS eventual consistency engine
     digest: 00a1ef67f392f12e8fd300179577642c354f45a5999be9c859c3552f3bba707f
@@ -1269,4 +1279,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-07-03T19:16:02.574531152Z"
+generated: "2023-07-03T19:33:30.249694138Z"
