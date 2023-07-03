@@ -14,5 +14,6 @@ data:
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   use-prometheus: "{{ .Values.configmap.usePrometheus }}"
+  use-profiling: "{{ .Values.configmap.useProfiling }}"
   mongo-secret: {{ .Values.configmap.mongoSecret }}
   logging-debug: "{{ .Values.configmap.loggingDebug }}"

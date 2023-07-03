@@ -54,6 +54,7 @@ configmap:
   metricsServer: ""
   metricsTopic: ""
   usePrometheus: ""
+  useProfiling: ""
   mongoSecret: ""
 
 secrets:

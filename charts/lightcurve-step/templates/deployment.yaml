@@ -132,6 +132,13 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lightcurve-step.fullname" . }}
                   key: use-prometheus
+            - name: USE_PROFILING
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lightcurve-step.fullname" . }}
+                  key: use-profiling
+            - name: PYROSCOPE_SERVER
+              value: "http://pyroscope.pyroscope:4040"
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
