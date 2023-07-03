@@ -15,8 +15,8 @@ data:
   kafka-producer-sasl-mechanism: {{ .Values.configmap.kafka.saslMechanism }}
   stream: {{ .Values.configmap.stream }}
   model-version: {{ .Values.configmap.modelVersion }}
-  model-path: {{ .Values.configmap.modelPath }}
-  quantiles-path: {{ .Values.configmap.quantilesPath }}
+  model-path: "{{ .Values.configmap.modelPath }}"
+  quantiles-path: "{{ .Values.configmap.quantilesPath }}"
   predictor-class: {{ .Values.configmap.predictorClass }}
   predictor-parser-class: {{ .Values.configmap.predictorParserClass }}
   scribe-parser-class: {{ .Values.configmap.scribeParserClass }}
