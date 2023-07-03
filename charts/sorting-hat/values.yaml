@@ -45,8 +45,8 @@ affinity:
               ## Override this value with the NodeGroup tag accordingly
               values: []
 
+loggingDebug: false
 configmap:
-  loggingDebug: false
   consumerTopics: ""
   topicStrategy:
     enabled: false
