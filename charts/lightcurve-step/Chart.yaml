@@ -3,4 +3,4 @@ appVersion: "rc-bf74ea9"
 description: Full lightcurve provider step
 name: lightcurve-step
 type: application
-version: 0.5.3
+version: 0.5.4

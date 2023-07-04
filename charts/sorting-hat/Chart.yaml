@@ -3,4 +3,4 @@ appVersion: "rc-eb817fd"
 description: Sorting Hat deployment chart
 name: sorting-hat
 type: application
-version: 2.3.2
+version: 2.3.3
