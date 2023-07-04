@@ -54,6 +54,16 @@ entries:
     version: 1.0.0
   correction-step:
   - apiVersion: v2
+    appVersion: rc-41dea22
+    created: "2023-07-04T18:40:26.678036653Z"
+    description: Correction step chart
+    digest: 3fc0335757e2211b60050e96b252e95383e4b528d94881627b6a26d6822f1f67
+    name: correction-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/correction-step-0.4.2/correction-step-0.4.2.tgz
+    version: 0.4.2
+  - apiVersion: v2
     appVersion: rc-f920e3a
     created: "2023-06-30T14:55:58.8835549Z"
     description: Correction step chart
@@ -501,6 +511,16 @@ entries:
   lightcurve-step:
   - apiVersion: v2
     appVersion: rc-bf74ea9
+    created: "2023-07-04T18:40:26.846248824Z"
+    description: Full lightcurve provider step
+    digest: a67cc2a90daa74cae566b4a6db55ad06a6e86374fa2a81e48f25e8e71fc2d557
+    name: lightcurve-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/lightcurve-step-0.5.4/lightcurve-step-0.5.4.tgz
+    version: 0.5.4
+  - apiVersion: v2
+    appVersion: rc-bf74ea9
     created: "2023-07-03T16:39:42.908705347Z"
     description: Full lightcurve provider step
     digest: f0183749a31d0b5ffa36126b141aee9c4e6c60f0fce1f1bfac5a3c2c62dbb283
@@ -927,6 +947,16 @@ entries:
   sorting-hat:
   - apiVersion: v2
     appVersion: rc-eb817fd
+    created: "2023-07-04T18:40:27.015645609Z"
+    description: Sorting Hat deployment chart
+    digest: 13e78553986063651388209a598aca6f9676681ce81fadac9a2b17b3206fcf29
+    name: sorting-hat
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/sorting-hat-2.3.3/sorting-hat-2.3.3.tgz
+    version: 2.3.3
+  - apiVersion: v2
+    appVersion: rc-eb817fd
     created: "2023-07-03T21:08:12.519279891Z"
     description: Sorting Hat deployment chart
     digest: 2eab899605f949012e18dde200f3d0fdb24187fb267063312db6fa4702c00fd4
@@ -1309,4 +1339,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-07-03T21:08:12.519718087Z"
+generated: "2023-07-04T18:40:27.016690721Z"
