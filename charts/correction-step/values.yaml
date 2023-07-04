@@ -52,13 +52,14 @@ configmap:
   loggingDebug: ""
   producerServer: ""
   producerTopic: ""
+  pyroscopeServer: "http://pyroscope.pyroscope:4040"
   scribeServer: ""
   scribeTopic: ""
   metricsServer: ""
   metricsTopic: ""
   consumeMessages: "500"
   consumeTimeout: "0"
-  pyroscopeServer: "http://pyroscope.pyroscope:4040"
+  useProfiling: ""
 
 secrets:
   kafkaAuth:

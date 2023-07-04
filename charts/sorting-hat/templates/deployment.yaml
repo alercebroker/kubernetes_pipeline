@@ -117,7 +117,10 @@ spec:
                   name: '{{ include "sorting-hat.fullname" . }}'
                   key: use-profiling
             - name: PYROSCOPE_SERVER
-              value: "http://pyroscope.pyroscope:4040"
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "sorting-hat.fullname" . }}
+                  key: pyroscope-server
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
               valueFrom:

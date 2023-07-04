@@ -56,6 +56,7 @@ configmap:
   usePrometheus: ""
   useProfiling: ""
   mongoSecret: ""
+  pyroscopeServer: "http://pyroscope.pyroscope:4040"
 
 secrets:
   kafkaAuth:

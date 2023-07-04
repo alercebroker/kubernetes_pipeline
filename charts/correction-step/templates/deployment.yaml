@@ -96,6 +96,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "correction-step.fullname" . }}
                   key: logging-debug
+            - name: USE_PROFILING
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "correction-step.fullname" . }}
+                  key: use-profiling
             - name: PYROSCOPE_SERVER
               valueFrom:
                 configMapKeyRef:

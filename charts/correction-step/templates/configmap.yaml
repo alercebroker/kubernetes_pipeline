@@ -11,9 +11,10 @@ data:
   scribe-topic: {{ .Values.configmap.scribeTopic }}
   producer-server: {{ .Values.configmap.producerServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
+  pyroscope-server: {{ .Values.configmap.pyroscopeServer }}
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
   logging-debug: "{{ .Values.configmap.loggingDebug }}"
   consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
-  pyroscope-server: {{ .Values.configmap.pyroscopeServer }}
+  use-profiling: "{{ .Values.configmap.useProfiling }}"
