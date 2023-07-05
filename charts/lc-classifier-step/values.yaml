@@ -10,7 +10,7 @@ image:
   repository: ghcr.io/alercebroker/lc_classifier_step
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "rc-c3c398a"
+  tag: ""
 
 imagePullSecrets:
   - name: "image-pull-access"
