@@ -1,6 +1,6 @@
 apiVersion: v2
-appVersion: "2.0.0"
+appVersion: "1.0.1a7"
 description: Step for feature calculation
 name: feature-step
 type: application
-version: 1.2.5
+version: 1.2.6
