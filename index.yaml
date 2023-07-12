@@ -54,6 +54,16 @@ entries:
     version: 1.0.0
   correction-step:
   - apiVersion: v2
+    appVersion: 2.0.1a40
+    created: "2023-07-12T14:19:35.627192864Z"
+    description: Correction step chart
+    digest: cb340ff1ca1103c16e8fd9872dabb5b0068d0a536836941f17d68deb2be5e221
+    name: correction-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/correction-step-0.4.3/correction-step-0.4.3.tgz
+    version: 0.4.3
+  - apiVersion: v2
     appVersion: rc-41dea22
     created: "2023-07-04T18:40:26.678036653Z"
     description: Correction step chart
@@ -206,6 +216,16 @@ entries:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/elasticc-simulator-0.1.0/elasticc-simulator-0.1.0.tgz
     version: 0.1.0
   feature-step:
+  - apiVersion: v2
+    appVersion: 1.0.1a25
+    created: "2023-07-12T14:19:35.789079007Z"
+    description: Step for feature calculation
+    digest: e541cd926a5690ccac25e21db7b8e55d28e919a91edceff04575eb792476ed7b
+    name: feature-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/feature-step-1.2.9/feature-step-1.2.9.tgz
+    version: 1.2.9
   - apiVersion: v2
     appVersion: 1.0.1a8
     created: "2023-07-07T22:26:29.75816289Z"
@@ -1379,4 +1399,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-07-07T22:26:29.758446687Z"
+generated: "2023-07-12T14:19:35.789386709Z"
