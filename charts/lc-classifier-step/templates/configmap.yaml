@@ -17,6 +17,7 @@ data:
   model-version: {{ .Values.configmap.modelVersion }}
   model-path: "{{ .Values.configmap.modelPath }}"
   quantiles-path: "{{ .Values.configmap.quantilesPath }}"
+  feature-quantiles-path: "{{ .Values.configmap.featureQuantilesPath }}"
   predictor-class: {{ .Values.configmap.predictorClass }}
   predictor-parser-class: {{ .Values.configmap.predictorParserClass }}
   scribe-parser-class: {{ .Values.configmap.scribeParserClass }}

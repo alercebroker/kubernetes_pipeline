@@ -183,6 +183,16 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: quantiles-path
+            - name: HEADER_QUANTILES_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: quantiles-path
+            - name: FEATURE_QUANTILES_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: feature-quantiles-path
             - name: PREDICTOR_PARSER_CLASS
               valueFrom:
                 configMapKeyRef:

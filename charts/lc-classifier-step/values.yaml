@@ -57,9 +57,12 @@ configmap:
   stream: "ztf"
   # The path to the model
   modelPath: ""
-  # Optional path to quantiles files
+  # Optional path to header quantiles files
   # Used by Balto, Messi and Barney models
   quantilesPath: ""
+  # Optional path to feature quantiles files
+  # Used by Messi model
+  featureQuantilesPath: ""
   # This is the actual model implementation version
   modelVersion: ""
   # The class within the step module used for the predictor
