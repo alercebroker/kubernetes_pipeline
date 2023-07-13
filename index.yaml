@@ -379,6 +379,16 @@ entries:
     version: 0.1.0
   lc-classifier-step:
   - apiVersion: v2
+    appVersion: 1.0.100a41
+    created: "2023-07-13T21:16:52.844814353Z"
+    description: Lightcurve classifier step
+    digest: 9274a8e3640f1258769f719c51fe4cee9d7d91599f3fc68cd1515de0bad6b6eb
+    name: lc-classifier-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/lc-classifier-step-4.2.0/lc-classifier-step-4.2.0.tgz
+    version: 4.2.0
+  - apiVersion: v2
     appVersion: 1.0.100a39
     created: "2023-07-13T19:37:22.971167416Z"
     description: Lightcurve classifier step
@@ -1429,4 +1439,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-07-13T19:37:22.971495627Z"
+generated: "2023-07-13T21:16:52.84507455Z"
