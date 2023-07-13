@@ -52,11 +52,20 @@ spec:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: consumer-group
             - name: PRODUCER_TOPIC_FORMAT
-              value: lc_classifier_%s
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: producer-topic-format
             - name: PRODUCER_DATE_FORMAT
-              value: '%Y%m%d'
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: producer-date-format
             - name: PRODUCER_CHANGE_HOUR
-              value: "23"
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: producer-change-hour
             - name: PRODUCER_RETENTION_DAYS
               value: "1"
             - name: PRODUCER_SERVER

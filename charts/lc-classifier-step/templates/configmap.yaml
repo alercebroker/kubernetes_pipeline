@@ -21,3 +21,6 @@ data:
   predictor-parser-class: {{ .Values.configmap.predictorParserClass }}
   scribe-parser-class: {{ .Values.configmap.scribeParserClass }}
   step-parser-class: {{ .Values.configmap.stepParserClass }}
+  producer-topic-format: {{ .Values.configmap.producerTopicFormat }}
+  producer-date-format: {{ .Values.configmap.producerDateFormat }}
+  producer-change-hour: {{ .Values.configmap.producerChangeHour }}
