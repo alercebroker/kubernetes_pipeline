@@ -560,6 +560,16 @@ entries:
     version: 1.0.0
   lightcurve-step:
   - apiVersion: v2
+    appVersion: 1.0.1a2
+    created: "2023-07-13T15:55:05.528323904Z"
+    description: Full lightcurve provider step
+    digest: dfa43cc28ef5d58e842fd0c086057a2056586cc0bf8e7a21e52ed7bcb4bc31a2
+    name: lightcurve-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/lightcurve-step-0.6.0/lightcurve-step-0.6.0.tgz
+    version: 0.6.0
+  - apiVersion: v2
     appVersion: rc-bf74ea9
     created: "2023-07-04T18:40:26.846248824Z"
     description: Full lightcurve provider step
@@ -1399,4 +1409,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-07-12T14:19:35.789386709Z"
+generated: "2023-07-13T15:55:05.528960608Z"
