@@ -91,7 +91,7 @@ spec:
             - name: METRICS_TOPIC
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "lc-classifier-step.fullname" }}
+                  name: {{ include "lc-classifier-step.fullname" . }}
                   key: metrics-topic
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
