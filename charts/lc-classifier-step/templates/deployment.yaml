@@ -89,7 +89,10 @@ spec:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: internal-server
             - name: METRICS_TOPIC
-              value: "metrics"
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" }}
+                  key: metrics-topic
             {{- if .Values.secrets.kafkaAuth.consumer.enabled }}
             - name: CONSUMER_KAFKA_USERNAME
               valueFrom:

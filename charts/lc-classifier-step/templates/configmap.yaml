@@ -9,6 +9,7 @@ data:
   internal-server: {{ .Values.configmap.internalServer }}
   public-server: {{ .Values.configmap.publicServer }}
   scribe-topic: {{ .Values.configmap.scribeTopic }}
+  metrics-topic: {{ .Values.configmap.metricsTopic }}
   consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
   kafka-producer-security-protocol: {{ .Values.configmap.kafka.securityProtocol }}

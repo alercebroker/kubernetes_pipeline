@@ -48,6 +48,7 @@ configmap:
   publicServer: ""
   internalServer: ""
   scribeTopic: ""
+  metricsTopic: ""
   consumeTimeout: "10"
   consumeMessages: "100"
   kafka:
