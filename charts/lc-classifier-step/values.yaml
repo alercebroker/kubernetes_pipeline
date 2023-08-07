@@ -80,6 +80,7 @@ configmap:
   # This could be one output for the regular ALeRCE output or one for the ELASTICC stream output
   # The regular ALeRCE output is the default
   stepParserClass: "lc_classification.core.parsers.alerce_parser.AlerceParser"
+  producerClass: "apf.producers.kafka.KafkaProducer"
   producerTopicFormat: "lc_classifier_%s"
   producerDateFormat: "%Y%m%d"
   producerChangeHour: "23"

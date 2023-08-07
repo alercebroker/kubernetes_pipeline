@@ -51,6 +51,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: consumer-group
+            - name: PRODUCER_CLASS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: producer-class
             - name: PRODUCER_TOPIC_FORMAT
               valueFrom:
                 configMapKeyRef:
