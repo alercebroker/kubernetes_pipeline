@@ -3,4 +3,4 @@ appVersion: rc-6d4c93d
 description: Previous candidates processor step
 name: prv-candidates
 type: application
-version: 0.7.3
+version: 0.7.4

@@ -29,7 +29,7 @@ autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 4
-  targetConsumedMessages: 500
+  #targetConsumedMessages: 500
 
 affinity:
   nodeAffinity:
