@@ -176,11 +176,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: model-version
-            - name: PREDICTOR_CLASS
+            - name: MODEL_CLASS
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
-                  key: predictor-class
+                  key: model-class
             - name: MODEL_PATH
               valueFrom:
                 configMapKeyRef:
@@ -201,11 +201,6 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: feature-quantiles-path
-            - name: PREDICTOR_PARSER_CLASS
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "lc-classifier-step.fullname" . }}
-                  key: predictor-parser-class
             - name: SCRIBE_PARSER_CLASS
               valueFrom:
                 configMapKeyRef:

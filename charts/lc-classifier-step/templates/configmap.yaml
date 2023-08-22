@@ -19,8 +19,7 @@ data:
   model-path: "{{ .Values.configmap.modelPath }}"
   quantiles-path: "{{ .Values.configmap.quantilesPath }}"
   feature-quantiles-path: "{{ .Values.configmap.featureQuantilesPath }}"
-  predictor-class: {{ .Values.configmap.predictorClass }}
-  predictor-parser-class: {{ .Values.configmap.predictorParserClass }}
+  model-class: {{ .Values.configmap.modelClass }}
   scribe-parser-class: {{ .Values.configmap.scribeParserClass }}
   step-parser-class: {{ .Values.configmap.stepParserClass }}
   producer-class: {{ .Values.configmap.producerClass }}
