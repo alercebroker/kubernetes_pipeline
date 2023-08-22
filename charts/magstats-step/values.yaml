@@ -46,6 +46,8 @@ configmap:
   consumerTopics: ""
   consumerServer: ""
   consumerGroupId: ""
+  consumeMessages: "250"
+  consumeTimeout: "10"
   scribeServer: ""
   scribeTopic: ""
   metricsServer: ""
