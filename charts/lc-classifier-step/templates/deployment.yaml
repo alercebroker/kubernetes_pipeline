@@ -181,6 +181,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: model-class
+            - name: MAPPER_CLASS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "lc-classifier-step.fullname" . }}
+                  key: mapper-class
             - name: MODEL_PATH
               valueFrom:
                 configMapKeyRef:

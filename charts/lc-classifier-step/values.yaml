@@ -71,6 +71,7 @@ configmap:
   # It should be the full module path to the predictor class
   # so something like module.submodule.ClassName
   modelClass: "lc_classification.predictors.ztf_random_forest.ztf_random_forest_predictor.ZtfRandomForestPredictor"
+  mapperClass: ""
   # Same as the predictorClass but for the scribe parser
   # Probably no need to change this
   scribeParserClass: "lc_classification.core.parsers.scribe_parser.ScribeParser"
