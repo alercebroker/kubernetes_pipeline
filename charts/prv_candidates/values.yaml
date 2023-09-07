@@ -42,6 +42,7 @@ affinity:
               values: []
 
 configmap:
+  classPrefix: ""
   consumerTopics: ""
   consumeMessages: ""
   consumerServer: ""

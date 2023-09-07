@@ -4,6 +4,7 @@ metadata:
   name: {{ include "lightcurve-step.fullname" . }}
   namespace: {{ .Values.namespace }}
 data:
+  class-prefix: {{ .Values.configmap.classPrefix }}
   consume-messages: "{{ .Values.configmap.consumeMessages }}"
   consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
   consumer-topics: {{ .Values.configmap.consumerTopics }}

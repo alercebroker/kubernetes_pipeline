@@ -5,6 +5,7 @@ metadata:
   name: '{{ include "sorting-hat.fullname" . }}'
   namespace: {{ .Values.namespace }}
 data:
+  class-prefix: {{ .Values.configmap.classPrefix }}
   consumer-topics: "{{ .Values.configmap.consumerTopics }}"
   topic-strategy-topic-format: "{{ .Values.configmap.topicStrategy.topicFormat }}"
   topic-strategy-date-format: "{{ .Values.configmap.topicStrategy.dateFormat }}"

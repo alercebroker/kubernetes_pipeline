@@ -53,6 +53,7 @@ configmap:
   consumeMessages: "50"
   metricsTopic: ""
   scribeTopic: ""
+  classPrefix: ""
 
 secrets:
   kafkaAuth:
