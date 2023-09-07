@@ -63,6 +63,7 @@ configmap:
   mongoSecretName: ""
   runConesearch: ""
   useProfiling: ""
+  classPrefix: ""
   pyroscopeServer: "http://pyroscope.pyroscope:4040"
 
 secrets:

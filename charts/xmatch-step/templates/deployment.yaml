@@ -36,6 +36,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
+            - name: CLASS_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "correction-step.fullname" . }}
+                  key: class-prefix         
             - name: CONSUMER_TOPICS
               valueFrom:
                 configMapKeyRef:
