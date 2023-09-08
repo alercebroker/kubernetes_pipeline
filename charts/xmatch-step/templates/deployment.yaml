@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "xmatch-step.fullname" . }}
+  name: {{ rnclude "xmatch-step.fullname" . }}
   namespace: {{ .Values.namespace }}
   labels:
     {{- include "xmatch-step.labels" . | nindent 4 }}
@@ -39,7 +39,7 @@ spec:
             - name: CLASS_PREFIX
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "correction-step.fullname" . }}
+                  name: {{ include "xmatch-step.fullname" . }}
                   key: class-prefix         
             - name: CONSUMER_TOPICS
               valueFrom:
