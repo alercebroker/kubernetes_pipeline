@@ -52,6 +52,7 @@ configmap:
   loggingDebug: ""
   producerServer: ""
   producerTopic: ""
+  producerMessageMaxBytes: ""
   metricsServer: ""
   metricsTopic: ""
   usePrometheus: ""
