@@ -53,6 +53,7 @@ configmap:
   metricsTopic: ""
   producerServer: ""
   producerTopic: ""
+  producerMessageMaxBytes: ""
 
 imageCredentials:
   registry: ""

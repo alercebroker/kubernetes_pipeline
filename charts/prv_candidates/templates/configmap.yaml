@@ -13,5 +13,6 @@ data:
   scribe-topic: {{ .Values.configmap.scribeTopic }}
   producer-server: {{ .Values.configmap.producerServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
+  producer-message-max-bytes: {{ .Values.configmap.producerMessageMaxBytes }}
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}

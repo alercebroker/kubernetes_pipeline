@@ -71,6 +71,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "prv-candidates.fullname" . }}
                   key: producer-topic
+            - name: PRODUCER_MESSAGE_MAX_BYTES
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "prv-candidates.fullname" . }}
+                  key: producer-message-max-bytes
             - name: SCRIBE_PRODUCER_SERVER
               valueFrom:
                 configMapKeyRef:
