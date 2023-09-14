@@ -137,7 +137,7 @@ spec:
             - name: PRODUCER_MESSAGE_MAX_BYTES
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "prv-candidates.fullname" . }}
+                  name: {{ include "correction-step.fullname" . }}
                   key: producer-message-max-bytes
             {{- end }}
             {{- if .Values.secrets.kafkaAuth.scribe.enabled }}

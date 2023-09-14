@@ -69,7 +69,7 @@ spec:
             - name: PRODUCER_MESSAGE_MAX_BYTES
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "prv-candidates.fullname" . }}
+                  name: {{ include "xmatch-step.fullname" . }}
                   key: producer-message-max-bytes                  
             - name: STEP_VERSION
               valueFrom:
