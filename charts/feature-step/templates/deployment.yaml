@@ -76,6 +76,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "feature-step.fullname" . }}
                   key: producer-topic
+            - name: PRODUCER_MESSAGE_MAX_BYTES
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "prv-candidates.fullname" . }}
+                  key: producer-message-max-bytes                  
             - name: METRICS_HOST
               valueFrom:
                 configMapKeyRef:

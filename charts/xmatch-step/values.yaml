@@ -57,6 +57,7 @@ configmap:
   consumeTimeout: ""
   consumeMessages: ""
   scribeServer: ""
+  producerMessageMaxBytes: ""
   scribeTopic: ""
   skipXmatch: ""
 

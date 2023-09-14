@@ -134,6 +134,11 @@ spec:
                 secretKeyRef:
                   name: kafka-auth
                   key: producer-password
+            - name: PRODUCER_MESSAGE_MAX_BYTES
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "prv-candidates.fullname" . }}
+                  key: producer-message-max-bytes
             {{- end }}
             {{- if .Values.secrets.kafkaAuth.scribe.enabled }}
             - name: SCRIBE_KAFKA_USERNAME

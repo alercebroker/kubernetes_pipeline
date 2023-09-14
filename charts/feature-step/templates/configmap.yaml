@@ -9,6 +9,7 @@ data:
   group-id: {{ .Values.configmap.groupId | default (printf "%s" (include "feature-step.fullname" .)) }}
   internal-server: {{ .Values.configmap.internalServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}
+  producer-message-max-bytes: {{ .Values.configmap.producerMessageMaxBytes }}
   producer-topic: {{ .Values.configmap.producerTopic }}
   consume-timeout: "{{ .Values.configmap.consumeTimeout }}"
   consume-messages: "{{ .Values.configmap.consumeMessages }}"

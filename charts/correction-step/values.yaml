@@ -53,6 +53,7 @@ configmap:
   loggingDebug: ""
   producerServer: ""
   producerTopic: ""
+  producerMessageMaxBytes: ""
   pyroscopeServer: "http://pyroscope.pyroscope:4040"
   scribeServer: ""
   scribeTopic: ""

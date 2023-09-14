@@ -54,6 +54,7 @@ configmap:
   metricsTopic: ""
   scribeTopic: ""
   classPrefix: ""
+  producerMessageMaxBytes: ""
 
 secrets:
   kafkaAuth:
