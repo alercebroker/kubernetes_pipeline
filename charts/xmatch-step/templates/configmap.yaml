@@ -10,7 +10,7 @@ data:
   consumer-group-id: {{ .Values.configmap.consumerGroupId | default (printf "%s" (include "xmatch-step.fullname" .)) }}
   producer-topic: {{ .Values.configmap.producerTopic }}
   producer-server: {{ .Values.configmap.producerServer }}
-  producer-message-max-bytes: {{ .Values.configmap.producerMessageMaxBytes }}
+  producer-message-max-bytes: "{{ .Values.configmap.producerMessageMaxBytes }}"
   metrics-topic: {{ .Values.configmap.metricsTopic }}
   metrics-server: {{ .Values.configmap.metricsServer }}
   step-version: {{ .Chart.AppVersion }}
