@@ -65,6 +65,16 @@ entries:
   correction-step:
   - apiVersion: v2
     appVersion: 6.0.0
+    created: "2023-09-14T13:18:06.038180794Z"
+    description: Correction step chart
+    digest: 1519baa8b12a1ec28cded51d8d4cc846c4c9ef094ae47d7ad3c236b995c78b85
+    name: correction-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/correction-step-1.0.2/correction-step-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 6.0.0
     created: "2023-09-07T16:25:56.064859028Z"
     description: Correction step chart
     digest: e68cb2e1a33672080b45d1a385b8311e8b425a44ab64b48af70c9730fae674ed
@@ -246,6 +256,16 @@ entries:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/elasticc-simulator-0.1.0/elasticc-simulator-0.1.0.tgz
     version: 0.1.0
   feature-step:
+  - apiVersion: v2
+    appVersion: 6.0.0
+    created: "2023-09-14T13:18:06.274225343Z"
+    description: Step for feature calculation
+    digest: 0d249ac10d0bd7f8ba1a5aac8ee4260c64325646e003a83b48f2e1c317466909
+    name: feature-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/feature-step-1.2.12/feature-step-1.2.12.tgz
+    version: 1.2.12
   - apiVersion: v2
     appVersion: 6.0.0
     created: "2023-09-07T16:25:56.247313648Z"
@@ -1651,6 +1671,16 @@ entries:
   xmatch-step:
   - apiVersion: v2
     appVersion: 6.0.0
+    created: "2023-09-14T13:18:06.443531891Z"
+    description: A Helm chart for Kubernetes
+    digest: 7af15bcea6555f8a1073d9301da17d60aea4368de644c22b46f2254776fddda9
+    name: xmatch-step
+    type: application
+    urls:
+    - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-2.1.8/xmatch-step-2.1.8.tgz
+    version: 2.1.8
+  - apiVersion: v2
+    appVersion: 6.0.0
     created: "2023-09-08T20:04:13.212532177Z"
     description: A Helm chart for Kubernetes
     digest: bd2c121d50394910c95e2bf19de8fafaf7f877b5ff4514b69d7f8899a0c85f60
@@ -1779,4 +1809,4 @@ entries:
     urls:
     - https://github.com/alercebroker/kubernetes_pipeline/releases/download/xmatch-step-1.0.0/xmatch-step-1.0.0.tgz
     version: 1.0.0
-generated: "2023-09-10T14:22:23.199414699Z"
+generated: "2023-09-14T13:18:06.4440359Z"
