@@ -15,6 +15,7 @@ data:
   consumer-class: {{ .Values.configmap.consumerClass }}
   producer-server: {{ .Values.configmap.producerServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
+  producer-message-max-bytes: {{ .Values.configmap.producerMessageMaxBytes }}
   pyroscope-server: {{ .Values.configmap.pyroscopeServer }}
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}

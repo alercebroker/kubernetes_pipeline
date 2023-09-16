@@ -96,6 +96,11 @@ spec:
                 configMapKeyRef:
                   name: '{{ include "sorting-hat.fullname" . }}'
                   key: producer-topic
+            - name: PRODUCER_MESSAGE_MAX_BYTES
+              valueFrom:
+                configMapKeyRef:
+                  name: '{{ include "sorting-hat.fullname" . }}'
+                  key: producer-message-max-bytes
             - name: MONGODB_SECRET_NAME
               valueFrom:
                 configMapKeyRef:

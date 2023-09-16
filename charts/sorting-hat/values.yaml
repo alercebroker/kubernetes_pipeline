@@ -58,6 +58,7 @@ configmap:
   consumerClass: ""
   producerServer: ""
   producerTopic: ""
+  producerMessageMaxBytes: ""
   metricsTopic: ""
   metricsServer: ""
   mongoSecretName: ""
