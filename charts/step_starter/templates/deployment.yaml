@@ -90,8 +90,8 @@ spec:
                   name: kafka-auth
                   key: password
             {{- end }}
-            {{- with .Values.extraEnvVariables}}
-            {{- toYaml . | nindent 12 }}
+            {{- with .Values.extraEnvVariables }}
+            {{- tpl (toYaml .) $ | nindent 12 }}
             {{- end}}
       {{- with .Values.affinity }}
       affinity:

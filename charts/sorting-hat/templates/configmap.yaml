@@ -5,7 +5,6 @@ metadata:
   name: '{{ include "sorting-hat.fullname" . }}'
   namespace: {{ .Values.namespace }}
 data:
-  class-prefix: {{ .Values.configmap.classPrefix }}
   consumer-topics: "{{ .Values.configmap.consumerTopics }}"
   topic-strategy-topic-format: "{{ .Values.configmap.topicStrategy.topicFormat }}"
   topic-strategy-date-format: "{{ .Values.configmap.topicStrategy.dateFormat }}"
@@ -15,7 +14,7 @@ data:
   consumer-class: {{ .Values.configmap.consumerClass }}
   producer-server: {{ .Values.configmap.producerServer }}
   producer-topic: {{ .Values.configmap.producerTopic }}
-  producer-message-max-bytes: {{ .Values.configmap.producerMessageMaxBytes }}
+  producer-message-max-bytes: "{{ .Values.configmap.producerMessageMaxBytes }}"
   pyroscope-server: {{ .Values.configmap.pyroscopeServer }}
   metrics-server: {{ .Values.configmap.metricsServer }}
   metrics-topic: {{ .Values.configmap.metricsTopic }}

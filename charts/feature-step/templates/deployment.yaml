@@ -116,8 +116,8 @@ spec:
                 secretKeyRef:
                   name: kafka-auth
                   key: password
-            {{- with .Values.extraEnvVariables}}
-            {{- toYaml . | nindent 14 }}
+            {{- with .Values.extraEnvVariables }}
+            {{- tpl (toYaml .) $ | nindent 12 }}
             {{- end}}
       {{- with .Values.affinity }}
       affinity:
