@@ -71,11 +71,6 @@ spec:
                 configMapKeyRef:
                   name: '{{ include "sorting-hat.fullname" . }}'
                   key: consumer-server
-            - name: CLASS_PREFIX
-              valueFrom:
-                configMapKeyRef:
-                  name: '{{ include "sorting-hat.fullname" . }}'
-                  key: class-prefix                  
             - name: CONSUMER_CLASS
               valueFrom:
                 configMapKeyRef:
