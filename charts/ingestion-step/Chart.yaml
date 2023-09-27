@@ -3,4 +3,4 @@ appVersion: "1.2.1"
 description: Ingestion step chart
 name: ingestion-step
 type: application
-version: 1.4.0
+version: 1.4.1
