@@ -152,6 +152,9 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lightcurve-step.fullname" . }}
                   key: pyroscope-server
+            {{- with .Values.extraEnvVariables}}
+            {{- toYaml . | nindent 12 }}
+            {{- end}}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

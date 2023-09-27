@@ -87,3 +87,12 @@ imageCredentials:
   username: ""
   password: ""
   email: ""
+
+# Variables to add to deployment template
+# These are yaml formatted as received by `env` field of the container spec
+extraEnvVariables:
+  ##
+  ## - name: METRICS_SOURCE
+  ##   value: {{ .Release.Name }}
+  ## - name: METRICS_SURVEY
+  ##   value: ATLAS

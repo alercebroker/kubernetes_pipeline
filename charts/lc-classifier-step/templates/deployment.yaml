@@ -216,6 +216,9 @@ spec:
                 configMapKeyRef:
                   name: {{ include "lc-classifier-step.fullname" . }}
                   key: step-parser-class
+            {{- with .Values.extraEnvVariables}}
+            {{- toYaml . | nindent 12 }}
+            {{- end}}
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

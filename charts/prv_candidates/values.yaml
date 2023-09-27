@@ -79,3 +79,9 @@ secrets:
       enabled: false
       username: ""
       password: ""
+
+extraEnvVariables:
+  ## - name: METRICS_SOURCE
+  ##   value: {{ .Release.Name }}
+  ## - name: METRICS_SURVEY
+  ##   value: ATLAS

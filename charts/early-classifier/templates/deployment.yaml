@@ -155,6 +155,10 @@ spec:
                 secretKeyRef:
                   name: db-credentials
                   key: name
+            - name: METRICS_SOURCE
+              value: {{ .Release.Name }}
+            - name: METRICS_SURVEY
+              value: ZTF
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}

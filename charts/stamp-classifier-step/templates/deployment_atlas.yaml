@@ -152,6 +152,10 @@ spec:
                   name: kafka-auth
                   key: metrics-password
             {{- end }}
+            - name: METRICS_SOURCE
+              value: {{ .Release.Name }}
+            - name: METRICS_SURVEY
+              value: ATLAS
       {{- with .Values.affinity }}
       affinity:
         {{- toYaml . | nindent 8 }}
